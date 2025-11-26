@@ -2203,10 +2203,17 @@ bool Client::SwapItem(MoveItem_Struct* move_in) {
 		}
 	}
 
-	int matslot = SlotConvert2(dst_slot_id);
+	int matslot = /*BRYANT112125 */EQ::InventoryProfile::CalcMaterialFromSlot/*SlotConvert2*/(dst_slot_id);
 	if (dst_slot_id <= EQ::invslot::EQUIPMENT_END) {// on Titanium and ROF2 /showhelm works even if sending helm slot
 		SendWearChange(matslot);
 	}
+
+	// BRYANT111825
+	int matslot_src = /*BRYANT112125*/EQ::InventoryProfile::CalcMaterialFromSlot/*SlotConvert2*/(src_slot_id);
+	if (src_slot_id <= EQ::invslot::EQUIPMENT_END) {
+		SendWearChange(matslot_src);
+	}
+	// BRYANT111825
 
 	// Step 7: Save change to the database
 	if (src_slot_id == EQ::invslot::slotCursor) {
