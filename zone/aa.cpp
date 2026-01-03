@@ -1324,6 +1324,38 @@ bool Client::ValidateAASkillWeaponRequirements(uint16 spell_id)
 	return true;
 }
 
+bool Client::ValidateAAEnduranceCost(uint16 spell_id)
+{
+	if (!IsValidSpell(spell_id)) {
+		return true;
+	}
+
+	const auto& spell = spells[spell_id];
+
+	// No endurance cost ? always allowed
+	if (spell.endurance_cost <= 0) {
+		return true;
+	}
+
+	// AAs are always client-initiated, but be safe
+	if (!IsClient()) {
+		return true;
+	}
+
+	// Use focus-adjusted cost if available in your tree
+	int32 cost = spell.endurance_cost;
+
+	// If your branch has this helper, prefer it:
+	// cost = GetActEnduranceCost(spell_id);
+
+	if (GetEndurance() < cost) {
+		Message(Chat::Red, "You are too fatigued to use this ability.");
+		return false;
+	}
+
+	return true;
+}
+
 void Client::ActivateAlternateAdvancementAbility(int rank_id, int target_id) {
 	AA::Rank *rank = zone->GetAlternateAdvancementRank(rank_id);
 
@@ -1345,6 +1377,10 @@ void Client::ActivateAlternateAdvancementAbility(int rank_id, int target_id) {
 	}
 
 	if (!ValidateAASkillWeaponRequirements(rank->spell)) {
+		return;
+	}
+
+	if (!ValidateAAEnduranceCost(rank->spell)) {
 		return;
 	}
 
