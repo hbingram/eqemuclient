@@ -1250,6 +1250,80 @@ void Client::IncrementAlternateAdvancementRank(int rank_id) {
 	GrantAlternateAdvancementAbility(rank->base_ability->id, points + 1, true);
 }
 
+bool Client::ValidateAASkillWeaponRequirements(uint16 spell_id)
+{
+	if (!IsValidSpell(spell_id)) {
+		return true; // nothing to validate
+	}
+
+	const auto aa_skill = static_cast<EQ::skills::SkillType>(spells[spell_id].skill);
+
+	// Primary item instance (nullptr means truly empty slot)
+	const auto* inst = GetInv().GetItem(EQ::invslot::slotPrimary);
+
+	// Hand-to-Hand: primary MUST be empty
+	if (aa_skill == EQ::skills::SkillHandtoHand) {
+		if (inst) {
+			Message(Chat::Red, "You must have an empty primary hand to use this hand-to-hand ability.");
+			return false;
+		}
+		return true;
+	}
+
+	// Weapon-based skills: must have the correct weapon equipped in primary
+	switch (aa_skill) {
+	case EQ::skills::Skill1HBlunt:
+	case EQ::skills::Skill1HSlashing:
+	case EQ::skills::Skill2HBlunt:
+	case EQ::skills::Skill2HSlashing:
+	case EQ::skills::Skill1HPiercing:
+	case EQ::skills::Skill2HPiercing:
+	case EQ::skills::SkillBackstab:
+		break;
+	default:
+		return true; // not a weapon-gated skill
+	}
+
+	if (!inst || !inst->GetItem()) {
+		Message(Chat::Red, "You must equip an appropriate weapon to use this ability.");
+		return false;
+	}
+
+	const auto* item = inst->GetItem();
+	bool valid = false;
+
+	switch (aa_skill) {
+	case EQ::skills::Skill1HBlunt:
+		valid = item->ItemType == EQ::item::ItemType1HBlunt;
+		break;
+	case EQ::skills::Skill1HSlashing:
+		valid = item->ItemType == EQ::item::ItemType1HSlash;
+		break;
+	case EQ::skills::Skill2HBlunt:
+		valid = item->ItemType == EQ::item::ItemType2HBlunt;
+		break;
+	case EQ::skills::Skill2HSlashing:
+		valid = item->ItemType == EQ::item::ItemType2HSlash;
+		break;
+	case EQ::skills::Skill1HPiercing:
+	case EQ::skills::SkillBackstab:
+		valid = item->ItemType == EQ::item::ItemType1HPiercing;
+		break;
+	case EQ::skills::Skill2HPiercing:
+		valid = item->ItemType == EQ::item::ItemType2HPiercing;
+		break;
+	default:
+		break;
+	}
+
+	if (!valid) {
+		Message(Chat::Red, "You must equip an appropriate weapon to use this ability.");
+		return false;
+	}
+
+	return true;
+}
+
 void Client::ActivateAlternateAdvancementAbility(int rank_id, int target_id) {
 	AA::Rank *rank = zone->GetAlternateAdvancementRank(rank_id);
 
@@ -1267,6 +1341,10 @@ void Client::ActivateAlternateAdvancementAbility(int rank_id, int target_id) {
 	}
 
 	if (!CanUseAlternateAdvancementRank(rank)) {
+		return;
+	}
+
+	if (!ValidateAASkillWeaponRequirements(rank->spell)) {
 		return;
 	}
 

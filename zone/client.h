@@ -1064,6 +1064,7 @@ public:
 	void PurchaseAlternateAdvancementRank(int rank_id);
 	bool GrantAlternateAdvancementAbility(int aa_id, int points, bool ignore_cost = false);
 	void IncrementAlternateAdvancementRank(int rank_id);
+	bool ValidateAASkillWeaponRequirements(uint16 spell_id);
 	void ActivateAlternateAdvancementAbility(int rank_id, int target_id);
 	void SendAlternateAdvancementPoints();
 	void SendAlternateAdvancementTimer(int ability, int begin, int end);
