@@ -1069,6 +1069,10 @@ bool Client::PutItemInInventory(int16 slot_id, const EQ::ItemInstance& inst, boo
 	}
 
 	CalcBonuses();
+	UpdateEquipmentLight();
+	if (UpdateActiveLight()) {
+		SendAppearancePacket(AppearanceType::Light, GetActiveLightType());
+	}
 
 	if (slot_id == EQ::invslot::slotCursor) {
 		auto s = m_inv.cursor_cbegin(), e = m_inv.cursor_cend();
@@ -1151,6 +1155,10 @@ void Client::PutLootInInventory(int16 slot_id, const EQ::ItemInstance &inst, Loo
 	}
 
 	CalcBonuses();
+	UpdateEquipmentLight();
+	if (UpdateActiveLight()) {
+		SendAppearancePacket(AppearanceType::Light, GetActiveLightType());
+	}
 }
 bool Client::TryStacking(EQ::ItemInstance* item, uint8 type, bool try_worn, bool try_cursor) {
 	if(!item || !item->IsStackable() || item->GetCharges()>=item->GetItem()->StackSize)
@@ -2240,6 +2248,10 @@ bool Client::SwapItem(MoveItem_Struct* move_in) {
 	// Step 8: Re-calc stats
 	CalcBonuses();
 	ApplyWeaponsStance();
+	UpdateEquipmentLight();
+	if (UpdateActiveLight()) {
+		SendAppearancePacket(AppearanceType::Light, GetActiveLightType());
+	}
 	return true;
 }
 
