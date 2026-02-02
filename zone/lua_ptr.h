@@ -1,9 +1,6 @@
-#pragma once
-
+#ifndef EQEMU_LUA_PTR_H
+#define EQEMU_LUA_PTR_H
 #ifdef LUA_EQEMU
-
-#include "lua.hpp"
-#include "luabind/luabind.hpp"
 
 #ifndef EQEMU_UNSAFE_LUA
 #define Lua_Safe_Call_Void() if(!d_) { return; } NativeType *self = reinterpret_cast<NativeType*>(d_)
@@ -54,4 +51,5 @@ protected:
 	T *d_;
 };
 
-#endif // LUA_EQEMU
+#endif
+#endif

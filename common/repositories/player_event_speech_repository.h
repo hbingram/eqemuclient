@@ -1,11 +1,13 @@
-#pragma once
+#ifndef EQEMU_PLAYER_EVENT_SPEECH_REPOSITORY_H
+#define EQEMU_PLAYER_EVENT_SPEECH_REPOSITORY_H
 
-#include "common/repositories/base/base_player_event_speech_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_player_event_speech_repository.h"
 
 class PlayerEventSpeechRepository: public BasePlayerEventSpeechRepository {
 public:
 	// Custom extended repository methods here
 };
+
+#endif //EQEMU_PLAYER_EVENT_SPEECH_REPOSITORY_H

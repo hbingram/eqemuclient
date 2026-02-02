@@ -16,7 +16,8 @@
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 04111-1307 USA
 */
 
-#include "common/emu_opcodes.h"
+#include "global_define.h"
+#include "emu_opcodes.h"
 
 const char *OpcodeNames[_maxEmuOpcode+1] = {
 	"OP_Unknown",
@@ -29,3 +30,9 @@ const char *OpcodeNames[_maxEmuOpcode+1] = {
 
 	""
 };
+
+
+
+
+
+

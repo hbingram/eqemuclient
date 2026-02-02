@@ -1,8 +1,7 @@
-#include "process.h"
-
-#include <algorithm>
-#include <fstream>
 #include <string>
+#include <fstream>
+#include <algorithm>
+#include "process.h"
 
 inline std::string random_string(size_t length)
 {

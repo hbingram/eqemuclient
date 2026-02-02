@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_GUILD_TRIBUTES_REPOSITORY_H
+#define EQEMU_GUILD_TRIBUTES_REPOSITORY_H
 
-#include "common/repositories/base/base_guild_tributes_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_guild_tributes_repository.h"
 
 class GuildTributesRepository: public BaseGuildTributesRepository {
 public:
@@ -73,3 +73,5 @@ public:
 	}
 
 };
+
+#endif //EQEMU_GUILD_TRIBUTES_REPOSITORY_H

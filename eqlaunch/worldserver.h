@@ -15,15 +15,14 @@
 	along with this program; if not, write to the Free Software
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
+#ifndef WORLDSERVER_H
+#define WORLDSERVER_H
 
-#pragma once
-
-#include "common/net/servertalk_client_connection.h"
-
-#include <map>
+#include "../common/net/servertalk_client_connection.h"
 #include <memory>
-#include <queue>
 #include <string>
+#include <queue>
+#include <map>
 
 class ZoneLaunch;
 class EQEmuConfig;
@@ -45,3 +44,5 @@ private:
 	const EQEmuConfig *const m_config;
 	std::map<std::string, ZoneLaunch *> &m_zones;
 };
+#endif
+

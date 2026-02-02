@@ -1,11 +1,13 @@
-#include "common/compression.h"
-#include "common/file.h"
-#include "common/memory/ksm.hpp"
-#include "common/misc_functions.h"
-#include "zone/client.h"
-#include "zone/map.h"
-#include "zone/raycast_mesh.h"
-#include "zone/zone.h"
+#include "../common/global_define.h"
+#include "../common/misc_functions.h"
+#include "../common/compression.h"
+
+#include "client.h"
+#include "map.h"
+#include "raycast_mesh.h"
+#include "zone.h"
+#include "../common/file.h"
+#include "../common/memory/ksm.hpp"
 
 #include <algorithm>
 #include <map>

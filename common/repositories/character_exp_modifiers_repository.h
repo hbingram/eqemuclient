@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_CHARACTER_EXP_MODIFIERS_REPOSITORY_H
+#define EQEMU_CHARACTER_EXP_MODIFIERS_REPOSITORY_H
 
-#include "common/repositories/base/base_character_exp_modifiers_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_character_exp_modifiers_repository.h"
 
 class CharacterExpModifiersRepository: public BaseCharacterExpModifiersRepository {
 public:
@@ -102,3 +102,5 @@ public:
 		);
 	}
 };
+
+#endif //EQEMU_CHARACTER_EXP_MODIFIERS_REPOSITORY_H

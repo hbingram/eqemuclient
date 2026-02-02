@@ -1,9 +1,8 @@
-#pragma once
-
+#ifndef EQEMU_LUA_MOB_H
+#define EQEMU_LUA_MOB_H
 #ifdef LUA_EQEMU
 
-#include "common/types.h"
-#include "zone/lua_entity.h"
+#include "lua_entity.h"
 
 class Mob;
 struct Lua_HateList;
@@ -620,4 +619,5 @@ public:
 	void SetPetType(uint8 pet_type);
 };
 
-#endif // LUA_EQEMU
+#endif
+#endif

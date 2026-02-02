@@ -1,18 +1,23 @@
-#include "common/strings.h"
-
-#include "fmt/format.h"
+#include <cstring>
+#include "strings.h"
+#include <fmt/format.h>
 #include <algorithm>
 #include <cctype>
 #include <cinttypes>
-#include <cstdio>
-#include <cstdlib>
-#include <cstring>
-#include <iostream>
+
 #ifdef _WINDOWS
 #include <windows.h>
-#define snprintf        _snprintf
-#define strncasecmp     _strnicmp
-#define strcasecmp      _stricmp
+
+#define snprintf	_snprintf
+#define strncasecmp	_strnicmp
+#define strcasecmp  _stricmp
+
+#else
+
+#include <stdlib.h>
+#include <stdio.h>
+#include <iostream>
+
 #endif
 
 #ifndef va_copy

@@ -15,10 +15,9 @@
 	along with this program; if not, write to the Free Software
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
+#ifndef RDTSC_H
+#define RDTSC_H
 
-#pragma once
-
-#include "common/types.h"
 
 #define CALIBRATE_LOOPS 3
 #define SLEEP_TIME 10	//in ms
@@ -33,6 +32,8 @@
 
 	All calculations are carried out in 64 bit integers.
 */
+
+#include "types.h"
 
 class RDTSC_Timer {
 public:
@@ -81,3 +82,5 @@ protected:
 	int64 _sum;
 	int64 _count;
 };
+
+#endif

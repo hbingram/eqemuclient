@@ -17,11 +17,13 @@
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-#pragma once
+#ifndef COMMON_PROFANITY_MANAGER_H
+#define COMMON_PROFANITY_MANAGER_H
 
-#include "fmt/format.h"
-#include <list>
 #include <string>
+#include <list>
+#include <fmt/format.h>
+
 
 class DBcore;
 
@@ -56,3 +58,5 @@ namespace EQ
 	};
 
 } /*EQEmu*/
+
+#endif /*COMMON_PROFANITY_MANAGER_H*/

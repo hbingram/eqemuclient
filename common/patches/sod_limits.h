@@ -17,11 +17,12 @@
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-#pragma once
+#ifndef COMMON_SOD_LIMITS_H
+#define COMMON_SOD_LIMITS_H
 
-#include "common/emu_versions.h"
-#include "common/skills.h"
-#include "common/types.h"
+#include "../types.h"
+#include "../emu_versions.h"
+#include "../skills.h"
 
 
 namespace SoD
@@ -338,4 +339,6 @@ namespace SoD
 
 	} /*spells*/
 
-} /*SoD*/
+}; /*SoD*/
+
+#endif /*COMMON_SOD_LIMITS_H*/

@@ -16,11 +16,12 @@
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
 
-#pragma once
+#ifndef BEACON_H
+#define BEACON_H
 
-#include "common/timer.h"
-#include "common/types.h"
-#include "zone/mob.h"
+#include "mob.h"
+#include "../common/types.h"
+#include "../common/timer.h"
 
 class Group;
 class Raid;
@@ -58,4 +59,7 @@ protected:
 	int max_targets;
 
 	uint16 caster_id;
+private:
 };
+
+#endif

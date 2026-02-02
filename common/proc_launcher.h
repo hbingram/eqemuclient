@@ -15,15 +15,18 @@
 	along with this program; if not, write to the Free Software
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
+#ifndef PROCLAUNCHER_H_
+#define PROCLAUNCHER_H_
 
-#pragma once
+#include "global_define.h"
 
-#include "common/platform/platform.h"
-#include "common/types.h"
-
-#include <map>
 #include <string>
 #include <vector>
+#include <map>
+
+#ifdef __FreeBSD__
+#include <unistd.h>
+#endif
 
 //I forced this object to become a singleton because it registers its
 //signal handler for UNIX
@@ -89,3 +92,6 @@ private:
 	static void HandleSigChild(int signum);
 #endif
 };
+
+#endif /*PROCLAUNCHER_H_*/
+

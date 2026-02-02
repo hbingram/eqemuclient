@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_GROUND_SPAWNS_REPOSITORY_H
+#define EQEMU_GROUND_SPAWNS_REPOSITORY_H
 
-#include "common/repositories/base/base_ground_spawns_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_ground_spawns_repository.h"
 
 class GroundSpawnsRepository: public BaseGroundSpawnsRepository {
 public:
@@ -46,3 +46,5 @@ public:
 	// Custom extended repository methods here
 
 };
+
+#endif //EQEMU_GROUND_SPAWNS_REPOSITORY_H

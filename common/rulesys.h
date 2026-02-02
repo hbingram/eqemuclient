@@ -15,14 +15,8 @@
 	along with this program; if not, write to the Free Software
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
-
-#pragma once
-
-#include "common/types.h"
-
-#include <map>
-#include <string>
-#include <vector>
+#ifndef RULESYS_H_
+#define RULESYS_H_
 
 /*
 * Access to the rules system in normal code is done with three calls:
@@ -45,6 +39,12 @@
 #define RuleS(category_name, rule_name) \
     RuleManager::Instance()->GetStringRule( RuleManager::String__##rule_name )
 
+
+#include <vector>
+#include <string>
+#include <map>
+
+#include "types.h"
 
 class Database;
 
@@ -193,3 +193,5 @@ private:
 	} RuleInfo;
 	static const RuleInfo s_RuleInfo[];
 };
+
+#endif /*RULESYS_H_*/

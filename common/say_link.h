@@ -17,13 +17,14 @@
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-#pragma once
+#ifndef COMMON_SAY_LINK_H
+#define COMMON_SAY_LINK_H
 
-#include "common/loot.h"
-#include "common/repositories/saylink_repository.h"
-#include "common/types.h"
+#include "types.h"
 
 #include <string>
+#include "repositories/saylink_repository.h"
+#include "loot.h"
 
 struct LootItem;
 
@@ -132,3 +133,5 @@ public:
 	static std::string Create(const std::string &saylink_text, bool silent = false, const std::string &link_name = "");
 	static std::string Silent(const std::string &saylink_text, const std::string &link_name = "");
 };
+
+#endif /*COMMON_SAY_LINK_H*/

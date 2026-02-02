@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_PETS_BEASTLORD_DATA_REPOSITORY_H
+#define EQEMU_PETS_BEASTLORD_DATA_REPOSITORY_H
 
-#include "common/repositories/base/base_pets_beastlord_data_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_pets_beastlord_data_repository.h"
 
 class PetsBeastlordDataRepository: public BasePetsBeastlordDataRepository {
 public:
@@ -46,3 +46,5 @@ public:
 	// Custom extended repository methods here
 
 };
+
+#endif //EQEMU_PETS_BEASTLORD_DATA_REPOSITORY_H

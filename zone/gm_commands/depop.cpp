@@ -1,5 +1,5 @@
-#include "zone/client.h"
-#include "zone/corpse.h"
+#include "../client.h"
+#include "../corpse.h"
 
 void command_depop(Client *c, const Seperator *sep)
 {

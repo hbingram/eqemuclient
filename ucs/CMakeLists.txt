@@ -1,6 +1,5 @@
-cmake_minimum_required(VERSION 3.20)
-
-set(ucs_sources
+CMAKE_MINIMUM_REQUIRED(VERSION 3.12)
+SET(ucs_sources
 	chatchannel.cpp
 	clientlist.cpp
 	database.cpp
@@ -9,7 +8,7 @@ set(ucs_sources
 	worldserver.cpp
 )
 
-set(ucs_headers
+SET(ucs_headers
 	chatchannel.h
 	clientlist.h
 	database.h
@@ -17,14 +16,12 @@ set(ucs_headers
 	worldserver.h
 )
 
-add_executable(ucs ${ucs_sources} ${ucs_headers})
+ADD_EXECUTABLE(ucs ${ucs_sources} ${ucs_headers})
 
-install(TARGETS ucs RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+INSTALL(TARGETS ucs RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 
-add_definitions(-DUCS)
+ADD_DEFINITIONS(-DUCS)
 
-target_link_libraries(ucs common)
-target_include_directories(ucs PRIVATE ..)
+TARGET_LINK_LIBRARIES(ucs ${SERVER_LIBS})
 
-set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
-set_property(TARGET ucs PROPERTY FOLDER executables/servers)
+SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)

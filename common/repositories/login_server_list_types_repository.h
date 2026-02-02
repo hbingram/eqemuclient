@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_LOGIN_SERVER_LIST_TYPES_REPOSITORY_H
+#define EQEMU_LOGIN_SERVER_LIST_TYPES_REPOSITORY_H
 
-#include "common/repositories/base/base_login_server_list_types_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_login_server_list_types_repository.h"
 
 class LoginServerListTypesRepository: public BaseLoginServerListTypesRepository {
 public:
@@ -46,3 +46,5 @@ public:
 	// Custom extended repository methods here
 
 };
+
+#endif //EQEMU_LOGIN_SERVER_LIST_TYPES_REPOSITORY_H

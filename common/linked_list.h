@@ -15,10 +15,10 @@
 	along with this program; if not, write to the Free Software
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
+#ifndef LINKEDLIST_H
+#define LINKEDLIST_H
 
-#pragma once
-
-#include "common/types.h"
+#include "types.h"
 
 enum direction{FORWARD,BACKWARD};
 
@@ -433,3 +433,6 @@ TYPE LinkedList<TYPE>::PeekTop() {
 		return first->GetData();
 	return 0;
 }
+
+#endif
+

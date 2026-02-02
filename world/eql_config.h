@@ -15,12 +15,11 @@
 	along with this program; if not, write to the Free Software
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
+#ifndef EQLCONFIG_H_
+#define EQLCONFIG_H_
 
-#pragma once
-
-#include "common/types.h"
-#include "world/worlddb.h"
-
+#include "../common/types.h"
+#include "worlddb.h"
 #include <map>
 #include <string>
 
@@ -54,3 +53,6 @@ protected:
 
 	std::map<std::string, LauncherZone> m_zones;	//static zones.
 };
+
+#endif /*EQLCONFIG_H_*/
+

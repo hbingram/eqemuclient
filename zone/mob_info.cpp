@@ -18,10 +18,9 @@
  *
  */
 
+#include "client.h"
 #include "mob.h"
-
-#include "zone/client.h"
-#include "zone/npc_scale_manager.h"
+#include "npc_scale_manager.h"
 
 inline std::string GetMobAttributeByString(Mob *mob, const std::string &attribute)
 {

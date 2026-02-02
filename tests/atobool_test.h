@@ -16,10 +16,11 @@
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
 
-#pragma once
+#ifndef __EQEMU_TESTS_ATOBOOL_H
+#define __EQEMU_TESTS_ATOBOOL_H
 
-#include "common/strings.h"
 #include "cppunit/cpptest.h"
+#include "../common/strings.h"
 
 class atoboolTest : public Test::Suite {
 	typedef void(atoboolTest::*TestFunction)(void);
@@ -98,3 +99,5 @@ public:
 	}
 
 };
+
+#endif

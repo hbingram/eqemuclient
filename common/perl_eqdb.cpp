@@ -28,8 +28,9 @@
 typedef const char Const_char;
 
 #ifdef EMBPERL
-#include "common/eqdb.h"
-#include "common/useperl.h"
+#include "global_define.h"
+#include "eqdb.h"
+#include "useperl.h"
 
 #ifdef THIS /* this macro seems to leak out on some systems */
 #undef THIS

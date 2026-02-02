@@ -1,10 +1,10 @@
-#include "common/features.h"
+#include "../common/features.h"
+#include "common.h"
 
 #ifdef EMBPERL_XS_CLASSES
 
-#include "common/data_verification.h"
-#include "zone/common.h"
-#include "zone/embperl.h"
+#include "embperl.h"
+#include "../common/data_verification.h"
 
 int32 Perl_StatBonuses_GetAC(StatBonuses* self)
 {

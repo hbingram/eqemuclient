@@ -1,8 +1,8 @@
-#pragma once
-
+#ifndef EQEMU_LUA_SPELL_H
+#define EQEMU_LUA_SPELL_H
 #ifdef LUA_EQEMU
 
-#include "zone/lua_ptr.h"
+#include "lua_ptr.h"
 
 struct SPDat_Spell_Struct;
 
@@ -112,4 +112,5 @@ public:
 	int GetRank();
 };
 
-#endif // LUA_EQEMU
+#endif
+#endif

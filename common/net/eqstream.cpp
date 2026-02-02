@@ -1,6 +1,5 @@
 #include "eqstream.h"
-
-#include "common/eqemu_logsys.h"
+#include "../eqemu_logsys.h"
 
 EQ::Net::EQStreamManager::EQStreamManager(const EQStreamManagerInterfaceOptions &options) : EQStreamManagerInterface(options), m_reliable_stream(options.reliable_stream_options)
 {

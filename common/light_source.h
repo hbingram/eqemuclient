@@ -17,9 +17,11 @@
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-#pragma once
+#ifndef COMMON_LIGHT_SOURCE_H
+#define COMMON_LIGHT_SOURCE_H
 
-#include "common/types.h"
+#include "types.h"
+
 
 namespace EQ
 {
@@ -109,3 +111,5 @@ namespace EQ
 	};
 
 } /*EQEmu*/
+
+#endif /*COMMON_LIGHT_SOURCE_H*/

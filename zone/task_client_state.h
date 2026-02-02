@@ -1,12 +1,12 @@
-#pragma once
+#ifndef EQEMU_TASK_CLIENT_STATE_H
+#define EQEMU_TASK_CLIENT_STATE_H
 
-#include "common/types.h"
-#include "zone/tasks.h"
-
-#include <algorithm>
+#include "tasks.h"
+#include "../common/types.h"
 #include <list>
-#include <string>
 #include <vector>
+#include <string>
+#include <algorithm>
 
 constexpr float MAX_TASK_SELECT_DISTANCE = 60.0f; // client closes window at this distance
 
@@ -183,3 +183,5 @@ private:
 	);
 	bool HasActiveTasks();
 };
+
+#endif //EQEMU_TASK_CLIENT_STATE_H

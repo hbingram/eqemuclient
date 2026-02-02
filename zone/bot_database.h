@@ -16,13 +16,15 @@
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
 
-#pragma once
 
-#include "zone/bot_structs.h"
+#ifndef BOT_DATABASE_H
+#define BOT_DATABASE_H
+
 
 #include <list>
 #include <map>
 #include <vector>
+#include "bot_structs.h"
 
 class Bot;
 class Client;
@@ -218,3 +220,5 @@ public:
 		std::map<int32_t, std::map<int32_t, BotSpellTypesByClass>> commanded_spell_type_min_levels;
 
 };
+
+#endif

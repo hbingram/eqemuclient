@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_PERL_EVENT_EXPORT_SETTINGS_REPOSITORY_H
+#define EQEMU_PERL_EVENT_EXPORT_SETTINGS_REPOSITORY_H
 
-#include "common/repositories/base/base_perl_event_export_settings_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_perl_event_export_settings_repository.h"
 
 class PerlEventExportSettingsRepository: public BasePerlEventExportSettingsRepository {
 public:
@@ -46,3 +46,5 @@ public:
 	// Custom extended repository methods here
 
 };
+
+#endif //EQEMU_PERL_EVENT_EXPORT_SETTINGS_REPOSITORY_H

@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_DISCORD_WEBHOOKS_REPOSITORY_H
+#define EQEMU_DISCORD_WEBHOOKS_REPOSITORY_H
 
-#include "common/repositories/base/base_discord_webhooks_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_discord_webhooks_repository.h"
 
 class DiscordWebhooksRepository: public BaseDiscordWebhooksRepository {
 public:
@@ -46,3 +46,5 @@ public:
 	// Custom extended repository methods here
 
 };
+
+#endif //EQEMU_DISCORD_WEBHOOKS_REPOSITORY_H

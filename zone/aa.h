@@ -1,4 +1,5 @@
-#pragma once
+#ifndef AA_H
+#define AA_H
 
 #define MAX_SWARM_PETS 12	//this can change as long as you make more coords (swarm_pet_x/swarm_pet_y)
 #define WAKE_THE_DEAD_NPCTYPEID 500 //We use first pet in pets table as a template
@@ -1555,3 +1556,5 @@ enum AATimers
 	aaTimerWarcry,
 	aaTimerMax
 };
+
+#endif

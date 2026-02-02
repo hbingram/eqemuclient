@@ -17,11 +17,12 @@
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-#pragma once
+#ifndef COMMON_UF_LIMITS_H
+#define COMMON_UF_LIMITS_H
 
-#include "common/emu_versions.h"
-#include "common/skills.h"
-#include "common/types.h"
+#include "../types.h"
+#include "../emu_versions.h"
+#include "../skills.h"
 
 
 namespace UF
@@ -342,4 +343,6 @@ namespace UF
 
 	} /*spells*/
 
-} /*UF*/
+}; /*UF*/
+
+#endif /*COMMON_UF_LIMITS_H*/

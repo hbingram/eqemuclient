@@ -15,12 +15,11 @@
 	along with this program; if not, write to the Free Software
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
+#ifndef WORLDSERVER_H
+#define WORLDSERVER_H
 
-#pragma once
-
-#include "common/eq_packet_structs.h"
-#include "common/net/servertalk_client_connection.h"
-
+#include "../common/net/servertalk_client_connection.h"
+#include "../common/eq_packet_structs.h"
 #include <memory>
 
 class WorldServer
@@ -34,3 +33,5 @@ private:
 
 	std::unique_ptr<EQ::Net::ServertalkClient> m_connection;
 };
+#endif
+

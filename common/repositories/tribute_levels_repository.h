@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_TRIBUTE_LEVELS_REPOSITORY_H
+#define EQEMU_TRIBUTE_LEVELS_REPOSITORY_H
 
-#include "common/repositories/base/base_tribute_levels_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_tribute_levels_repository.h"
 
 class TributeLevelsRepository: public BaseTributeLevelsRepository {
 public:
@@ -46,3 +46,5 @@ public:
 	// Custom extended repository methods here
 
 };
+
+#endif //EQEMU_TRIBUTE_LEVELS_REPOSITORY_H

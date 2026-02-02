@@ -1,8 +1,7 @@
 #include "door_manipulation.h"
-
-#include "common/misc_functions.h"
-#include "common/strings.h"
-#include "zone/doors.h"
+#include "../doors.h"
+#include "../../common/misc_functions.h"
+#include "../../common/strings.h"
 
 #define MAX_CLIENT_MESSAGE_LENGTH 2000
 

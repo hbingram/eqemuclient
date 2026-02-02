@@ -1,5 +1,5 @@
-#include "zone/client.h"
-#include "zone/dynamic_zone.h"
+#include "../client.h"
+#include "../dynamic_zone.h"
 
 void command_dz(Client *c, const Seperator *sep)
 {

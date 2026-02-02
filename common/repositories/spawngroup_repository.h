@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_SPAWNGROUP_REPOSITORY_H
+#define EQEMU_SPAWNGROUP_REPOSITORY_H
 
-#include "common/repositories/base/base_spawngroup_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_spawngroup_repository.h"
 
 class SpawngroupRepository: public BaseSpawngroupRepository {
 public:
@@ -46,3 +46,5 @@ public:
 	// Custom extended repository methods here
 
 };
+
+#endif //EQEMU_SPAWNGROUP_REPOSITORY_H

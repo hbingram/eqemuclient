@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_NPC_SPELLS_REPOSITORY_H
+#define EQEMU_NPC_SPELLS_REPOSITORY_H
 
-#include "common/repositories/base/base_npc_spells_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_npc_spells_repository.h"
 
 class NpcSpellsRepository: public BaseNpcSpellsRepository {
 public:
@@ -46,3 +46,5 @@ public:
 	// Custom extended repository methods here
 
 };
+
+#endif //EQEMU_NPC_SPELLS_REPOSITORY_H

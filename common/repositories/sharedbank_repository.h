@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_SHAREDBANK_REPOSITORY_H
+#define EQEMU_SHAREDBANK_REPOSITORY_H
 
-#include "common/repositories/base/base_sharedbank_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_sharedbank_repository.h"
 
 class SharedbankRepository: public BaseSharedbankRepository {
 public:
@@ -46,3 +46,5 @@ public:
 	// Custom extended repository methods here
 
 };
+
+#endif //EQEMU_SHAREDBANK_REPOSITORY_H

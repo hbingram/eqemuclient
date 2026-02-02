@@ -16,11 +16,11 @@
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-#pragma once
+#ifndef _EQE_QUESTINTERFACE_H
+#define _EQE_QUESTINTERFACE_H
 
-#include "common/types.h"
-#include "zone/event_codes.h"
-
+#include "../common/types.h"
+#include "event_codes.h"
 #include <any>
 
 class Client;
@@ -383,3 +383,6 @@ public:
 protected:
 	std::list<std::string> errors_;
 };
+
+#endif
+

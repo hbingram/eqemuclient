@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_BUYER_TRADE_ITEMS_REPOSITORY_H
+#define EQEMU_BUYER_TRADE_ITEMS_REPOSITORY_H
 
-#include "common/repositories/base/base_buyer_trade_items_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_buyer_trade_items_repository.h"
 
 class BuyerTradeItemsRepository: public BaseBuyerTradeItemsRepository {
 public:
@@ -77,3 +77,5 @@ public:
 		return all_entries;
 	}
 };
+
+#endif //EQEMU_BUYER_TRADE_ITEMS_REPOSITORY_H

@@ -1,9 +1,10 @@
-#include "common/features.h"
+#include "../common/features.h"
 
 #ifdef EMBPERL_XS_CLASSES
 
-#include "zone/embperl.h"
-#include "zone/npc.h"
+#include "../common/global_define.h"
+#include "embperl.h"
+#include "npc.h"
 
 void Perl_NPC_SignalNPC(NPC* self, int signal_id) // @categories Script Utility
 {

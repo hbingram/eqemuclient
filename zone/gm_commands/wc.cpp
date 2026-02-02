@@ -1,5 +1,5 @@
-#include "common/data_verification.h"
-#include "zone/client.h"
+#include "../client.h"
+#include "../../common/data_verification.h"
 
 void command_wc(Client *c, const Seperator *sep)
 {

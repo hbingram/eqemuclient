@@ -20,13 +20,12 @@
 // Seperator.argplus[i] is a pointer to the original string so it doesnt end at the div
 
 // Written by Quagmire
+#ifndef SEPERATOR_H
+#define SEPERATOR_H
 
-#pragma once
-
-#include "common/types.h"
-
-#include <cstdlib>
-#include <cstring>
+#include "types.h"
+#include <stdlib.h>
+#include <string.h>
 
 class Seperator
 {
@@ -155,3 +154,5 @@ public:
 private:
 	uint16 maxargnum;
 };
+
+#endif

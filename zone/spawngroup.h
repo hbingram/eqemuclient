@@ -15,13 +15,13 @@
 	along with this program; if not, write to the Free Software
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
+#ifndef SPAWNGROUP_H
+#define SPAWNGROUP_H
 
-#pragma once
+#include "../common/types.h"
 
-#include "common/types.h"
-
-#include <list>
 #include <map>
+#include <list>
 #include <memory>
 
 class SpawnEntry {
@@ -85,3 +85,5 @@ public:
 private:
 	std::map<uint32, std::unique_ptr<SpawnGroup>> m_spawn_groups;
 };
+
+#endif

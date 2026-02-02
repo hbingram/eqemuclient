@@ -17,9 +17,10 @@
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-#pragma once
+#ifndef COMMON_SOF_H
+#define COMMON_SOF_H
 
-#include "common/struct_strategy.h"
+#include "../struct_strategy.h"
 
 class EQStreamIdentifier;
 
@@ -49,4 +50,6 @@ namespace SoF
 		#include "sof_ops.h"
 	};
 
-} /*SoF*/
+}; /*SoF*/
+
+#endif /*COMMON_SOF_H*/

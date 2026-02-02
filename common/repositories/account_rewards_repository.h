@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_ACCOUNT_REWARDS_REPOSITORY_H
+#define EQEMU_ACCOUNT_REWARDS_REPOSITORY_H
 
-#include "common/repositories/base/base_account_rewards_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_account_rewards_repository.h"
 
 class AccountRewardsRepository: public BaseAccountRewardsRepository {
 public:
@@ -46,3 +46,5 @@ public:
 	// Custom extended repository methods here
 
 };
+
+#endif //EQEMU_ACCOUNT_REWARDS_REPOSITORY_H

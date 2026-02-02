@@ -1,15 +1,14 @@
 #pragma once
 
-#include "common/eqemu_logsys.h"
-
-#include "uv.h"
-
-#include <array>
+#include <optional>
 #include <atomic>
 #include <memory>
-#include <mutex>
-#include <optional>
+#include <array>
 #include <vector>
+#include <mutex>
+#include <iostream>
+#include "../eqemu_logsys.h"
+#include <uv.h>
 
 constexpr size_t UDP_BUFFER_SIZE = 512;
 

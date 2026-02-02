@@ -1,10 +1,10 @@
-#pragma once
+#ifndef EQEMU_WATER_MAP_V2_H
+#define EQEMU_WATER_MAP_V2_H
 
-#include "zone/oriented_bounding_box.h"
-#include "zone/water_map.h"
-
-#include <utility>
+#include "water_map.h"
+#include "oriented_bounding_box.h"
 #include <vector>
+#include <utility>
 
 class WaterMapV2 : public WaterMap
 {
@@ -26,3 +26,5 @@ protected:
 	std::vector<std::pair<WaterRegionType, OrientedBoundingBox>> regions;
 	friend class WaterMap;
 };
+
+#endif

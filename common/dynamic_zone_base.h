@@ -1,11 +1,11 @@
-#pragma once
+#ifndef COMMON_DYNAMIC_ZONE_BASE_H
+#define COMMON_DYNAMIC_ZONE_BASE_H
 
-#include "common/dynamic_zone_lockout.h"
-#include "common/eq_constants.h"
-#include "common/repositories/dynamic_zone_members_repository.h"
-#include "common/repositories/dynamic_zone_templates_repository.h"
-#include "common/repositories/dynamic_zones_repository.h"
-
+#include "dynamic_zone_lockout.h"
+#include "eq_constants.h"
+#include "repositories/dynamic_zones_repository.h"
+#include "repositories/dynamic_zone_members_repository.h"
+#include "repositories/dynamic_zone_templates_repository.h"
 #include <algorithm>
 #include <chrono>
 #include <cstdint>
@@ -270,3 +270,5 @@ public:
 		);
 	}
 };
+
+#endif

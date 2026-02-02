@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_MERC_MERCHANT_ENTRIES_REPOSITORY_H
+#define EQEMU_MERC_MERCHANT_ENTRIES_REPOSITORY_H
 
-#include "common/repositories/base/base_merc_merchant_entries_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_merc_merchant_entries_repository.h"
 
 class MercMerchantEntriesRepository: public BaseMercMerchantEntriesRepository {
 public:
@@ -46,3 +46,5 @@ public:
 	// Custom extended repository methods here
 
 };
+
+#endif //EQEMU_MERC_MERCHANT_ENTRIES_REPOSITORY_H

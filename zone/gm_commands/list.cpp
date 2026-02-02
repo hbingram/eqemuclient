@@ -1,8 +1,8 @@
-#include "zone/client.h"
-#include "zone/command.h"
-#include "zone/corpse.h"
-#include "zone/doors.h"
-#include "zone/object.h"
+#include "../client.h"
+#include "../corpse.h"
+#include "../object.h"
+#include "../doors.h"
+#include "../command.h"
 
 struct UniqueEntity {
 	uint16      entity_id;

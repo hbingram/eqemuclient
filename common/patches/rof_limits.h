@@ -17,11 +17,12 @@
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-#pragma once
+#ifndef COMMON_ROF_LIMITS_H
+#define COMMON_ROF_LIMITS_H
 
-#include "common/emu_versions.h"
-#include "common/skills.h"
-#include "common/types.h"
+#include "../types.h"
+#include "../emu_versions.h"
+#include "../skills.h"
 
 
 namespace RoF
@@ -313,4 +314,6 @@ namespace RoF
 
 	} /*spells*/
 
-} /*RoF*/
+}; /*RoF*/
+
+#endif /*COMMON_ROF_LIMITS_H*/

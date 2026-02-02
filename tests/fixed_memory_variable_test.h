@@ -16,10 +16,11 @@
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
 
-#pragma once
+#ifndef __EQEMU_TESTS_FIXED_MEMORY_VARIABLE_H
+#define __EQEMU_TESTS_FIXED_MEMORY_VARIABLE_H
 
-#include "common/fixed_memory_variable_hash_set.h"
 #include "cppunit/cpptest.h"
+#include "../common/fixed_memory_variable_hash_set.h"
 
 struct test_struct {
 	char name[512];
@@ -128,3 +129,5 @@ private:
 	uint8 *data_;
 	uint32 size_;
 };
+
+#endif

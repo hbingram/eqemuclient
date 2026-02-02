@@ -19,7 +19,7 @@
 
 #include "rof_limits.h"
 
-#include "common/strings.h"
+#include "../strings.h"
 
 
 int16 RoF::invtype::GetInvTypeSize(int16 inv_type)

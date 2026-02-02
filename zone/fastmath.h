@@ -1,4 +1,5 @@
-#pragma once
+#ifndef FASTMATH_H
+#define FASTMATH_H
 
 class FastMath
 {
@@ -13,3 +14,5 @@ public:
 	inline float FastCos(float a) { return lut_cos[static_cast<int>(a) & 0x1ff]; }
 
 };
+
+#endif /* !FASTMATH_H */

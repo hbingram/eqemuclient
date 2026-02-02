@@ -16,9 +16,11 @@
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
 
-#pragma once
+#ifndef __random_h__
+#define __random_h__
 
 #include <random>
+#include <utility>
 #include <algorithm>
 #include <iterator>
 #include <type_traits>
@@ -34,7 +36,7 @@
 #endif
 
 #ifdef USE_ADDITIVE_LFIB_PRNG
-#include "common/additive_lagged_fibonacci_engine.h"
+#include "additive_lagged_fibonacci_engine.h"
 #elif defined(USE_SFMT19937)
 #include <ext/random>
 #endif
@@ -141,3 +143,6 @@ namespace EQ {
 		m_gen;
 	};
 }
+
+#endif /* !__random_h__ */
+

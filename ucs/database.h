@@ -17,22 +17,24 @@
 
 */
 
-#pragma once
-
-#include "common/database.h"
-#include "common/database.h"
-#include "common/linked_list.h"
-#include "common/shareddb.h"
-#include "common/types.h"
-#include "ucs/chatchannel.h"
-#include "ucs/clientlist.h"
-
-#include <map>
-#include <string>
-#include <vector>
+#ifndef CHATSERVER_DATABASE_H
+#define CHATSERVER_DATABASE_H
 
 #define AUTHENTICATION_TIMEOUT	60
 #define INVALID_ID				0xFFFFFFFF
+
+#include "../common/global_define.h"
+#include "../common/types.h"
+#include "../common/database.h"
+#include "../common/linked_list.h"
+#include "../common/database.h"
+#include "clientlist.h"
+#include "chatchannel.h"
+#include "../common/shareddb.h"
+#include <string>
+#include <vector>
+#include <map>
+
 
 class UCSDatabase : public Database {
 public:
@@ -60,3 +62,6 @@ public:
 	void RemoveFriendOrIgnore(const int& char_id, const int& type, const std::string& name);
 	void GetFriendsAndIgnore(const int& char_id, std::vector<std::string> &Friends, std::vector<std::string> &Ignorees);
 };
+
+#endif
+

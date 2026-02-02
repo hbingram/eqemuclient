@@ -1,20 +1,4 @@
-#include "zone/client.h"
-
-void SendFixMobSubCommands(Client* c)
-{
-	c->Message(Chat::White, "Usage: #fixmob beard [Next|Previous]");
-	c->Message(Chat::White, "Usage: #fixmob beard_color [Next|Previous]");
-	c->Message(Chat::White, "Usage: #fixmob drakkin_details [Next|Previous]");
-	c->Message(Chat::White, "Usage: #fixmob drakkin_heritage [Next|Previous]");
-	c->Message(Chat::White, "Usage: #fixmob drakkin_tattoo [Next|Previous]");
-	c->Message(Chat::White, "Usage: #fixmob face [Next|Previous]");
-	c->Message(Chat::White, "Usage: #fixmob gender [Next|Previous]");
-	c->Message(Chat::White, "Usage: #fixmob hair [Next|Previous]");
-	c->Message(Chat::White, "Usage: #fixmob hair_color [Next|Previous]");
-	c->Message(Chat::White, "Usage: #fixmob helm [Next|Previous]");
-	c->Message(Chat::White, "Usage: #fixmob race [Next|Previous]");
-	c->Message(Chat::White, "Usage: #fixmob texture [Next|Previous]");
-}
+#include "../client.h"
 
 void command_fixmob(Client *c, const Seperator *sep)
 {
@@ -285,3 +269,18 @@ void command_fixmob(Client *c, const Seperator *sep)
 	);
 }
 
+void SendFixMobSubCommands(Client *c)
+{
+	c->Message(Chat::White, "Usage: #fixmob beard [Next|Previous]");
+	c->Message(Chat::White, "Usage: #fixmob beard_color [Next|Previous]");
+	c->Message(Chat::White, "Usage: #fixmob drakkin_details [Next|Previous]");
+	c->Message(Chat::White, "Usage: #fixmob drakkin_heritage [Next|Previous]");
+	c->Message(Chat::White, "Usage: #fixmob drakkin_tattoo [Next|Previous]");
+	c->Message(Chat::White, "Usage: #fixmob face [Next|Previous]");
+	c->Message(Chat::White, "Usage: #fixmob gender [Next|Previous]");
+	c->Message(Chat::White, "Usage: #fixmob hair [Next|Previous]");
+	c->Message(Chat::White, "Usage: #fixmob hair_color [Next|Previous]");
+	c->Message(Chat::White, "Usage: #fixmob helm [Next|Previous]");
+	c->Message(Chat::White, "Usage: #fixmob race [Next|Previous]");
+	c->Message(Chat::White, "Usage: #fixmob texture [Next|Previous]");
+}

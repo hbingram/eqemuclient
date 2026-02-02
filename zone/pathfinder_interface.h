@@ -1,7 +1,6 @@
 #pragma once
 
-#include "zone/map.h"
-
+#include "map.h"
 #include <list>
 
 class Client;

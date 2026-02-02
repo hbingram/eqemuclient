@@ -1,8 +1,9 @@
-#pragma once
+#ifndef EVOLVING_H
+#define EVOLVING_H
 
-#include "common/events/player_events.h"
-#include "common/repositories/items_evolving_details_repository.h"
-#include "common/shareddb.h"
+#include "shareddb.h"
+#include "events/player_events.h"
+#include "repositories/items_evolving_details_repository.h"
 
 namespace EQ {
 	class ItemInstance;
@@ -65,3 +66,5 @@ private:
 	Database *                                                             m_db;
 	Database *                                                             m_content_db;
 };
+
+#endif //EVOLVING_H

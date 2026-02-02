@@ -2,10 +2,9 @@
 
 #ifdef LUA_EQEMU
 
-#include "common/mysql_stmt.h"
-#include "zone/quest_db.h"
-
-#include "luabind/object.hpp"
+#include "quest_db.h"
+#include "../common/mysql_stmt.h"
+#include <luabind/object.hpp>
 
 namespace luabind { struct scope; }
 luabind::scope lua_register_database();

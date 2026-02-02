@@ -1,10 +1,9 @@
-#pragma once
+#ifndef EQEMU_SERVER_RELOAD_TYPES_H
+#define EQEMU_SERVER_RELOAD_TYPES_H
 
-#include "common/types.h"
-
-#include <cstdint>
 #include <string>
 #include <vector>
+#include <cstdint>
 
 namespace ServerReload {
 	enum Type {
@@ -142,3 +141,5 @@ namespace ServerReload {
 		uint32_t zone_server_id       = 0;
 	};
 }
+
+#endif //EQEMU_SERVER_RELOAD_TYPES_H

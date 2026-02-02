@@ -1,9 +1,10 @@
+
+#include "global_define.h"
+#include "eqemu_logsys.h"
 #include "struct_strategy.h"
 
-#include "common/eq_stream_intf.h"
-#include "common/eqemu_logsys.h"
-#include "common/opcodemgr.h"
-
+#include "eq_stream_intf.h"
+#include "opcodemgr.h"
 #include <map>
 #include <memory>
 
@@ -71,3 +72,28 @@ namespace StructStrategyFactory {
 	}
 
 };
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

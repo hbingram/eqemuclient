@@ -1,9 +1,9 @@
-#pragma once
-
+#ifndef EQEMU_LUA_BUFF_H
+#define EQEMU_LUA_BUFF_H
 #ifdef LUA_EQEMU
 
-#include "zone/common.h"
-#include "zone/lua_ptr.h"
+#include "common.h"
+#include "lua_ptr.h"
 
 struct Buffs_Struct;
 
@@ -47,4 +47,5 @@ public:
 	bool SendsClientUpdate();
 };
 
-#endif // LUA_EQEMU
+#endif
+#endif

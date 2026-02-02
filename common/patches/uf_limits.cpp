@@ -19,7 +19,7 @@
 
 #include "uf_limits.h"
 
-#include "common/strings.h"
+#include "../strings.h"
 
 
 int16 UF::invtype::GetInvTypeSize(int16 inv_type)

@@ -18,10 +18,10 @@
  *
  */
 
-#pragma once
+#ifndef DYNAMIC_ZONE_H
+#define DYNAMIC_ZONE_H
 
-#include "common/dynamic_zone_base.h"
-
+#include "../common/dynamic_zone_base.h"
 #include <cstdint>
 #include <string>
 #include <unordered_map>
@@ -137,3 +137,5 @@ private:
 
 	std::vector<DzLootEvent> m_loot_events; // only valid inside dz zone
 };
+
+#endif

@@ -1,6 +1,7 @@
-#pragma once
+#ifndef EQEMU_OBJECT_MANIPULATION_H
+#define EQEMU_OBJECT_MANIPULATION_H
 
-#include "zone/client.h"
+#include "../client.h"
 
 class ObjectManipulation {
 
@@ -9,3 +10,6 @@ public:
 	static void CommandHeader(Client *c);
 	static void SendSubcommands(Client *c);
 };
+
+
+#endif //EQEMU_OBJECT_MANIPULATION_H

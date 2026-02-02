@@ -1,13 +1,13 @@
 #pragma once
 
-#include <algorithm>
+#include <vector>
+#include <string>
+#include <sstream>
 #include <bitset>
 #include <cctype>
 #include <ctime>
 #include <iomanip>
-#include <sstream>
-#include <string>
-#include <vector>
+#include <algorithm>
 
 #if __cplusplus > 201402L
 #include <string_view>

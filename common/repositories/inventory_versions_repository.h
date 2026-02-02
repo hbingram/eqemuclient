@@ -1,7 +1,8 @@
-#pragma once
+#ifndef EQEMU_INVENTORY_VERSIONS_REPOSITORY_H
+#define EQEMU_INVENTORY_VERSIONS_REPOSITORY_H
 
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
 
 class InventoryVersionsRepository {
 public:
@@ -244,3 +245,5 @@ public:
 	}
 
 };
+
+#endif //EQEMU_INVENTORY_VERSIONS_REPOSITORY_H

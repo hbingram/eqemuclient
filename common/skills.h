@@ -17,12 +17,13 @@
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-#pragma once
+#ifndef COMMON_SKILLS_H
+#define COMMON_SKILLS_H
 
-#include "common/types.h"
+#include "types.h"
 
-#include <map>
 #include <string>
+#include <map>
 #include <vector>
 
 namespace EQ
@@ -308,3 +309,5 @@ namespace EQ
 	};
 
 } /*EQEmu*/
+
+#endif /*COMMON_SKILLS_H*/

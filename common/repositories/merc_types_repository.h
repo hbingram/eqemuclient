@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_MERC_TYPES_REPOSITORY_H
+#define EQEMU_MERC_TYPES_REPOSITORY_H
 
-#include "common/repositories/base/base_merc_types_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_merc_types_repository.h"
 
 class MercTypesRepository: public BaseMercTypesRepository {
 public:
@@ -46,3 +46,5 @@ public:
 	// Custom extended repository methods here
 
 };
+
+#endif //EQEMU_MERC_TYPES_REPOSITORY_H

@@ -15,14 +15,22 @@
 	along with this program; if not, write to the Free Software
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
+#ifndef BASEPACKET_H_
+#define BASEPACKET_H_
 
-#pragma once
+#include "types.h"
+#include "serialize_buffer.h"
+#include <stdio.h>
+#include <string.h>
 
-#include "common/platform/inet.h"
-#include "common/serialize_buffer.h"
-#include "common/types.h"
-
-#include <cstdio>
+#ifdef _WINDOWS
+	#include <time.h>
+	#include <winsock2.h>
+	#include <windows.h>
+#else
+	#include <sys/time.h>
+	#include <netinet/in.h>
+#endif
 
 class BasePacket {
 public:
@@ -85,3 +93,6 @@ protected:
 extern void DumpPacketHex(const BasePacket* app);
 extern void DumpPacketAscii(const BasePacket* app);
 extern void DumpPacketBin(const BasePacket* app);
+
+#endif /*BASEPACKET_H_*/
+

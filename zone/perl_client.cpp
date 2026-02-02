@@ -1,12 +1,13 @@
-#include "common/features.h"
+#include "../common/features.h"
 
 #ifdef EMBPERL_XS_CLASSES
 
-#include "zone/client.h"
-#include "zone/dialogue_window.h"
-#include "zone/dynamic_zone.h"
-#include "zone/embperl.h"
-#include "zone/titles.h"
+#include "../common/global_define.h"
+#include "embperl.h"
+#include "client.h"
+#include "dynamic_zone.h"
+#include "titles.h"
+#include "dialogue_window.h"
 
 void Perl_Client_SendSound(Client* self) // @categories Script Utility
 {

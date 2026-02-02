@@ -16,26 +16,25 @@
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
 
-#include "proc_launcher.h"
-
-#include "common/types.h"
-
-#include <csignal>
-#include <cstdio>
-#include <cstring>
 #include <string>
 #include <vector>
 
+#include "global_define.h"
+#include "types.h"
+#include "proc_launcher.h"
 #ifdef _WINDOWS
-#include "common/platform/win/include_windows.h"
+	#include <windows.h>
 #else
-#include <sys/types.h>
-#include <sys/wait.h>
-#include <sys/types.h>
-#include <sys/stat.h>
-#include <fcntl.h>
-#include <unistd.h>
-#include <errno.h>
+	#include <sys/types.h>
+	#include <sys/wait.h>
+	#include <signal.h>
+	#include <stdio.h>
+	#include <sys/types.h>
+	#include <sys/stat.h>
+	#include <fcntl.h>
+	#include <unistd.h>
+	#include <errno.h>
+	#include <string.h>
 #endif
 
 ProcLauncher ProcLauncher::s_launcher;
@@ -354,3 +353,4 @@ ProcLauncher::Spec &ProcLauncher::Spec::operator=(const Spec &other) {
 	logFile = other.logFile;
 	return(*this);
 }
+

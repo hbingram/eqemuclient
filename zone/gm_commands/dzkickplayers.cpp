@@ -1,5 +1,4 @@
-#include "zone/client.h"
-#include "zone/dynamic_zone.h"
+#include "../client.h"
 
 void command_dzkickplayers(Client *c, const Seperator *sep)
 {

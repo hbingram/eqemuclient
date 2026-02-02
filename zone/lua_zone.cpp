@@ -1,11 +1,10 @@
-#ifdef LUA_EQEMU
+#include "../common/features.h"
+#include "zone.h"
 
+
+#include <luabind/luabind.hpp>
+#include "../common/global_define.h"
 #include "lua_zone.h"
-
-#include "common/features.h"
-#include "zone/zone.h"
-
-#include "luabind/luabind.hpp"
 
 bool Lua_Zone::BuffTimersSuspended()
 {
@@ -1013,4 +1012,3 @@ luabind::scope lua_register_zone() {
 	.def("VariableExists", &Lua_Zone::VariableExists);
 }
 
-#endif // LUA_EQEMU

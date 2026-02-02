@@ -1,12 +1,10 @@
-#pragma once
+#ifndef EQEMU_CHARACTER_EXPEDITION_LOCKOUTS_REPOSITORY_H
+#define EQEMU_CHARACTER_EXPEDITION_LOCKOUTS_REPOSITORY_H
 
-#include "common/repositories/base/base_character_expedition_lockouts_repository.h"
-
-#include "common/database.h"
-#include "common/dynamic_zone_lockout.h"
-#include "common/strings.h"
-#include "fmt/ranges.h"
-
+#include "../database.h"
+#include "../dynamic_zone_lockout.h"
+#include "../strings.h"
+#include "base/base_character_expedition_lockouts_repository.h"
 #include <unordered_map>
 
 class CharacterExpeditionLockoutsRepository: public BaseCharacterExpeditionLockoutsRepository {
@@ -227,3 +225,5 @@ public:
 	}
 
 };
+
+#endif //EQEMU_CHARACTER_EXPEDITION_LOCKOUTS_REPOSITORY_H

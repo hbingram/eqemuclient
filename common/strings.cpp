@@ -34,18 +34,28 @@
 */
 
 #include "strings.h"
-
-#include "cereal/external/rapidjson/document.h"
-#include "fmt/format.h"
+#include <cereal/external/rapidjson/document.h>
+#include <fmt/format.h>
 #include <algorithm>
 #include <cctype>
-#include <cstdio>
-#include <cstdlib>
-#include <functional>
+
+#include <stdlib.h>
+#include <stdio.h>
 #include <iostream>
-#include <random>
 #include <sstream>
+
+#include <random>
 #include <string>
+
+//Const char based
+#include "strings_legacy.cpp" // legacy c functions
+#include "strings_misc.cpp" // anything non "Strings" scoped
+
+#ifdef _WINDOWS
+#include <ctype.h>
+#include <functional>
+#include <algorithm>
+#endif
 
 std::string Strings::Random(size_t length)
 {

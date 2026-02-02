@@ -1,4 +1,5 @@
-#pragma once
+#ifndef __QGLOBALS__H
+#define __QGLOBALS__H
 
 #include <list>
 
@@ -40,3 +41,5 @@ protected:
 	void LoadBy(const std::string &query);
 	std::list<QGlobal> qGlobalBucket;
 };
+
+#endif

@@ -1,18 +1,16 @@
-cmake_minimum_required(VERSION 3.20.0)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.12)
 
-set(export_sources
+SET(export_sources
 	main.cpp
 )
 
-set(export_headers
+SET(export_headers
 )
 
-add_executable(export_client_files ${export_sources} ${export_headers})
+ADD_EXECUTABLE(export_client_files ${export_sources} ${export_headers})
 
-install(TARGETS export_client_files RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+INSTALL(TARGETS export_client_files RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 
-target_link_libraries(export_client_files common)
-target_include_directories(export_client_files PRIVATE ../..)
+TARGET_LINK_LIBRARIES(export_client_files ${SERVER_LIBS})
 
-set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
-set_property(TARGET export_client_files PROPERTY FOLDER executables/tools)
+SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)

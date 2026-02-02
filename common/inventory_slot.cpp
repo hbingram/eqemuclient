@@ -18,9 +18,8 @@
 */
 
 #include "inventory_slot.h"
-
-#include "common/textures.h"
-#include "common/strings.h"
+#include "textures.h"
+#include "strings.h"
 
 
 int8 EQ::inventory::ConvertEquipmentIndexToTextureIndex(int16 slot_index)

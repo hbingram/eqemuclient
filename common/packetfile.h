@@ -1,9 +1,10 @@
-#pragma once
+#ifndef PACKET_FILE_H
+#define PACKET_FILE_H
 
-#include "common/types.h"
-
+#include "../common/types.h"
 #include <stdio.h>
 #include <time.h>
+//#include <zlib.h>
 
 //constants used in the packet file header
 #define PACKET_FILE_MAGIC 0x93a7b6f6

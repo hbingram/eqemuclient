@@ -15,12 +15,11 @@ Copyright (C) 2001-2002 EQEMu Development Team (http://eqemu.org)
 	along with this program; if not, write to the Free Software
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
+#ifndef HORSES_H
+#define HORSES_H
 
-#pragma once
+#include "npc.h"
 
-#include "zone/npc.h"
-
-#include "glm/vec4.hpp"
 #include <map>
 
 class Client;
@@ -42,3 +41,5 @@ protected:
 	static const NPCType* GetHorseType(uint16 spell_id);
 	static const NPCType* BuildHorseType(uint16 spell_id);
 };
+
+#endif

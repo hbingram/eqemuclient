@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_CHARACTER_STATS_RECORD_REPOSITORY_H
+#define EQEMU_CHARACTER_STATS_RECORD_REPOSITORY_H
 
-#include "common/repositories/base/base_character_stats_record_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_character_stats_record_repository.h"
 
 class CharacterStatsRecordRepository: public BaseCharacterStatsRecordRepository {
 public:
@@ -46,3 +46,5 @@ public:
 	// Custom extended repository methods here
 
 };
+
+#endif //EQEMU_CHARACTER_STATS_RECORD_REPOSITORY_H

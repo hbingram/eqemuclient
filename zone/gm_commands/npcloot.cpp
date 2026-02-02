@@ -1,6 +1,6 @@
-#include "common/data_verification.h"
-#include "zone/client.h"
-#include "zone/corpse.h"
+#include "../client.h"
+#include "../corpse.h"
+#include "../../common/data_verification.h"
 
 void command_npcloot(Client *c, const Seperator *sep)
 {

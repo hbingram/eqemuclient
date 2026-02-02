@@ -1,15 +1,14 @@
-#include "pathfinder_nav_mesh.h"
-
-#include "common/compression.h"
-#include "zone/client.h"
-#include "zone/water_map.h"
-#include "zone/zone.h"
-
-#include "recastnavigation/DetourCommon.h"
-#include "recastnavigation/DetourNavMeshQuery.h"
-#include <cstdio>
 #include <memory>
+#include <stdio.h>
 #include <vector>
+#include "pathfinder_nav_mesh.h"
+#include <DetourCommon.h>
+#include <DetourNavMeshQuery.h>
+
+#include "zone.h"
+#include "water_map.h"
+#include "client.h"
+#include "../common/compression.h"
 
 extern Zone *zone;
 

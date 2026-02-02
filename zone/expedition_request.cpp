@@ -19,12 +19,11 @@
  */
 
 #include "expedition_request.h"
-
-#include "common/repositories/character_expedition_lockouts_repository.h"
-#include "zone/client.h"
-#include "zone/groups.h"
-#include "zone/raids.h"
-#include "zone/string_ids.h"
+#include "client.h"
+#include "groups.h"
+#include "raids.h"
+#include "string_ids.h"
+#include "../common/repositories/character_expedition_lockouts_repository.h"
 
 ExpeditionRequest::ExpeditionRequest(const DynamicZone& dz, Client& client, bool silent)
 	: m_dz(&dz), m_requester(&client), m_silent(silent)

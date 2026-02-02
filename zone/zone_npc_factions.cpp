@@ -1,9 +1,7 @@
-#include "zone.h"
-
-#include "common/repositories/npc_faction_entries_repository.h"
-#include "common/repositories/npc_faction_repository.h"
-
 #include <vector>
+#include "zone.h"
+#include "../common/repositories/npc_faction_repository.h"
+#include "../common/repositories/npc_faction_entries_repository.h"
 
 void Zone::LoadNPCFactions(const std::vector<uint32> &npc_faction_ids)
 {

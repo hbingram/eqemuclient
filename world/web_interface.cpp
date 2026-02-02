@@ -1,7 +1,7 @@
 #include "web_interface.h"
+#include "../common/json/json.h"
 
-#include "common/json/json.h"
-#include "world/web_interface_eqw.h"
+#include "web_interface_eqw.h"
 
 #include <sstream>
 

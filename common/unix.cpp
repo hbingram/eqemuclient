@@ -18,9 +18,8 @@
 #ifndef _WINDOWS
 
 #include "unix.h"
-
-#include <cctype>
-#include <cstring>
+#include <string.h>
+#include <ctype.h>
 
 void Sleep(unsigned int x) {
 	if (x > 0)
@@ -43,5 +42,7 @@ char* strlwr(char* tmp) {
 	return tmp;
 }
 
+#else
+	int joe = 1;
 #endif /* !WIN32 */
 

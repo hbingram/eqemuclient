@@ -15,10 +15,13 @@
 	along with this program; if not, write to the Free Software
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
+#ifndef MISCFUNCTIONS_H
+#define MISCFUNCTIONS_H
 
-#pragma once
+#include "types.h"
+#include <string>
+#include <time.h>
 
-#include "common/types.h"
 
 #ifndef ERRBUF_SIZE
 #define ERRBUF_SIZE		1024
@@ -42,9 +45,10 @@
 		return; \
 	}
 
+int32	filesize(FILE* fp);
 uint32	ResolveIP(const char* hostname, char* errbuf = 0);
 bool	ParseAddress(const char* iAddress, uint32* oIP, uint16* oPort, char* errbuf = 0);
-
+void	CoutTimestamp(bool ms = true);
 float EQ13toFloat(int d);
 float EQ19toFloat(int d);
 float EQHtoFloat(int d);
@@ -82,3 +86,6 @@ public:
 	InitWinsock();
 	~InitWinsock();
 };
+
+#endif
+

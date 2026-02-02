@@ -15,13 +15,13 @@
 	along with this program; if not, write to the Free Software
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
+#ifndef RAIDS_H
+#define RAIDS_H
 
-#pragma once
-
-#include "common/types.h"
-#include "zone/groups.h"
-#include "zone/xtargetautohaters.h"
-#include "zone/client.h"
+#include "../common/types.h"
+#include "groups.h"
+#include "xtargetautohaters.h"
+#include "client.h"
 
 class Client;
 class EQApplicationPacket;
@@ -299,3 +299,7 @@ protected:
 
 	XTargetAutoHaters m_autohatermgr;
 };
+
+
+#endif
+

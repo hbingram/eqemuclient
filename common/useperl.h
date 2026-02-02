@@ -1,4 +1,6 @@
-#pragma once
+#ifndef EMU_PERL_H_
+#define EMU_PERL_H_
+
 
 //headers from the Perl distribution
 #include <EXTERN.h>
@@ -62,3 +64,6 @@ extern "C" {	//the perl headers dont do this for us...
 #undef do_close
 #endif
 #endif
+
+#endif /*EMU_PERL_H_*/
+

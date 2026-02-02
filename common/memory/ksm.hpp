@@ -1,7 +1,7 @@
-#pragma once
+#ifndef EQEMU_KSM_HPP
+#define EQEMU_KSM_HPP
 
-#include "common/eqemu_logsys.h"
-
+#include "../eqemu_logsys.h"
 #include <iostream>
 #include <vector>
 #include <cstring>
@@ -214,4 +214,7 @@ namespace KSM {
 		MarkMemoryForKSM(start, size);
 #endif
 	}
+
 }
+
+#endif // EQEMU_KSM_HPP

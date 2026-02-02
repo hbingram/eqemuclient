@@ -1,10 +1,9 @@
-#include "common/features.h"
-
+#include "../common/features.h"
 #ifdef EMBPERL_XS_CLASSES
-
-#include "common/types.h"
-#include "zone/embperl.h"
-#include "zone/perlpacket.h"
+#include "../common/global_define.h"
+#include "../common/types.h"
+#include "embperl.h"
+#include "perlpacket.h"
 
 PerlPacket* Perl_PerlPacket_new(const char* class_name)
 {

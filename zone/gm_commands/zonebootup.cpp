@@ -1,5 +1,5 @@
-#include "zone/client.h"
-#include "zone/worldserver.h"
+#include "../client.h"
+#include "../worldserver.h"
 
 extern WorldServer worldserver;
 

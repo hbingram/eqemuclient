@@ -1,7 +1,7 @@
 #include "directory.h"
 
 #ifdef _WIN32
-#include "common/util/win_dirent.h"
+#include "win_dirent.h"
 #else
 #include <dirent.h>
 #endif

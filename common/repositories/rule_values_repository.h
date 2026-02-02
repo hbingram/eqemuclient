@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_RULE_VALUES_REPOSITORY_H
+#define EQEMU_RULE_VALUES_REPOSITORY_H
 
-#include "common/repositories/base/base_rule_values_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_rule_values_repository.h"
 
 class RuleValuesRepository: public BaseRuleValuesRepository {
 public:
@@ -184,3 +184,5 @@ public:
 	}
 
 };
+
+#endif //EQEMU_RULE_VALUES_REPOSITORY_H

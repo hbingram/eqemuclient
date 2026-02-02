@@ -17,24 +17,18 @@
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-#pragma once
-
-#include "common/eq_packet_structs.h"
-#include "common/patches/rof2_limits.h"
-#include "common/strings.h"
-#include "common/textures.h"
-#include "common/types.h"
-
-#include "fmt/format.h"
+#ifndef COMMON_ROF2_STRUCTS_H
+#define COMMON_ROF2_STRUCTS_H
 
 
-namespace RoF2 { namespace structs {
+namespace RoF2
+{
+	namespace structs {
 
 /*
 ** Compiler override to ensure
 ** byte aligned structures
 */
-#pragma pack(push)
 #pragma pack(1)
 
 struct LoginInfo_Struct {
@@ -5432,8 +5426,7 @@ struct Parcel_Struct
     /*216*/ uint32                       unknown_216;
     /*220*/ uint32                       unknown_220;
 };
-
-} /*structs*/
+	}; /*structs*/
 
 struct EvolveItemToggle_Struct {
 	uint32 action;
@@ -5461,6 +5454,6 @@ struct EvolveXPWindowSendDetails_Struct {
 	/*030*/ char   serialize_data[];
 };
 
-#pragma pack(pop)
+}; /*RoF2*/
 
-} /*RoF2*/
+#endif /*COMMON_ROF2_STRUCTS_H*/

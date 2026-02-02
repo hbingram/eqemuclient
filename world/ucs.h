@@ -1,10 +1,10 @@
-#pragma once
+#ifndef UCS_H
+#define UCS_H
 
-#include "common/event/timer.h"
-#include "common/net/servertalk_server_connection.h"
-#include "common/servertalk.h"
-#include "common/types.h"
-
+#include "../common/types.h"
+#include "../common/net/servertalk_server_connection.h"
+#include "../common/servertalk.h"
+#include "../common/event/timer.h"
 #include <memory>
 
 class UCSConnection
@@ -30,3 +30,5 @@ private:
 	std::shared_ptr<EQ::Net::ServertalkServerConnection> connection;
 
 };
+
+#endif /*UCS_H_*/

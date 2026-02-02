@@ -1,6 +1,6 @@
-#include "common/repositories/account_repository.h"
-#include "zone/client.h"
-#include "zone/worldserver.h"
+#include "../client.h"
+#include "../worldserver.h"
+#include "../../common/repositories/account_repository.h"
 
 extern WorldServer worldserver;
 

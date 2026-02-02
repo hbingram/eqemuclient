@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_DISCOVERED_ITEMS_REPOSITORY_H
+#define EQEMU_DISCOVERED_ITEMS_REPOSITORY_H
 
-#include "common/repositories/base/base_discovered_items_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_discovered_items_repository.h"
 
 class DiscoveredItemsRepository: public BaseDiscoveredItemsRepository {
 public:
@@ -46,3 +46,5 @@ public:
 	// Custom extended repository methods here
 
 };
+
+#endif //EQEMU_DISCOVERED_ITEMS_REPOSITORY_H

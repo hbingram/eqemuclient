@@ -1,11 +1,13 @@
-#pragma once
+#ifndef EQEMU_PLAYER_EVENT_MERCHANT_SELL_REPOSITORY_H
+#define EQEMU_PLAYER_EVENT_MERCHANT_SELL_REPOSITORY_H
 
-#include "common/repositories/base/base_player_event_merchant_sell_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_player_event_merchant_sell_repository.h"
 
 class PlayerEventMerchantSellRepository: public BasePlayerEventMerchantSellRepository {
 public:
 	// Custom extended repository methods here
 };
+
+#endif //EQEMU_PLAYER_EVENT_MERCHANT_SELL_REPOSITORY_H

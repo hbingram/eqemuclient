@@ -1,15 +1,14 @@
-#pragma once
+#ifndef EQEMU_TRADER_REPOSITORY_H
+#define EQEMU_TRADER_REPOSITORY_H
 
-#include "common/repositories/base/base_trader_repository.h"
-
-#include "common/item_data.h"
-#include "common/races.h"
-#include "common/repositories/items_repository.h"
-#include "common/shareddb.h"
-#include "common/strings.h"
-
-#include "cereal/archives/binary.hpp"
-#include "cereal/types/string.hpp"
+#include "../../common/shareddb.h"
+#include "../strings.h"
+#include "base/base_trader_repository.h"
+#include "items_repository.h"
+#include "../../common/item_data.h"
+#include "../../common/races.h"
+#include "../cereal/include/cereal/archives/binary.hpp"
+#include "../cereal/include/cereal/types/string.hpp"
 
 class TraderRepository : public BaseTraderRepository {
 public:
@@ -336,3 +335,5 @@ public:
 		return all_entries;
 	}
 };
+
+#endif //EQEMU_TRADER_REPOSITORY_H

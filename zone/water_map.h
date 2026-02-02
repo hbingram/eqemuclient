@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_WATER_MAP_H
+#define EQEMU_WATER_MAP_H
 
-#include "common/types.h"
-#include "zone/position.h"
-#include "zone/zone_config.h"
-
+#include "../common/types.h"
+#include "position.h"
+#include "zone_config.h"
 #include <string>
 
 extern const ZoneConfig *Config;
@@ -39,3 +39,5 @@ public:
 protected:
 	virtual bool Load(FILE *fp) { return false; }
 };
+
+#endif

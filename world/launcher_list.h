@@ -15,16 +15,15 @@
 	along with this program; if not, write to the Free Software
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
+#ifndef LAUNCHERLIST_H_
+#define LAUNCHERLIST_H_
 
-#pragma once
-
-#include "common/types.h"
-#include "common/net/servertalk_server_connection.h"
-
+#include "../common/types.h"
+#include "../common/net/servertalk_server_connection.h"
 #include <map>
-#include <memory>
-#include <string>
 #include <vector>
+#include <string>
+#include <memory>
 
 class LauncherLink;
 class EQLConfig;
@@ -51,3 +50,6 @@ protected:
 	std::vector<LauncherLink *> m_pendingLaunchers;	//we own these objects, have not yet identified themself
 	int nextID;
 };
+
+#endif /*LAUNCHERLIST_H_*/
+

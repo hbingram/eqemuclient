@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_LOOTTABLE_ENTRIES_REPOSITORY_H
+#define EQEMU_LOOTTABLE_ENTRIES_REPOSITORY_H
 
-#include "common/repositories/base/base_loottable_entries_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_loottable_entries_repository.h"
 
 class LoottableEntriesRepository: public BaseLoottableEntriesRepository {
 public:
@@ -46,3 +46,5 @@ public:
 	// Custom extended repository methods here
 
 };
+
+#endif //EQEMU_LOOTTABLE_ENTRIES_REPOSITORY_H

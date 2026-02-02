@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_AA_RANKS_REPOSITORY_H
+#define EQEMU_AA_RANKS_REPOSITORY_H
 
-#include "common/repositories/base/base_aa_ranks_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_aa_ranks_repository.h"
 
 class AaRanksRepository: public BaseAaRanksRepository {
 public:
@@ -46,3 +46,5 @@ public:
 	// Custom extended repository methods here
 
 };
+
+#endif //EQEMU_AA_RANKS_REPOSITORY_H

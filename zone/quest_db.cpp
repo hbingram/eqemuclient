@@ -1,7 +1,6 @@
 #include "quest_db.h"
-
-#include "zone/zone_config.h"
-#include "zone/zonedb.h"
+#include "zonedb.h"
+#include "zone_config.h"
 
 // New connections avoid concurrency issues and allow use of unbuffered results
 // with prepared statements. Using zone connections w/o buffering would cause

@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_ACCOUNT_FLAGS_REPOSITORY_H
+#define EQEMU_ACCOUNT_FLAGS_REPOSITORY_H
 
-#include "common/repositories/base/base_account_flags_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_account_flags_repository.h"
 
 class AccountFlagsRepository: public BaseAccountFlagsRepository {
 public:
@@ -74,3 +74,5 @@ public:
 		);
 	}
 };
+
+#endif //EQEMU_ACCOUNT_FLAGS_REPOSITORY_H

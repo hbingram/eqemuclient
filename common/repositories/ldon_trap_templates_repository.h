@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_LDON_TRAP_TEMPLATES_REPOSITORY_H
+#define EQEMU_LDON_TRAP_TEMPLATES_REPOSITORY_H
 
-#include "common/repositories/base/base_ldon_trap_templates_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_ldon_trap_templates_repository.h"
 
 class LdonTrapTemplatesRepository: public BaseLdonTrapTemplatesRepository {
 public:
@@ -46,3 +46,5 @@ public:
 	// Custom extended repository methods here
 
 };
+
+#endif //EQEMU_LDON_TRAP_TEMPLATES_REPOSITORY_H

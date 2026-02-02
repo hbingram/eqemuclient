@@ -1,14 +1,15 @@
-#include "merc.h"
 
-#include "common/skill_caps.h"
-#include "zone/client.h"
-#include "zone/corpse.h"
-#include "zone/entity.h"
-#include "zone/groups.h"
-#include "zone/mob.h"
-#include "zone/quest_parser_collection.h"
-#include "zone/string_ids.h"
-#include "zone/zone.h"
+#include "merc.h"
+#include "client.h"
+#include "corpse.h"
+#include "entity.h"
+#include "groups.h"
+#include "mob.h"
+#include "quest_parser_collection.h"
+
+#include "zone.h"
+#include "string_ids.h"
+#include "../common/skill_caps.h"
 
 extern volatile bool is_zone_loaded;
 

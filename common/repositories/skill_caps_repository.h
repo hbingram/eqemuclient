@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_SKILL_CAPS_REPOSITORY_H
+#define EQEMU_SKILL_CAPS_REPOSITORY_H
 
-#include "common/repositories/base/base_skill_caps_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_skill_caps_repository.h"
 
 class SkillCapsRepository: public BaseSkillCapsRepository {
 public:
@@ -62,3 +62,5 @@ public:
 		return lines;
 	}
 };
+
+#endif //EQEMU_SKILL_CAPS_REPOSITORY_H

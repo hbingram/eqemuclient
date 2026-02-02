@@ -1,4 +1,6 @@
-#pragma once
+#ifndef EQEMU_PATH_MANAGER_H
+#define EQEMU_PATH_MANAGER_H
+
 
 #include <string>
 #include <vector>
@@ -41,3 +43,5 @@ private:
 	std::string              m_server_path;
 	std::string              m_shared_memory_path;
 };
+
+#endif //EQEMU_PATH_MANAGER_H

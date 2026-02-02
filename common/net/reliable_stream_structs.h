@@ -1,9 +1,8 @@
 #pragma once
 
-#include "common/net/endian.h"
-
-#include "cereal/cereal.hpp"
+#include <cereal/cereal.hpp>
 #include <cstdint>
+#include "endian.h"
 
 namespace EQ
 {

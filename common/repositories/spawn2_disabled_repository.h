@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_SPAWN2_DISABLED_REPOSITORY_H
+#define EQEMU_SPAWN2_DISABLED_REPOSITORY_H
 
-#include "common/repositories/base/base_spawn2_disabled_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_spawn2_disabled_repository.h"
 
 class Spawn2DisabledRepository: public BaseSpawn2DisabledRepository {
 public:
@@ -46,3 +46,5 @@ public:
 	// Custom extended repository methods here
 
 };
+
+#endif //EQEMU_SPAWN2_DISABLED_REPOSITORY_H

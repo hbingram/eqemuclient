@@ -16,11 +16,11 @@
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
 
-#pragma once
-
-#include "common/types.h"
+#ifndef _EQEMU_MEMORYMAPPEDFILE_H_
+#define _EQEMU_MEMORYMAPPEDFILE_H_
 
 #include <string>
+#include "types.h"
 
 namespace EQ {
 
@@ -82,3 +82,5 @@ namespace EQ {
 		Implementation *imp_; //!< Underlying implementation.
 	};
 } // EQEmu
+
+#endif

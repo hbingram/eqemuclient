@@ -1,11 +1,11 @@
+#ifndef __EQEMU_ZONE_COMMON_H
+#define __EQEMU_ZONE_COMMON_H
 
-#pragma once
+#include "../common/types.h"
+#include "../common/spdat.h"
+#include "../common/emu_constants.h"
 
-#include "common/types.h"
-#include "common/spdat.h"
-#include "common/emu_constants.h"
-
-#include "cereal/cereal.hpp"
+#include <cereal/cereal.hpp>
 
 #define	HIGHEST_RESIST 9 //Max resist type value
 #define MAX_SPELL_PROJECTILE 10 //Max amount of spell projectiles that can be active by a single mob.
@@ -914,3 +914,6 @@ typedef enum {
 	petTargetLock,			//remain active as long something is on the hatelist. Don't listen to any commands
 	petNone = 0xFF // not a pet
 } PetTypeOld;
+
+#endif
+

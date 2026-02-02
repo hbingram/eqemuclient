@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_SERVER_SCHEDULED_EVENTS_REPOSITORY_H
+#define EQEMU_SERVER_SCHEDULED_EVENTS_REPOSITORY_H
 
-#include "common/repositories/base/base_server_scheduled_events_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_server_scheduled_events_repository.h"
 
 class ServerScheduledEventsRepository: public BaseServerScheduledEventsRepository {
 public:
@@ -46,3 +46,5 @@ public:
 	// Custom extended repository methods here
 
 };
+
+#endif //EQEMU_SERVER_SCHEDULED_EVENTS_REPOSITORY_H

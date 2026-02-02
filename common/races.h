@@ -16,10 +16,9 @@
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
 
-#pragma once
-
-#include "common/types.h"
-
+#ifndef RACES_H
+#define RACES_H
+#include "../common/types.h"
 #include <string>
 
 const char* GetRaceIDName(uint16 race_id);
@@ -864,3 +863,6 @@ namespace RaceAppearance {
 	constexpr int DrakkinMale     = (Race::Drakkin << 8) | Gender::Male;
 	constexpr int DrakkinFemale   = (Race::Drakkin << 8) | Gender::Female;
 }
+
+#endif
+

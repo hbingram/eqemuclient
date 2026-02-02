@@ -1,7 +1,7 @@
+#ifndef EQEMU_SIDECAR_API_H
+#define EQEMU_SIDECAR_API_H
 
-#pragma once
-
-#include "common/http/httplib.h"
+#include "../../common/http/httplib.h"
 
 class SidecarApi {
 public:
@@ -12,3 +12,6 @@ public:
 	static void LootSimulatorController(const httplib::Request &req, httplib::Response &res);
 	static void MapBestZController(const httplib::Request &req, httplib::Response &res);
 };
+
+
+#endif //EQEMU_SIDECAR_API_H

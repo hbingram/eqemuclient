@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_CHAR_RECIPE_LIST_REPOSITORY_H
+#define EQEMU_CHAR_RECIPE_LIST_REPOSITORY_H
 
-#include "common/repositories/base/base_char_recipe_list_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_char_recipe_list_repository.h"
 
 class CharRecipeListRepository: public BaseCharRecipeListRepository {
 public:
@@ -78,3 +78,5 @@ public:
 	}
 
 };
+
+#endif //EQEMU_CHAR_RECIPE_LIST_REPOSITORY_H

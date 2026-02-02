@@ -1,8 +1,8 @@
-#pragma once
-
+#ifndef EQEMU_LUA_ENTITY_H
+#define EQEMU_LUA_ENTITY_H
 #ifdef LUA_EQEMU
 
-#include "zone/lua_ptr.h"
+#include "lua_ptr.h"
 
 class Entity;
 class Lua_Client;
@@ -63,4 +63,5 @@ public:
 	Lua_Merc CastToMerc();
 };
 
-#endif // LUA_EQEMU
+#endif
+#endif

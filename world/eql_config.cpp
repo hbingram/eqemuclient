@@ -15,15 +15,13 @@
 	along with this program; if not, write to the Free Software
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
-
+#include "../common/global_define.h"
 #include "eql_config.h"
-
-#include "common/strings.h"
-#include "common/zone_store.h"
-#include "world/launcher_link.h"
-#include "world/launcher_list.h"
-#include "world/worlddb.h"
-
+#include "worlddb.h"
+#include "launcher_link.h"
+#include "launcher_list.h"
+#include "../common/strings.h"
+#include "../common/zone_store.h"
 #include <cstdlib>
 #include <cstring>
 

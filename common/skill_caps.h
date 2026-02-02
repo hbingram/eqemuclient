@@ -1,9 +1,10 @@
-#pragma once
+#ifndef CODE_SKILL_CAPS_H
+#define CODE_SKILL_CAPS_H
 
-#include "common/classes.h"
-#include "common/repositories/skill_caps_repository.h"
-#include "common/skills.h"
-#include "common/types.h"
+#include "repositories/skill_caps_repository.h"
+#include "types.h"
+#include "classes.h"
+#include "skills.h"
 
 class SkillCaps {
 public:
@@ -25,3 +26,6 @@ private:
 	Database                                    *m_content_database{};
 	std::map<uint64, SkillCapsRepository::SkillCaps> m_skill_caps = {};
 };
+
+
+#endif //CODE_SKILL_CAPS_H

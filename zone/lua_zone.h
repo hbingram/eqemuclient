@@ -2,10 +2,10 @@
 
 #ifdef LUA_EQEMU
 
-#include "zone/common.h"
-#include "zone/lua_client.h"
-#include "zone/lua_ptr.h"
-#include "zone/zone.h"
+#include "lua_client.h"
+#include "lua_ptr.h"
+#include "common.h"
+#include "zone.h"
 
 class Lua_Zone;
 
@@ -171,4 +171,4 @@ public:
 
 };
 
-#endif // LUA_EQEMU
+#endif

@@ -16,20 +16,25 @@
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
 
+#include "crc16.h"
+#include "global_define.h"
 #include "eq_packet.h"
-
-#include "common/misc.h"
-#include "common/op_codes.h"
-#ifndef STATIC_OPCODE
-#include "common/opcodemgr.h"
-#endif
-#include "common/packet_dump.h"
-#include "common/packet_functions.h"
-#include "common/platform.h"
-
-#include <cstdio>
+#include "misc.h"
+#include "op_codes.h"
+#include "platform.h"
 #include <iomanip>
 #include <iostream>
+#include <sstream>
+#include <stdio.h>
+
+#ifndef STATIC_OPCODE
+#include "opcodemgr.h"
+#endif
+
+#include "packet_dump.h"
+#include "packet_functions.h"
+#include <cstdlib>
+#include <cstring>
 
 EQPacket::EQPacket(EmuOpcode op, const unsigned char *buf, uint32 len)
 :	BasePacket(buf, len),

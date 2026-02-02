@@ -17,11 +17,13 @@
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-#pragma once
+#ifndef COMMON_EMU_VERSIONS_H
+#define COMMON_EMU_VERSIONS_H
 
-#include "common/types.h"
+#include "types.h"
 
-#include <cstdlib>
+#include <stdlib.h>
+
 
 namespace EQ
 {
@@ -216,3 +218,5 @@ namespace EQ
 	} /*expansions*/
 
 } /*EQEmu*/
+
+#endif /*COMMON_EMU_VERSIONS_H*/

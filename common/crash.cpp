@@ -1,19 +1,23 @@
+#include "global_define.h"
+#include "eqemu_logsys.h"
 #include "crash.h"
-
-#include "common/eqemu_config.h"
-#include "common/eqemu_logsys.h"
-#include "common/http/httplib.h"
-#include "common/http/uri.h"
-#include "common/json/json.h"
-#include "common/platform.h"
-#include "common/process/process.h"
-#include "common/rulesys.h"
-#include "common/serverinfo.h"
-#include "common/strings.h"
-#include "common/version.h"
+#include "strings.h"
+#include "process/process.h"
+#include "http/httplib.h"
+#include "http/uri.h"
+#include "json/json.h"
+#include "version.h"
+#include "eqemu_config.h"
+#include "serverinfo.h"
+#include "rulesys.h"
+#include "platform.h"
 
 #include <cstdio>
 #include <vector>
+
+#ifdef _WINDOWS
+#define popen _popen
+#endif
 
 void SendCrashReport(const std::string &crash_report)
 {
@@ -220,8 +224,8 @@ void set_exception_handler() {
 }
 #else
 
-#include <cstdio>
-#include <cstdlib>
+#include <stdio.h>
+#include <stdlib.h>
 #include <sys/wait.h>
 #include <unistd.h>
 #include <sys/fcntl.h>

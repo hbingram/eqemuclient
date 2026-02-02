@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_RULE_SETS_REPOSITORY_H
+#define EQEMU_RULE_SETS_REPOSITORY_H
 
-#include "common/repositories/base/base_rule_sets_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_rule_sets_repository.h"
 
 class RuleSetsRepository: public BaseRuleSetsRepository {
 public:
@@ -92,3 +92,5 @@ public:
 		return std::string(row[0]);
 	}
 };
+
+#endif //EQEMU_RULE_SETS_REPOSITORY_H
