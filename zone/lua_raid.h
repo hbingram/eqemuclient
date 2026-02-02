@@ -1,8 +1,8 @@
-#pragma once
-
+#ifndef EQEMU_LUA_RAID_H
+#define EQEMU_LUA_RAID_H
 #ifdef LUA_EQEMU
 
-#include "zone/lua_ptr.h"
+#include "lua_ptr.h"
 
 class Raid;
 class Lua_Client;
@@ -56,4 +56,5 @@ public:
 	bool DoesAnyMemberHaveExpeditionLockout(std::string expedition_name, std::string event_name, int max_check_count);
 };
 
-#endif // LUA_EQEMU
+#endif
+#endif

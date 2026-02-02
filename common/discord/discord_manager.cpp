@@ -1,7 +1,6 @@
 #include "discord_manager.h"
-
-#include "common/discord/discord.h"
-#include "common/events/player_event_logs.h"
+#include "../../common/discord/discord.h"
+#include "../events/player_event_logs.h"
 
 void DiscordManager::QueueWebhookMessage(uint32 webhook_id, const std::string &message)
 {

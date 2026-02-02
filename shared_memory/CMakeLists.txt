@@ -1,22 +1,20 @@
-cmake_minimum_required(VERSION 3.17.0)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.12)
 
-set(shared_memory_sources
+SET(shared_memory_sources
 	items.cpp
 	main.cpp
 	spells.cpp
 )
 
-set(shared_memory_headers
+SET(shared_memory_headers
 	items.h
 	spells.h
 )
 
-add_executable(shared_memory ${shared_memory_sources} ${shared_memory_headers})
+ADD_EXECUTABLE(shared_memory ${shared_memory_sources} ${shared_memory_headers})
 
-install(TARGETS shared_memory RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+INSTALL(TARGETS shared_memory RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 
-target_link_libraries(shared_memory common)
-target_include_directories(shared_memory PRIVATE ..)
+TARGET_LINK_LIBRARIES(shared_memory ${SERVER_LIBS})
 
-set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
-set_property(TARGET shared_memory PROPERTY FOLDER executables/servers)
+SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)

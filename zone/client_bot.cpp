@@ -1,6 +1,5 @@
+#include "bot.h"
 #include "client.h"
-
-#include "zone/bot.h"
 
 #define NO_BOT_LIMIT -1;
 

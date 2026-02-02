@@ -1,9 +1,10 @@
-#include "common/features.h"
+#include "../common/features.h"
+#include "client.h"
 
 #ifdef EMBPERL_XS_CLASSES
 
-#include "zone/client.h"
-#include "zone/embperl.h"
+#include "../common/global_define.h"
+#include "embperl.h"
 
 std::string Perl_QuestItem_GetName(EQ::ItemInstance* self) // @categories Inventory and Items
 {

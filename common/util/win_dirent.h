@@ -14,7 +14,10 @@
  * Include windows.h without Windows Sockets 1.1 to prevent conflicts with
  * Windows Sockets 2.0.
  */
-#include "common/platform/win/include_windows.h"
+#ifndef WIN32_LEAN_AND_MEAN
+#   define WIN32_LEAN_AND_MEAN
+#endif
+#include <windows.h>
 
 #include <stdio.h>
 #include <stdarg.h>

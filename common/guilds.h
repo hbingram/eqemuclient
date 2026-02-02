@@ -16,9 +16,10 @@
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
 
-#pragma once
+#ifndef GUILDS_H
+#define GUILDS_H
 
-#include "common/types.h"
+#include "types.h"
 
 #define GUILD_NONE		0xFFFFFFFF // user has no guild
 
@@ -81,3 +82,5 @@ typedef enum {
 } GuildAction;
 
 constexpr int format_as(GuildAction action) { return static_cast<int>(action); }
+
+#endif

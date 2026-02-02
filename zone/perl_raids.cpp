@@ -1,11 +1,12 @@
-#include "common/features.h"
+#include "../common/features.h"
 
 #ifdef EMBPERL_XS_CLASSES
 
-#include "common/data_verification.h"
-#include "zone/client.h"
-#include "zone/embperl.h"
-#include "zone/raids.h"
+#include "../common/data_verification.h"
+#include "../common/global_define.h"
+#include "embperl.h"
+#include "raids.h"
+#include "client.h"
 
 bool Perl_Raid_IsRaidMember(Raid* self, const char* name) // @categories Raid
 {

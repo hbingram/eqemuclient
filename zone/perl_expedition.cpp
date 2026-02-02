@@ -1,10 +1,11 @@
-#include "common/features.h"
+#include "../common/features.h"
 
 #ifdef EMBPERL_XS_CLASSES
 
-#include "common/zone_store.h"
-#include "zone/dynamic_zone.h"
-#include "zone/embperl.h"
+#include "embperl.h"
+#include "dynamic_zone.h"
+#include "../common/zone_store.h"
+#include "../common/global_define.h"
 
 void Perl_Expedition_AddLockout(DynamicZone* self, std::string event_name, uint32_t seconds)
 {

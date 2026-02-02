@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_ADVENTURE_TEMPLATE_ENTRY_FLAVOR_REPOSITORY_H
+#define EQEMU_ADVENTURE_TEMPLATE_ENTRY_FLAVOR_REPOSITORY_H
 
-#include "common/repositories/base/base_adventure_template_entry_flavor_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_adventure_template_entry_flavor_repository.h"
 
 class AdventureTemplateEntryFlavorRepository: public BaseAdventureTemplateEntryFlavorRepository {
 public:
@@ -46,3 +46,5 @@ public:
 	// Custom extended repository methods here
 
 };
+
+#endif //EQEMU_ADVENTURE_TEMPLATE_ENTRY_FLAVOR_REPOSITORY_H

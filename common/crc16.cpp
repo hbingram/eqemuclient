@@ -1,6 +1,4 @@
-#include "crc16.h"
-
-#include "common/crc32.h"
+#include "crc32.h"
 
 uint16 CRC16(const unsigned char *buf, int size, int key)
 {
@@ -14,3 +12,4 @@ uint16 CRC16(const unsigned char *buf, int size, int key)
 	crc = CRC32::Update(buf, size, crc);
 	return CRC32::Finish(crc) & 0xffff;
 }
+

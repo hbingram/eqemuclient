@@ -30,7 +30,7 @@
 #define LUA_BITOP_VERSION	"1.0.2"
 
 #include "lua.hpp"
-#include <cstdint>
+#include <stdint.h>
 
 typedef int32_t SBits;
 typedef uint32_t UBits;

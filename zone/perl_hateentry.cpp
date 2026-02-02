@@ -1,10 +1,11 @@
-#include "common/features.h"
+#include "../common/features.h"
+#include "client.h"
 
 #ifdef EMBPERL_XS_CLASSES
 
-#include "zone/client.h"
-#include "zone/embperl.h"
-#include "zone/hate_list.h"
+#include "../common/global_define.h"
+#include "embperl.h"
+#include "hate_list.h"
 
 int64_t Perl_HateEntry_GetDamage(struct_HateList* self) // @categories Script Utility, Hate and Aggro
 {

@@ -1,10 +1,11 @@
-#pragma once
+#ifndef CLIENTENTRY_H_
+#define CLIENTENTRY_H_
 
-#include "common/md5.h"
-#include "common/rulesys.h"
-#include "common/servertalk.h"
-#include "common/types.h"
-
+#include "../common/types.h"
+#include "../common/md5.h"
+//#include "../common/eq_packet_structs.h"
+#include "../common/servertalk.h"
+#include "../common/rulesys.h"
 #include <vector>
 
 typedef enum {
@@ -159,3 +160,6 @@ private:
 
 	std::unique_ptr<ServerPacket> m_dz_invite;
 };
+
+#endif /*CLIENTENTRY_H_*/
+

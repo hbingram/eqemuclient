@@ -1,5 +1,5 @@
-#include "common/data_bucket.h"
-#include "zone/client.h"
+#include "../client.h"
+#include "../../common/data_bucket.h"
 
 void command_devtools(Client *c, const Seperator *sep)
 {

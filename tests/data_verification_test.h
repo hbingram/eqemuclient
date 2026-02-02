@@ -16,10 +16,11 @@
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
 
-#pragma once
+#ifndef __EQEMU_TESTS_DATA_VERIFICATION_H
+#define __EQEMU_TESTS_DATA_VERIFICATION_H
 
-#include "common/data_verification.h"
 #include "cppunit/cpptest.h"
+#include "../common/data_verification.h"
 
 class DataVerificationTest : public Test::Suite {
 	typedef void(DataVerificationTest::*TestFunction)(void);
@@ -103,3 +104,5 @@ public:
 		TEST_ASSERT(!EQ::ValueWithin(value_i, 600, 900));
 	}
 };
+
+#endif

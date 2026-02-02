@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_COMMAND_SUBSETTINGS_REPOSITORY_H
+#define EQEMU_COMMAND_SUBSETTINGS_REPOSITORY_H
 
-#include "common/repositories/base/base_command_subsettings_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_command_subsettings_repository.h"
 
 class CommandSubsettingsRepository: public BaseCommandSubsettingsRepository {
 public:
@@ -228,3 +228,5 @@ public:
 		return db_sub_settings;
 	}
 };
+
+#endif //EQEMU_COMMAND_SUBSETTINGS_REPOSITORY_H

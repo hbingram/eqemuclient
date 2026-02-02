@@ -1,9 +1,9 @@
-#include "common/misc_functions.h"
-#include "common/repositories/object_repository.h"
-#include "common/strings.h"
 #include "object_manipulation.h"
-#include "zone/doors.h"
-#include "zone/object.h"
+#include "../doors.h"
+#include "../object.h"
+#include "../../common/misc_functions.h"
+#include "../../common/strings.h"
+#include "../../common/repositories/object_repository.h"
 
 #define MAX_CLIENT_MESSAGE_LENGTH 2000
 

@@ -1,7 +1,8 @@
-#pragma once
+#ifndef EQEMU_TRADER_AUDIT_REPOSITORY_H
+#define EQEMU_TRADER_AUDIT_REPOSITORY_H
 
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
 
 class TraderAuditRepository {
 public:
@@ -276,3 +277,5 @@ public:
 	}
 
 };
+
+#endif //EQEMU_TRADER_AUDIT_REPOSITORY_H

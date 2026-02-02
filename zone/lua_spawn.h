@@ -1,8 +1,8 @@
-#pragma once
-
+#ifndef EQEMU_LUA_SPAWN_H
+#define EQEMU_LUA_SPAWN_H
 #ifdef LUA_EQEMU
 
-#include "zone/lua_ptr.h"
+#include "lua_ptr.h"
 
 class Spawn2;
 class Lua_NPC;
@@ -53,4 +53,5 @@ public:
 	uint32 GetKillCount();
 };
 
-#endif // LUA_EQEMU
+#endif
+#endif

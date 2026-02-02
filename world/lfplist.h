@@ -16,12 +16,13 @@
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
 
-#pragma once
+#ifndef LFPENTRY_H
+#define LFPENTRY_H
 
-#include "common/eq_packet_structs.h"
-#include "common/linked_list.h"
-#include "common/servertalk.h"
-#include "common/timer.h"
+#include "../common/eq_packet_structs.h"
+#include "../common/servertalk.h"
+#include "../common/linked_list.h"
+#include "../common/timer.h"
 
 class GroupLFP {
 
@@ -58,4 +59,9 @@ public:
 private:
 	LinkedList<GroupLFP*> LFPGroupList;
 	Timer LFPStaleTimer;
+
+
 };
+
+#endif
+

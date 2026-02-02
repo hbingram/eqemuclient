@@ -1,13 +1,13 @@
-
-#pragma once
-
-#include "common/timer.h"
-#include "common/types.h"
-#include "zone/mob.h"
-#include "zone/npc.h"
+#ifndef AURA_H
+#define AURA_H
 
 #include <functional>
 #include <set>
+
+#include "mob.h"
+#include "npc.h"
+#include "../common/types.h"
+#include "../common/timer.h"
 
 class Group;
 class Raid;
@@ -86,3 +86,6 @@ private:
 	std::set<int> casted_on; // we keep track of the other entities we've casted on
 	std::set<int> spawned_for;
 };
+
+#endif /* !AURA_H */
+

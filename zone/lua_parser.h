@@ -1,17 +1,18 @@
-#pragma once
-
+#ifndef _EQE_LUA_PARSER_H
+#define _EQE_LUA_PARSER_H
 #ifdef LUA_EQEMU
 
-#include "common/repositories/bug_reports_repository.h"
-#include "zone/lua_mod.h"
-#include "zone/quest_interface.h"
-#include "zone/quest_parser_collection.h"
-#include "zone/zone_config.h"
-
-#include <exception>
+#include "quest_parser_collection.h"
+#include "quest_interface.h"
+#include <string>
 #include <list>
 #include <map>
-#include <string>
+#include <exception>
+
+#include "zone_config.h"
+#include "lua_mod.h"
+
+#include "../common/repositories/bug_reports_repository.h"
 
 extern const ZoneConfig *Config;
 
@@ -359,4 +360,5 @@ private:
 	ZoneArgumentHandler      ZoneArgumentDispatch[_LargestEventID];
 };
 
-#endif // LUA_EQEMU
+#endif
+#endif

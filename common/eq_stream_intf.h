@@ -1,13 +1,12 @@
-#pragma once
-
-#include "common/emu_versions.h"
-#include "common/eq_packet.h"
-#include "common/net/reliable_stream_connection.h"
-
-#include <string>
+#ifndef EQSTREAMINTF_H_
+#define EQSTREAMINTF_H_
 
 //this is the only part of an EQStream that is seen by the application.
 
+#include <string>
+#include "emu_versions.h"
+#include "eq_packet.h"
+#include "net/reliable_stream_connection.h"
 
 typedef enum {
 	ESTABLISHED,
@@ -107,3 +106,5 @@ public:
 	virtual void ResetStats() = 0;
 	virtual EQStreamManagerInterface* GetManager() const = 0;
 };
+
+#endif /*EQSTREAMINTF_H_*/

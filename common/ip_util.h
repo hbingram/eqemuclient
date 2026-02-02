@@ -18,11 +18,11 @@
  *
  */
 
-#pragma once
+#ifndef EQEMU_IP_UTIL_H
+#define EQEMU_IP_UTIL_H
 
-#include "common/types.h"
-
-#include <string>
+#include "types.h"
+#include "iostream"
 
 class IpUtil {
 public:
@@ -40,3 +40,5 @@ public:
 	static bool IsPortInUse(const std::string& ip, int port);
 
 };
+
+#endif //EQEMU_IP_UTIL_H

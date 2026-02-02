@@ -1,11 +1,10 @@
 #ifdef LUA_EQEMU
 
+#include <luabind/luabind.hpp>
+
+#include "spawn2.h"
+#include "lua_npc.h"
 #include "lua_spawn.h"
-
-#include "zone/spawn2.h"
-#include "zone/lua_npc.h"
-
-#include "luabind/luabind.hpp"
 
 void Lua_Spawn::LoadGrid() {
 	Lua_Safe_Call_Void();
@@ -171,4 +170,4 @@ luabind::scope lua_register_spawn() {
 	.def("SpawnGroupID", (uint32(Lua_Spawn::*)(void))&Lua_Spawn::SpawnGroupID);
 }
 
-#endif // LUA_EQEMU
+#endif

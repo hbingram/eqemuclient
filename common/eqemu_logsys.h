@@ -18,22 +18,23 @@
  *
 */
 
-#pragma once
+#ifndef EQEMU_LOGSYS_H
+#define EQEMU_LOGSYS_H
 
-#include "common/types.h"
-
-#include "fmt/format.h"
-#include <algorithm>
-#include <cstdio>
-#include <fstream>
-#include <functional>
 #include <iostream>
+#include <fstream>
+#include <cstdio>
+#include <functional>
+#include <algorithm>
 
 #ifdef _WIN32
 #ifdef utf16_to_utf8
 #undef utf16_to_utf8
 #endif
 #endif
+
+#include <fmt/format.h>
+#include "types.h"
 
 namespace Logs {
 	enum DebugLevel {
@@ -461,3 +462,5 @@ void OutF(
 do { \
     ls->Out(debug_level, log_category, file, func, line, fmt::format(formatStr, ##__VA_ARGS__).c_str()); \
 } while(0)
+
+#endif

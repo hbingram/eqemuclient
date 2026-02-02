@@ -1,9 +1,8 @@
-#include "common/features.h"
-
+#include "../common/features.h"
 #ifdef EMBPERL_XS_CLASSES
-
-#include "zone/bot.h"
-#include "zone/embperl.h"
+#include "../common/global_define.h"
+#include "embperl.h"
+#include "bot.h"
 
 Mob* Perl_Bot_GetOwner(Bot* self) // @categories Script Utility, Bot
 {
@@ -742,4 +741,4 @@ void perl_register_bot()
 	package.add("Stand", &Perl_Bot_Stand);
 }
 
-#endif // EMBPERL_XS_CLASSES
+#endif //EMBPERL_XS_CLASSES

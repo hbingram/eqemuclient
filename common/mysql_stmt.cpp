@@ -1,9 +1,7 @@
 #include "mysql_stmt.h"
-
-#include "common/eqemu_logsys.h"
-#include "common/mutex.h"
-#include "common/timer.h"
-
+#include "eqemu_logsys.h"
+#include "mutex.h"
+#include "timer.h"
 #include <charconv>
 
 namespace mysql

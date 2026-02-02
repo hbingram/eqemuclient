@@ -1,8 +1,8 @@
-#pragma once
-
+#ifndef EQEMU_LUA_HATE_LIST_H
+#define EQEMU_LUA_HATE_LIST_H
 #ifdef LUA_EQEMU
 
-#include "zone/lua_ptr.h"
+#include "lua_ptr.h"
 
 class Lua_Mob;
 struct struct_HateList;
@@ -33,4 +33,5 @@ struct Lua_HateList
 	std::vector<Lua_HateEntry> entries;
 };
 
-#endif // LUA_EQEMU
+#endif
+#endif

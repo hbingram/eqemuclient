@@ -1,8 +1,7 @@
 #include "uuid.h"
 
-#include "fmt/format.h"
-
 #include <ios>
+#include <fmt/format.h>
 
 #ifdef _WIN32
 #include <objbase.h>

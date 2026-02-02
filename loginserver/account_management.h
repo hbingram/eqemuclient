@@ -1,10 +1,11 @@
-#pragma once
+#ifndef EQEMU_ACCOUNT_MANAGEMENT_H
+#define EQEMU_ACCOUNT_MANAGEMENT_H
 
-#include "common/types.h"
-#include "loginserver/login_types.h"
-#include "loginserver/login_server.h"
-
-#include <string>
+#include "iostream"
+#include "../common/types.h"
+#include "login_types.h"
+#include "encryption.h"
+#include "login_server.h"
 
 extern LoginServer server;
 extern Database database;
@@ -27,3 +28,6 @@ public:
 		const std::string &ip_address = ""
 	);
 };
+
+
+#endif //EQEMU_ACCOUNT_MANAGEMENT_H

@@ -1,13 +1,11 @@
 #include "raycast_mesh.h"
-
-#include "common/eqemu_logsys.h"
-#include "common/memory/ksm.hpp"
-
-#include <cassert>
-#include <cmath>
-#include <cstdint>
-#include <cstdlib>
-#include <cstring>
+#include "../common/memory/ksm.hpp"
+#include "../common/eqemu_logsys.h"
+#include <math.h>
+#include <assert.h>
+#include <stdlib.h>
+#include <stdint.h>
+#include <string.h>
 #include <vector>
 
 // This code snippet allows you to create an axis aligned bounding volume tree for a triangle mesh so that you can do

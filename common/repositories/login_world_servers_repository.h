@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_LOGIN_WORLD_SERVERS_REPOSITORY_H
+#define EQEMU_LOGIN_WORLD_SERVERS_REPOSITORY_H
 
-#include "common/repositories/base/base_login_world_servers_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_login_world_servers_repository.h"
 
 class LoginWorldServersRepository: public BaseLoginWorldServersRepository {
 public:
@@ -29,3 +29,5 @@ public:
 		return e;
 	}
 };
+
+#endif //EQEMU_LOGIN_WORLD_SERVERS_REPOSITORY_H

@@ -1,8 +1,8 @@
-#include "common/content/world_content_service.h"
-#include "common/http/httplib.h"
-#include "zone/client.h"
+#include "../client.h"
+#include "../../common/http/httplib.h"
+#include "../../common/content/world_content_service.h"
 
-#include "zone/bot.h"
+#include "../bot.h"
 
 void command_gearup(Client *c, const Seperator *sep)
 {

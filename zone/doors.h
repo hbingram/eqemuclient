@@ -1,7 +1,8 @@
-#pragma once
+#ifndef DOORS_H
+#define DOORS_H
 
-#include "common/repositories/doors_repository.h"
-#include "zone/mob.h"
+#include "mob.h"
+#include "../common/repositories/doors_repository.h"
 
 class Client;
 class Mob;
@@ -112,3 +113,4 @@ private:
 	uint32    m_client_version_mask;
 	bool      m_is_blacklisted_to_open = false; // is door blacklisted to open by npcs
 };
+#endif

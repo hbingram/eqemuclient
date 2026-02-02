@@ -1,6 +1,6 @@
-cmake_minimum_required(VERSION 3.20)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.12)
 
-set(qserv_sources
+SET(qserv_sources
     database.cpp
     lfguild.cpp
     queryserv.cpp
@@ -10,7 +10,7 @@ set(qserv_sources
     zoneserver.cpp
 )
 
-set(qserv_headers
+SET(qserv_headers
     database.h
     lfguild.h
     queryservconfig.h
@@ -19,14 +19,12 @@ set(qserv_headers
     zoneserver.h
 )
 
-add_executable(queryserv ${qserv_sources} ${qserv_headers})
+ADD_EXECUTABLE(queryserv ${qserv_sources} ${qserv_headers})
 
-install(TARGETS queryserv RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
+INSTALL(TARGETS queryserv RUNTIME DESTINATION ${CMAKE_INSTALL_PREFIX}/bin)
 
-add_definitions(-DQSERV)
+ADD_DEFINITIONS(-DQSERV)
 
-target_link_libraries(queryserv common)
-target_include_directories(queryserv PRIVATE ..)
+TARGET_LINK_LIBRARIES(queryserv ${SERVER_LIBS})
 
-set(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)
-set_property(TARGET queryserv PROPERTY FOLDER executables/servers)
+SET(EXECUTABLE_OUTPUT_PATH ${PROJECT_BINARY_DIR}/bin)

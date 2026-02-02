@@ -17,17 +17,18 @@
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-#pragma once
+#ifndef COMMON_EQ_LIMITS_H
+#define COMMON_EQ_LIMITS_H
 
-#include "common/emu_versions.h"
-#include "common/eq_constants.h"
-#include "common/patches/rof_limits.h"
-#include "common/patches/rof2_limits.h"
-#include "common/patches/sod_limits.h"
-#include "common/patches/sof_limits.h"
-#include "common/patches/titanium_limits.h"
-#include "common/patches/uf_limits.h"
-#include "common/types.h"
+#include "types.h"
+#include "eq_constants.h"
+#include "emu_versions.h"
+#include "../common/patches/titanium_limits.h"
+#include "../common/patches/sof_limits.h"
+#include "../common/patches/sod_limits.h"
+#include "../common/patches/uf_limits.h"
+#include "../common/patches/rof_limits.h"
+#include "../common/patches/rof2_limits.h"
 
 
 namespace EQ
@@ -267,3 +268,5 @@ namespace Client62
 	} // namespace constants
 
 } /*Client62*/
+
+#endif /*COMMON_EQ_LIMITS_H*/

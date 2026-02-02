@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_BOT_INSPECT_MESSAGES_REPOSITORY_H
+#define EQEMU_BOT_INSPECT_MESSAGES_REPOSITORY_H
 
-#include "common/repositories/base/base_bot_inspect_messages_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_bot_inspect_messages_repository.h"
 
 class BotInspectMessagesRepository: public BaseBotInspectMessagesRepository {
 public:
@@ -75,3 +75,5 @@ public:
 		return results.Success();
 	}
 };
+
+#endif //EQEMU_BOT_INSPECT_MESSAGES_REPOSITORY_H

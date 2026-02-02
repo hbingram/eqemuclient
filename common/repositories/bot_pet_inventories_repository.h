@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_BOT_PET_INVENTORIES_REPOSITORY_H
+#define EQEMU_BOT_PET_INVENTORIES_REPOSITORY_H
 
-#include "common/repositories/base/base_bot_pet_inventories_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_bot_pet_inventories_repository.h"
 
 class BotPetInventoriesRepository: public BaseBotPetInventoriesRepository {
 public:
@@ -46,3 +46,5 @@ public:
 	// Custom extended repository methods here
 
 };
+
+#endif //EQEMU_BOT_PET_INVENTORIES_REPOSITORY_H

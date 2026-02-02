@@ -1,11 +1,10 @@
 #pragma once
 
-#include "common/eqemu_logsys.h"
-#include "common/strings.h"
-#include "common/types.h"
-#include "loginserver/login_types.h"
-
 #include <string>
+#include "../common/types.h"
+#include "login_types.h"
+#include "../common/eqemu_logsys.h"
+#include "../common/strings.h"
 
 enum EncryptionMode {
 	EncryptionModeMD5            = 1,
@@ -41,7 +40,7 @@ struct EncryptionResult {
 	std::string mode_name;
 };
 
-inline EncryptionResult EncryptPasswordFromContext(LoginAccountContext c, int mode = EncryptionModeSCrypt)
+static EncryptionResult EncryptPasswordFromContext(LoginAccountContext c, int mode = EncryptionModeSCrypt)
 {
 	if (mode == 0) {
 		LogError("Encryption mode not set!");

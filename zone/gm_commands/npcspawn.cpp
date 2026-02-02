@@ -1,4 +1,4 @@
-#include "zone/client.h"
+#include "../client.h"
 
 void command_npcspawn(Client *c, const Seperator *sep)
 {

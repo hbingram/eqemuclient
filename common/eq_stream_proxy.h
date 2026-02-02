@@ -1,8 +1,9 @@
-#pragma once
+#ifndef EQSTREAMPROXY_H_
+#define EQSTREAMPROXY_H_
 
-#include "common/eq_stream_intf.h"
-#include "common/types.h"
 
+#include "types.h"
+#include "eq_stream_intf.h"
 #include <memory>
 
 class StructStrategy;
@@ -43,3 +44,6 @@ protected:
 	OpcodeManager **const			m_opcodes;
 	//we do not own this object.
 };
+
+#endif /*EQSTREAMPROXY_H_*/
+

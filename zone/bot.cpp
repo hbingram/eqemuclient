@@ -17,18 +17,17 @@
 */
 
 #include "bot.h"
-
-#include "common/data_verification.h"
-#include "common/repositories/bot_inventories_repository.h"
-#include "common/repositories/bot_spell_settings_repository.h"
-#include "common/repositories/bot_starting_items_repository.h"
-#include "common/repositories/criteria/content_filter_criteria.h"
-#include "common/skill_caps.h"
-#include "zone/doors.h"
-#include "zone/lua_parser.h"
-#include "zone/object.h"
-#include "zone/quest_parser_collection.h"
-#include "zone/raids.h"
+#include "object.h"
+#include "raids.h"
+#include "doors.h"
+#include "quest_parser_collection.h"
+#include "lua_parser.h"
+#include "../common/repositories/bot_inventories_repository.h"
+#include "../common/repositories/bot_spell_settings_repository.h"
+#include "../common/repositories/bot_starting_items_repository.h"
+#include "../common/data_verification.h"
+#include "../common/repositories/criteria/content_filter_criteria.h"
+#include "../common/skill_caps.h"
 
 /*
 TODO bot rewrite:
@@ -2602,8 +2601,6 @@ void Bot::DoOutOfCombatChecks(Client* bot_owner, Mob* follow_mob, float leash_di
 	if (GetClass() == Class::Bard && AI_HasSpells() && TryBardMovementCasts()) {
 		return;
 	}
-
-	TryMeditate();
 }
 
 // This is as close as I could get without modifying the aggro mechanics and making it an expensive process...
@@ -8227,13 +8224,13 @@ bool Bot::CheckDataBucket(std::string bucket_name, const std::string& bucket_val
 		DataBucketKey k = GetScopedBucketKeys();
 		k.key = bucket_name;
 
-		auto b = DataBucket::GetData(&database, k);
+		auto b = DataBucket::GetData(k);
 		if (b.value.empty() && GetBotOwner()) {
 			// fetch from owner
 			k = GetBotOwner()->GetScopedBucketKeys();
 			k.key = bucket_name;
 
-			b = DataBucket::GetData(&database, k);
+			b = DataBucket::GetData(k);
 			if (b.value.empty()) {
 				return false;
 			}

@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_DB_STR_REPOSITORY_H
+#define EQEMU_DB_STR_REPOSITORY_H
 
-#include "common/repositories/base/base_db_str_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_db_str_repository.h"
 
 class DbStrRepository: public BaseDbStrRepository {
 public:
@@ -63,3 +63,5 @@ public:
 		return lines;
 	}
 };
+
+#endif //EQEMU_DB_STR_REPOSITORY_H

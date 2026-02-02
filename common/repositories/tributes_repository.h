@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_TRIBUTES_REPOSITORY_H
+#define EQEMU_TRIBUTES_REPOSITORY_H
 
-#include "common/repositories/base/base_tributes_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_tributes_repository.h"
 
 class TributesRepository: public BaseTributesRepository {
 public:
@@ -46,3 +46,5 @@ public:
 	// Custom extended repository methods here
 
 };
+
+#endif //EQEMU_TRIBUTES_REPOSITORY_H

@@ -1,12 +1,13 @@
-#pragma once
+#ifndef ADVENTURE_H
+#define ADVENTURE_H
 
-#include "common/timer.h"
-#include "common/types.h"
-#include "world/adventure_template.h"
-
-#include <cstdlib>
+#include "../common/global_define.h"
+#include "../common/types.h"
+#include "../common/timer.h"
+#include "adventure_template.h"
 #include <list>
 #include <string>
+#include <stdlib.h>
 
 enum AdventureStatus
 {
@@ -96,3 +97,5 @@ protected:
 	Timer *current_timer;
 	int instance_id;
 };
+
+#endif

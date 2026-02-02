@@ -16,7 +16,8 @@
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
 
-#pragma once
+#ifndef RAID_H
+#define RAID_H
 
 enum {	//raid packet types:
 	raidAdd = 0,
@@ -66,3 +67,6 @@ enum { //raid command types
 	RaidCommandSetMotd = 35,
 	RaidCommandSetNote = 36,
 };
+
+
+#endif

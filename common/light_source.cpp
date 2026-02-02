@@ -19,7 +19,8 @@
 
 #include "light_source.h"
 
-#include <cstring>
+#include <string.h>
+
 
 uint8 EQ::lightsource::TypeToLevel(uint8 light_type)
 {

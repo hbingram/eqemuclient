@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_COMPLETED_SHARED_TASK_ACTIVITY_STATE_REPOSITORY_H
+#define EQEMU_COMPLETED_SHARED_TASK_ACTIVITY_STATE_REPOSITORY_H
 
-#include "common/repositories/base/base_completed_shared_task_activity_state_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_completed_shared_task_activity_state_repository.h"
 
 class CompletedSharedTaskActivityStateRepository: public BaseCompletedSharedTaskActivityStateRepository {
 public:
@@ -46,3 +46,5 @@ public:
 	// Custom extended repository methods here
 
 };
+
+#endif //EQEMU_COMPLETED_SHARED_TASK_ACTIVITY_STATE_REPOSITORY_H

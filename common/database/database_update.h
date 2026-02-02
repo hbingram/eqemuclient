@@ -1,6 +1,7 @@
-#pragma once
+#ifndef EQEMU_DATABASE_UPDATE_H
+#define EQEMU_DATABASE_UPDATE_H
 
-#include "common/database.h"
+#include "../database.h"
 
 struct ManifestEntry {
 	int         version{};     // database version of the migration
@@ -46,4 +47,7 @@ private:
 	static bool CheckVersionsUpToDate(DatabaseVersion v, DatabaseVersion b);
 	void InjectBotsVersionColumn();
 	void InjectCustomVersionColumn();
+
 };
+
+#endif //EQEMU_DATABASE_UPDATE_H

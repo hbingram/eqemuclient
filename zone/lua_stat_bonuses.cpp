@@ -1,11 +1,10 @@
 #ifdef LUA_EQEMU
 
+#include "../common/data_verification.h"
+
+#include <luabind/luabind.hpp>
+
 #include "lua_stat_bonuses.h"
-
-#include "common/data_verification.h"
-
-#include "luabind/luabind.hpp"
-
 
 int32 Lua_StatBonuses::GetAC() const {
 	Lua_Safe_Call_Int();
@@ -1558,4 +1557,4 @@ luabind::scope lua_register_stat_bonuses() {
 	.def("XPRateMod", &Lua_StatBonuses::GetXPRateMod);
 }
 
-#endif // LUA_EQEMU
+#endif

@@ -1,9 +1,9 @@
-#pragma once
-
-#include "common/types.h"
+#ifndef CODE_LOOT_H
+#define CODE_LOOT_H
 
 #include <list>
 #include <string>
+#include "../common/types.h"
 
 struct LootItem {
 	uint32      item_id;
@@ -30,3 +30,5 @@ struct LootItem {
 
 typedef std::list<LootItem*> LootItems;
 
+
+#endif //CODE_LOOT_H

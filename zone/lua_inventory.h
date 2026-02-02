@@ -1,8 +1,8 @@
-#pragma once
-
+#ifndef EQEMU_LUA_INVENTORY_H
+#define EQEMU_LUA_INVENTORY_H
 #ifdef LUA_EQEMU
 
-#include "zone/lua_ptr.h"
+#include "lua_ptr.h"
 
 class Lua_ItemInst;
 class Lua_Item;
@@ -71,4 +71,5 @@ public:
 	luabind::object GetAugmentIDsBySlotID(lua_State* L, int16 slot_id);
 };
 
-#endif // LUA_EQEMU
+#endif
+#endif

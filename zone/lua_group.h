@@ -1,8 +1,8 @@
-#pragma once
-
+#ifndef EQEMU_LUA_GROUP_H
+#define EQEMU_LUA_GROUP_H
 #ifdef LUA_EQEMU
 
-#include "zone/lua_ptr.h"
+#include "lua_ptr.h"
 
 class Group;
 class Lua_Mob;
@@ -55,4 +55,5 @@ public:
 	bool DoesAnyMemberHaveExpeditionLockout(std::string expedition_name, std::string event_name, int max_check_count);
 };
 
-#endif // LUA_EQEMU
+#endif
+#endif

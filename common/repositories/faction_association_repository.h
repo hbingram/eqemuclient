@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_FACTION_ASSOCIATION_REPOSITORY_H
+#define EQEMU_FACTION_ASSOCIATION_REPOSITORY_H
 
-#include "common/repositories/base/base_faction_association_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_faction_association_repository.h"
 
 class FactionAssociationRepository: public BaseFactionAssociationRepository {
 public:
@@ -46,3 +46,5 @@ public:
 	// Custom extended repository methods here
 
 };
+
+#endif //EQEMU_FACTION_ASSOCIATION_REPOSITORY_H

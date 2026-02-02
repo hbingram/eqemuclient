@@ -1,4 +1,4 @@
-#include "zone/client.h"
+#include "../client.h"
 
 void command_spawnfix(Client* c, const Seperator* sep)
 {

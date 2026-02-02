@@ -1,8 +1,8 @@
-#pragma once
-
+#ifndef EQEMU_LUA_DOOR_H
+#define EQEMU_LUA_DOOR_H
 #ifdef LUA_EQEMU
 
-#include "zone/lua_entity.h"
+#include "lua_entity.h"
 
 class Doors;
 class Lua_Mob;
@@ -83,4 +83,5 @@ public:
 	uint32 GetGuildID();
 };
 
-#endif // LUA_EQEMU
+#endif
+#endif

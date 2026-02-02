@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_LOOTDROP_ENTRIES_REPOSITORY_H
+#define EQEMU_LOOTDROP_ENTRIES_REPOSITORY_H
 
-#include "common/repositories/base/base_lootdrop_entries_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_lootdrop_entries_repository.h"
 
 class LootdropEntriesRepository: public BaseLootdropEntriesRepository {
 public:
@@ -28,3 +28,5 @@ public:
 	}
 
 };
+
+#endif //EQEMU_LOOTDROP_ENTRIES_REPOSITORY_H

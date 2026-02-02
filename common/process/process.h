@@ -1,6 +1,7 @@
-#pragma once
+#ifndef EQEMU_PROCESS_H
+#define EQEMU_PROCESS_H
 
-#include "common/strings.h"
+#include "../strings.h"
 
 #include <cstdio>
 
@@ -13,3 +14,6 @@ class Process {
 public:
 	static std::string execute(const std::string &cmd);
 };
+
+
+#endif //EQEMU_PROCESS_H

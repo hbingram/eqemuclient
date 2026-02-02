@@ -1,7 +1,6 @@
 #include "zonelist.h"
-
-#include "queryserv/zoneserver.h"
-#include "common/strings.h"
+#include "zoneserver.h"
+#include "../common/strings.h"
 
 void ZSList::Add(ZoneServer* zoneserver) {
 	zone_server_list.emplace_back(std::unique_ptr<ZoneServer>(zoneserver));

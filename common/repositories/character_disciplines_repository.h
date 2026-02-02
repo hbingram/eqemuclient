@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_CHARACTER_DISCIPLINES_REPOSITORY_H
+#define EQEMU_CHARACTER_DISCIPLINES_REPOSITORY_H
 
-#include "common/repositories/base/base_character_disciplines_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_character_disciplines_repository.h"
 
 class CharacterDisciplinesRepository: public BaseCharacterDisciplinesRepository {
 public:
@@ -46,3 +46,5 @@ public:
 	// Custom extended repository methods here
 
 };
+
+#endif //EQEMU_CHARACTER_DISCIPLINES_REPOSITORY_H

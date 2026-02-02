@@ -16,11 +16,14 @@
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
 
-#pragma once
+#ifndef EQEMU_ZONE_AA_RANK_EFFECTS_H
+#define EQEMU_ZONE_AA_RANK_EFFECTS_H
 
-#include "common/types.h"
+#include "../common/global_define.h"
+#include <string>
 
-namespace AA {
+namespace AA
+{
 
 struct RankEffect
 {
@@ -30,4 +33,6 @@ struct RankEffect
 	int limit_value;
 };
 
-} // namespace AA
+}
+
+#endif

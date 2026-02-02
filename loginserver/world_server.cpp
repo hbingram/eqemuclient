@@ -1,11 +1,10 @@
 #include "world_server.h"
-
-#include "common/ip_util.h"
-#include "common/repositories/login_server_admins_repository.h"
-#include "common/repositories/login_world_servers_repository.h"
-#include "common/strings.h"
-#include "loginserver/login_server.h"
-#include "loginserver/login_types.h"
+#include "login_server.h"
+#include "login_types.h"
+#include "../common/ip_util.h"
+#include "../common/strings.h"
+#include "../common/repositories/login_world_servers_repository.h"
+#include "../common/repositories/login_server_admins_repository.h"
 
 extern LoginServer server;
 extern Database    database;

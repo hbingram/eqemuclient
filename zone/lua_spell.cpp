@@ -1,11 +1,9 @@
 #ifdef LUA_EQEMU
 
+#include <luabind/luabind.hpp>
+
+#include "../common/spdat.h"
 #include "lua_spell.h"
-
-#include "common/spdat.h"
-
-#include "luabind/luabind.hpp"
-
 
 Lua_Spell::Lua_Spell(int id) {
 	if(IsValidSpell(id)) {
@@ -583,4 +581,4 @@ luabind::scope lua_register_spell() {
 	.def("ZoneType", &Lua_Spell::GetZoneType);
 }
 
-#endif // LUA_EQEMU
+#endif

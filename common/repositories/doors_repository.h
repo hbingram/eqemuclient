@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_DOORS_REPOSITORY_H
+#define EQEMU_DOORS_REPOSITORY_H
 
-#include "common/repositories/base/base_doors_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_doors_repository.h"
 
 class DoorsRepository: public BaseDoorsRepository {
 public:
@@ -46,3 +46,5 @@ public:
 	// Custom extended repository methods here
 
 };
+
+#endif //EQEMU_DOORS_REPOSITORY_H

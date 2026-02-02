@@ -15,13 +15,12 @@
 	along with this program; if not, write to the Free Software
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
+#ifndef EXTENDED_PROFILE_H
+#define EXTENDED_PROFILE_H
 
-#pragma once
+#include "eq_packet_structs.h"
+#include "inventory_profile.h"
 
-#include "common/eq_packet_structs.h"
-#include "common/inventory_profile.h"
-
-#pragma pack(push)
 #pragma pack(1)
 
 /*
@@ -59,7 +58,10 @@ struct ExtendedProfile_Struct {
 	uint32				next_invsnapshot_time; /* Used */
 };
 
-#pragma pack(pop)
+#pragma pack()
 
 void InitExtendedProfile(ExtendedProfile_Struct *p);
 bool SetExtendedProfile(ExtendedProfile_Struct *to, char *old, unsigned int len);
+
+
+#endif

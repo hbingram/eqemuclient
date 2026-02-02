@@ -17,13 +17,13 @@
 
 */
 
-#pragma once
+#ifndef CHATSERVER_CLIENTLIST_H
+#define CHATSERVER_CLIENTLIST_H
 
-#include "common/net/eqstream.h"
-#include "common/opcodemgr.h"
-#include "common/rulesys.h"
-#include "ucs/chatchannel.h"
-
+#include "../common/opcodemgr.h"
+#include "../common/net/eqstream.h"
+#include "../common/rulesys.h"
+#include "chatchannel.h"
 #include <list>
 #include <vector>
 
@@ -197,3 +197,5 @@ private:
 
 	OpcodeManager *ChatOpMgr;
 };
+
+#endif

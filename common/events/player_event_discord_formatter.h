@@ -1,12 +1,11 @@
-#pragma once
-
-#include "common/events/player_events.h"
-#include "common/repositories/base/base_player_event_logs_repository.h"
-
-#include "cereal/archives/json.hpp"
-#include "cereal/types/vector.hpp"
+#ifndef EQEMU_PLAYER_EVENT_DISCORD_FORMATTER_H
+#define EQEMU_PLAYER_EVENT_DISCORD_FORMATTER_H
 
 #include <string>
+#include "player_events.h"
+#include "../repositories/base/base_player_event_logs_repository.h"
+#include <cereal/archives/json.hpp>
+#include <cereal/types/vector.hpp>
 
 struct DiscordField {
 	std::string name;
@@ -210,3 +209,6 @@ public:
 		std::vector<DiscordEmbed> &embeds
 	);
 };
+
+
+#endif //EQEMU_PLAYER_EVENT_DISCORD_FORMATTER_H

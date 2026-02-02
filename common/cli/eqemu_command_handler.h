@@ -18,13 +18,10 @@
  *
  */
 
-#pragma once
+#ifndef EQEMU_EQEMU_COMMAND_HANDLER_H
+#define EQEMU_EQEMU_COMMAND_HANDLER_H
 
-#include "common/cli/argh.h"
-
-#include <map>
-#include <string>
-#include <vector>
+#include "argh.h"
 
 namespace EQEmuCommand {
 
@@ -73,3 +70,6 @@ namespace EQEmuCommand {
 		char **argv
 	);
 };
+
+
+#endif //EQEMU_EQEMU_COMMAND_HANDLER_H

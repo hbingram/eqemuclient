@@ -6,14 +6,14 @@
  * Any modifications to base repositories are to be made by the generator only
  *
  * @generator ./utils/scripts/generators/repository-generator.pl
- * @docs https://docs.eqemu.dev/developer/repositories
+ * @docs https://eqemu.gitbook.io/server/in-development/developer-area/repositories
  */
 
-#pragma once
+#ifndef EQEMU_BASE_BOT_GROUPS_REPOSITORY_H
+#define EQEMU_BASE_BOT_GROUPS_REPOSITORY_H
 
-#include "common/database.h"
-#include "common/strings.h"
-
+#include "../../database.h"
+#include "../../strings.h"
 #include <ctime>
 
 class BaseBotGroupsRepository {
@@ -348,3 +348,5 @@ public:
 	}
 
 };
+
+#endif //EQEMU_BASE_BOT_GROUPS_REPOSITORY_H

@@ -16,13 +16,12 @@
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
 
-#include "client.h"
+#include "../common/database.h"
+#include "../common/guilds.h"
+#include "../common/strings.h"
 
-#include "common/database.h"
-#include "common/guilds.h"
-#include "common/strings.h"
-#include "zone/guild_mgr.h"
-#include "zone/worldserver.h"
+#include "guild_mgr.h"
+#include "worldserver.h"
 
 extern WorldServer worldserver;
 

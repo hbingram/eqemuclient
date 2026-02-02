@@ -1,9 +1,8 @@
-#pragma once
-
+#ifndef EQEMU_LUA_ITEM_H
+#define EQEMU_LUA_ITEM_H
 #ifdef LUA_EQEMU
 
-#include "common/types.h"
-#include "zone/lua_ptr.h"
+#include "lua_ptr.h"
 
 namespace EQ
 {
@@ -207,4 +206,5 @@ public:
 	const char *GetScrollName();
 };
 
-#endif // LUA_EQEMU
+#endif
+#endif

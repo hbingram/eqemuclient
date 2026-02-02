@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_AURAS_REPOSITORY_H
+#define EQEMU_AURAS_REPOSITORY_H
 
-#include "common/repositories/base/base_auras_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_auras_repository.h"
 
 class AurasRepository: public BaseAurasRepository {
 public:
@@ -46,3 +46,5 @@ public:
 	// Custom extended repository methods here
 
 };
+
+#endif //EQEMU_AURAS_REPOSITORY_H

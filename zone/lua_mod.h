@@ -1,8 +1,7 @@
 #pragma once
 
-#include "common/repositories/bug_reports_repository.h"
-
 #include <string>
+#include "../common/repositories/bug_reports_repository.h"
 
 struct lua_State;
 

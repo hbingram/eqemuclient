@@ -1,7 +1,5 @@
 #include "shared_tasks.h"
-
-#include "common/repositories/character_data_repository.h"
-
+#include "repositories/character_data_repository.h"
 #include <algorithm>
 
 std::vector<SharedTaskActivityStateEntry> SharedTask::GetActivityState() const

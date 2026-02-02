@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_NPC_SPELLS_EFFECTS_REPOSITORY_H
+#define EQEMU_NPC_SPELLS_EFFECTS_REPOSITORY_H
 
-#include "common/repositories/base/base_npc_spells_effects_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_npc_spells_effects_repository.h"
 
 class NpcSpellsEffectsRepository: public BaseNpcSpellsEffectsRepository {
 public:
@@ -46,3 +46,5 @@ public:
 	// Custom extended repository methods here
 
 };
+
+#endif //EQEMU_NPC_SPELLS_EFFECTS_REPOSITORY_H

@@ -1,7 +1,8 @@
-#include "common/repositories/rule_sets_repository.h"
-#include "common/repositories/rule_values_repository.h"
-#include "zone/client.h"
-#include "zone/command.h"
+#include "../client.h"
+#include "../command.h"
+
+#include "../../common/repositories/rule_sets_repository.h"
+#include "../../common/repositories/rule_values_repository.h"
 
 void command_rules(Client *c, const Seperator *sep)
 {

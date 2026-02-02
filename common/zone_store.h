@@ -18,12 +18,13 @@
  *
  */
 
-#pragma once
+#ifndef EQEMU_ZONE_STORE_H
+#define EQEMU_ZONE_STORE_H
 
-#include "common/repositories/base/base_content_flags_repository.h"
-#include "common/repositories/zone_repository.h"
+#include "../common/repositories/zone_repository.h"
+#include "../common/repositories/base/base_content_flags_repository.h"
 
-#include "glm/vec4.hpp"
+#include <glm/vec4.hpp>
 
 class ZoneStore {
 public:
@@ -148,3 +149,5 @@ inline ZoneRepository::Zone *GetZoneVersionWithFallback(uint32 zone_id, int vers
 		version
 	);
 };
+
+#endif //EQEMU_ZONE_STORE_H

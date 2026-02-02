@@ -1,12 +1,13 @@
-#pragma once
-
-#include "common/guild_base.h"
-#include "common/repositories/guild_bank_repository.h"
-#include "common/types.h"
-#include "zone/petitions.h"
+#ifndef GUILD_MGR_H_
+#define GUILD_MGR_H_
 
 #include <list>
 #include <map>
+#include "../common/guild_base.h"
+#include "../common/types.h"
+
+#include "../common/repositories/guild_bank_repository.h"
+#include "../zone/petitions.h"
 
 //extern GuildRanks_Struct guilds[512];
 //extern ZoneDatabase database;
@@ -140,3 +141,6 @@ private:
 
 extern ZoneGuildManager guild_mgr;
 extern GuildBankManager *GuildBanks;
+
+#endif /*GUILD_MGR_H_*/
+

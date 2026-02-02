@@ -1,9 +1,8 @@
 #include "global_loot_manager.h"
-
-#include "zone/client.h"
-#include "zone/dialogue_window.h"
-#include "zone/npc.h"
-#include "zone/zone.h"
+#include "npc.h"
+#include "client.h"
+#include "zone.h"
+#include "dialogue_window.h"
 
 extern Zone *zone;
 

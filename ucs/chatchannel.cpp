@@ -17,15 +17,13 @@
 
 */
 
+#include "../common/eqemu_logsys.h"
+#include "../common/strings.h"
 #include "chatchannel.h"
-
-#include "common/eqemu_logsys.h"
-#include "common/strings.h"
-#include "ucs/clientlist.h"
-#include "ucs/database.h"
-
-#include <algorithm>
+#include "clientlist.h"
+#include "database.h"
 #include <cstdlib>
+#include <algorithm>
 
 extern UCSDatabase database;
 extern uint32 ChatMessagesSent;

@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_GRID_ENTRIES_REPOSITORY_H
+#define EQEMU_GRID_ENTRIES_REPOSITORY_H
 
-#include "common/repositories/base/base_grid_entries_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_grid_entries_repository.h"
 
 class GridEntriesRepository: public BaseGridEntriesRepository {
 public:
@@ -119,3 +119,5 @@ public:
 		return Strings::ToInt(row[0]) + 1;
 	}
 };
+
+#endif //EQEMU_GRID_ENTRIES_REPOSITORY_H

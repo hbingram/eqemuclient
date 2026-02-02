@@ -16,7 +16,8 @@
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
 
-#pragma once
+#ifndef _EQEMU_EQEMUEXCEPTION_H
+#define _EQEMU_EQEMUEXCEPTION_H
 
 #include <sstream>
 #include <exception>
@@ -104,4 +105,6 @@ namespace EQ
 
 #ifndef EQ_EXCEPT
 #define EQ_EXCEPT(n, d) throw EQ::Exception(n, d, __FILE__, __LINE__)
+#endif
+
 #endif

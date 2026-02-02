@@ -17,9 +17,8 @@
 */
 
 #include "faction.h"
-
-#include "common/races.h"
-#include "common/rulesys.h"
+#include "races.h"
+#include "rulesys.h"
 
 const char *FactionValueToString(FACTION_VALUE faction_value)
 {
@@ -164,3 +163,4 @@ bool IsOfIndiffRace(int r1, int r2)
 	}
 	return false;
 }
+

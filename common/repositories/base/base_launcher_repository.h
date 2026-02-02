@@ -5,10 +5,11 @@
  * be made by the generator only
  */
 
-#pragma once
+#ifndef EQEMU_BASE_LAUNCHER_REPOSITORY_H
+#define EQEMU_BASE_LAUNCHER_REPOSITORY_H
 
-#include "common/database.h"
-#include "common/strings.h"
+#include "../../database.h"
+#include "../../strings.h"
 
 class BaseLauncherRepository {
 public:
@@ -283,3 +284,5 @@ public:
 	}
 
 };
+
+#endif //EQEMU_BASE_LAUNCHER_REPOSITORY_H

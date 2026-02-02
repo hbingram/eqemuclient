@@ -1,4 +1,5 @@
-#pragma once
+#ifndef GLOBAL_LOOT_MANAGER_H
+#define GLOBAL_LOOT_MANAGER_H
 
 #include <vector>
 #include <string>
@@ -57,3 +58,5 @@ public:
 	void ShowZoneGlobalLoot(Client *to) const;
 	void ShowNPCGlobalLoot(Client *to, NPC *who) const;
 };
+
+#endif /* !GLOBAL_LOOT_MANAGER_H */

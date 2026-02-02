@@ -17,14 +17,13 @@
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-#pragma once
+#ifndef COMMON_UF_STRUCTS_H
+#define COMMON_UF_STRUCTS_H
 
-#include "common/eq_packet_structs.h"
-#include "common/patches/uf_limits.h"
-#include "common/textures.h"
-#include "common/types.h"
 
-namespace UF { namespace structs {
+namespace UF
+{
+	namespace structs {
 
 
 static const uint32 BUFF_COUNT = 30;
@@ -33,7 +32,6 @@ static const uint32 BUFF_COUNT = 30;
 ** Compiler override to ensure
 ** byte aligned structures
 */
-#pragma pack(push)
 #pragma pack(1)
 
 struct LoginInfo_Struct {
@@ -4712,7 +4710,8 @@ enum UFBazaarTraderBuyerActions {
 	ReconcileItems  = 20
 };
 
-#pragma pack(pop)
+	}; /*structs*/
 
-} /*structs*/
-} /*UF*/
+}; /*UF*/
+
+#endif /*COMMON_UF_STRUCTS_H*/

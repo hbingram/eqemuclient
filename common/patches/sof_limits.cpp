@@ -19,7 +19,7 @@
 
 #include "sof_limits.h"
 
-#include "common/strings.h"
+#include "../strings.h"
 
 
 int16 SoF::invtype::GetInvTypeSize(int16 inv_type)

@@ -1,14 +1,14 @@
-#pragma once
+#ifndef EQEMU_TASK_MANAGER_H
+#define EQEMU_TASK_MANAGER_H
 
-#include "common/repositories/character_tasks_repository.h"
-#include "common/types.h"
-#include "zone/task_client_state.h"
-#include "zone/tasks.h"
-
-#include <algorithm>
+#include "tasks.h"
+#include "task_client_state.h"
+#include "../common/types.h"
+#include "../common/repositories/character_tasks_repository.h"
 #include <list>
-#include <string>
 #include <vector>
+#include <string>
+#include <algorithm>
 
 class Client;
 class Mob;
@@ -97,3 +97,6 @@ private:
 	void SendSharedTaskSelector(Client* client, Mob* mob, const std::vector<int>& tasks);
 	void SyncClientSharedTaskStateToLocal(Client *c);
 };
+
+
+#endif //EQEMU_TASK_MANAGER_H

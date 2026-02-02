@@ -1,8 +1,8 @@
-#include "qglobals.h"
+#include "../common/strings.h"
 
-#include "common/strings.h"
-#include "zone/client.h"
-#include "zone/zone.h"
+#include "qglobals.h"
+#include "client.h"
+#include "zone.h"
 
 void QGlobalCache::AddGlobal(uint32 id, QGlobal global)
 {

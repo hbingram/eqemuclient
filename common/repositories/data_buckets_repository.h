@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_DATA_BUCKETS_REPOSITORY_H
+#define EQEMU_DATA_BUCKETS_REPOSITORY_H
 
-#include "common/repositories/base/base_data_buckets_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_data_buckets_repository.h"
 
 class DataBucketsRepository: public BaseDataBucketsRepository {
 public:
@@ -46,3 +46,5 @@ public:
 	// Custom extended repository methods here
 
 };
+
+#endif //EQEMU_DATA_BUCKETS_REPOSITORY_H

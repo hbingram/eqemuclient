@@ -17,7 +17,8 @@
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-#pragma once
+#ifndef COMMON_PATCHES_H
+#define COMMON_PATCHES_H
 
 
 /*enum {
@@ -30,3 +31,5 @@ class EQStreamIdentifier;
 
 void RegisterAllPatches(EQStreamIdentifier &into);
 void ReloadAllPatches();
+
+#endif /*COMMON_PATCHES_H*/

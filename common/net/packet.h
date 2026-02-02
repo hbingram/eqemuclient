@@ -1,14 +1,12 @@
 #pragma once
 
-#include "common/util/memory_stream.h"
-
-#include "cereal/archives/binary.hpp"
-#include "cereal/cereal.hpp"
-
 #include <cstdint>
-#include <cstring>
-#include <stdexcept>
 #include <string>
+#include <stdexcept>
+#include <cstring>
+#include "../util/memory_stream.h"
+#include <cereal/cereal.hpp>
+#include <cereal/archives/binary.hpp>
 
 namespace EQ {
 	namespace Net {

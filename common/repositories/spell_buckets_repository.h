@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_SPELL_BUCKETS_REPOSITORY_H
+#define EQEMU_SPELL_BUCKETS_REPOSITORY_H
 
-#include "common/repositories/base/base_spell_buckets_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_spell_buckets_repository.h"
 
 class SpellBucketsRepository: public BaseSpellBucketsRepository {
 public:
@@ -46,3 +46,5 @@ public:
 	// Custom extended repository methods here
 
 };
+
+#endif //EQEMU_SPELL_BUCKETS_REPOSITORY_H

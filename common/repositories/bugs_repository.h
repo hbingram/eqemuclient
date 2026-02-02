@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_BUGS_REPOSITORY_H
+#define EQEMU_BUGS_REPOSITORY_H
 
-#include "common/repositories/base/base_bugs_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_bugs_repository.h"
 
 class BugsRepository: public BaseBugsRepository {
 public:
@@ -46,3 +46,5 @@ public:
 	// Custom extended repository methods here
 
 };
+
+#endif //EQEMU_BUGS_REPOSITORY_H

@@ -17,9 +17,10 @@
 
 */
 
-#pragma once
+#ifndef __ucsconfig_H
+#define __ucsconfig_H
 
-#include "common/eqemu_config.h"
+#include "../common/eqemu_config.h"
 
 class ucsconfig : public EQEmuConfig {
 public:
@@ -49,3 +50,6 @@ public:
 	}
 
 };
+
+#endif
+

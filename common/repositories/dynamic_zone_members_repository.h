@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_DYNAMIC_ZONE_MEMBERS_REPOSITORY_H
+#define EQEMU_DYNAMIC_ZONE_MEMBERS_REPOSITORY_H
 
-#include "common/repositories/base/base_dynamic_zone_members_repository.h"
-
-#include "common/database.h"
-#include "fmt/ranges.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_dynamic_zone_members_repository.h"
 
 class DynamicZoneMembersRepository: public BaseDynamicZoneMembersRepository {
 public:
@@ -176,3 +176,5 @@ public:
 		return results.Success() ? results.RowsAffected() : 0;
 	}
 };
+
+#endif //EQEMU_DYNAMIC_ZONE_MEMBERS_REPOSITORY_H

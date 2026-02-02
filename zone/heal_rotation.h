@@ -16,9 +16,11 @@
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
 
-#pragma once
 
-#include "zone/mob.h"
+#ifndef HEAL_ROTATION_H
+#define HEAL_ROTATION_H
+
+#include "mob.h"
 
 #define CASTING_CYCLE_MINIMUM_INTERVAL 1000
 #define CASTING_CYCLE_MINIMUM_INTERVAL_S 1
@@ -155,3 +157,5 @@ private:
 
 bool IsHealRotationMemberClass(uint8 class_id);
 bool IsHealRotationTargetMobType(Mob* target_mob);
+
+#endif

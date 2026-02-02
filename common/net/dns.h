@@ -1,9 +1,8 @@
 #pragma once
 
-#include "common/event/event_loop.h"
-
-#include <functional>
+#include "../event/event_loop.h"
 #include <string>
+#include <functional>
 
 namespace EQ
 {

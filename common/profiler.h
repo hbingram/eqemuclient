@@ -15,13 +15,13 @@
 	along with this program; if not, write to the Free Software
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
-
-#pragma once
+#ifndef PROFILER_H
+#define PROFILER_H
 
 #ifdef EQPROFILE
 
-#include "common/rdtsc.h"
-#include "common/types.h"
+#include "../common/rdtsc.h"
+#include "../common/types.h"
 
 class ScopedProfiler;
 
@@ -86,5 +86,7 @@ protected:
 #else	// else !EQPROFILE
 	//no profiling, dummy functions
 #define _GP(obj, pkg, name) ;
+
+#endif
 
 #endif

@@ -18,9 +18,10 @@
  *
  */
 
-#pragma once
+#ifndef EQEMU_PLATFORM_H
+#define EQEMU_PLATFORM_H
 
-#include <string>
+#include "iostream"
 
 enum EQEmuExePlatform
 {
@@ -46,3 +47,5 @@ int GetExecutablePlatformInt();
 std::string GetPlatformName();
 bool IsWorld();
 bool IsQueryServ();
+
+#endif

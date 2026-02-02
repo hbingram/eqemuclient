@@ -1,15 +1,14 @@
 #ifdef LUA_EQEMU
 
-#include "lua_bot.h"
-
-#include "zone/bot.h"
-#include "zone/lua_iteminst.h"
-#include "zone/lua_mob.h"
-#include "zone/lua_group.h"
-#include "zone/lua_item.h"
-
 #include "lua.hpp"
-#include "luabind/luabind.hpp"
+#include <luabind/luabind.hpp>
+
+#include "bot.h"
+#include "lua_bot.h"
+#include "lua_iteminst.h"
+#include "lua_mob.h"
+#include "lua_group.h"
+#include "lua_item.h"
 
 void Lua_Bot::AddBotItem(uint16 slot_id, uint32 item_id) {
 	Lua_Safe_Call_Void();
@@ -791,4 +790,4 @@ luabind::scope lua_register_bot() {
 	.def("Stand", (void(Lua_Bot::*)(void))&Lua_Bot::Stand);
 }
 
-#endif // LUA_EQEMU
+#endif

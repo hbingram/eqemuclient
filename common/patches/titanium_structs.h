@@ -17,15 +17,13 @@
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-#pragma once
-
-#include "common/eq_packet_structs.h"
-#include "common/patches/titanium_limits.h"
-#include "common/textures.h"
-#include "common/types.h"
+#ifndef COMMON_TITANIUM_STRUCTS_H
+#define COMMON_TITANIUM_STRUCTS_H
 
 
-namespace Titanium { namespace structs {
+namespace Titanium
+{
+	namespace structs {
 
 
 static const uint32 BUFF_COUNT = 25;
@@ -34,7 +32,6 @@ static const uint32 BUFF_COUNT = 25;
 ** Compiler override to ensure
 ** byte aligned structures
 */
-#pragma pack(push)
 #pragma pack(1)
 
 struct LoginInfo_Struct {
@@ -3777,7 +3774,8 @@ enum TiBazaarTraderBuyerActions {
 	ReconcileItems  = 20
 };
 
-#pragma pack(pop)
+	}; /*structs*/
 
-} /*structs*/
-} /*Titanium*/
+}; /*Titanium*/
+
+#endif /*COMMON_TITANIUM_STRUCTS_H*/

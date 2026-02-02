@@ -19,8 +19,7 @@
  */
 
 #include "zone_reload.h"
-
-#include "zone/quest_parser_collection.h"
+#include "quest_parser_collection.h"
 
 void ZoneReload::HotReloadQuests()
 {

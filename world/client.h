@@ -15,16 +15,18 @@
 	along with this program; if not, write to the Free Software
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
-
-#pragma once
-
-#include "common/eq_packet_structs.h"
-#include "common/inventory_profile.h"
-#include "common/linked_list.h"
-#include "common/timer.h"
-#include "world/cliententry.h"
+#ifndef CLIENT_H
+#define CLIENT_H
 
 #include <string>
+
+#include "../common/linked_list.h"
+#include "../common/timer.h"
+#include "../common/inventory_profile.h"
+//#include "zoneserver.h"
+
+#include "../common/eq_packet_structs.h"
+#include "cliententry.h"
 
 class EQApplicationPacket;
 class EQStreamInterface;
@@ -126,3 +128,5 @@ private:
 
 bool CheckCharCreateInfoSoF(CharCreate_Struct *cc);
 bool CheckCharCreateInfoTitanium(CharCreate_Struct *cc);
+
+#endif

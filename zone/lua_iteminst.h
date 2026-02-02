@@ -1,10 +1,10 @@
-#pragma once
-
+#ifndef EQEMU_LUA_ITEMINST_H
+#define EQEMU_LUA_ITEMINST_H
 #ifdef LUA_EQEMU
 
-#include "common/types.h"
-#include "zone/lua_ptr.h"
+#include "lua_ptr.h"
 
+// Forward declaration
 class Lua_Item;
 
 namespace EQ
@@ -111,4 +111,5 @@ private:
 	bool cloned_;
 };
 
-#endif // LUA_EQEMU
+#endif
+#endif

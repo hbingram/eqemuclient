@@ -19,7 +19,7 @@
 
 #include "sod_limits.h"
 
-#include "common/strings.h"
+#include "../strings.h"
 
 
 int16 SoD::invtype::GetInvTypeSize(int16 inv_type)

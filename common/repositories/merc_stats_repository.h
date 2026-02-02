@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_MERC_STATS_REPOSITORY_H
+#define EQEMU_MERC_STATS_REPOSITORY_H
 
-#include "common/repositories/base/base_merc_stats_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_merc_stats_repository.h"
 
 class MercStatsRepository: public BaseMercStatsRepository {
 public:
@@ -46,3 +46,5 @@ public:
 	// Custom extended repository methods here
 
 };
+
+#endif //EQEMU_MERC_STATS_REPOSITORY_H

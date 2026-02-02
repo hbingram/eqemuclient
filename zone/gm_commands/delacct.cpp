@@ -1,5 +1,5 @@
-#include "common/repositories/account_repository.h"
-#include "zone/client.h"
+#include "../client.h"
+#include "../../common/repositories/account_repository.h"
 
 void command_delacct(Client *c, const Seperator *sep)
 {

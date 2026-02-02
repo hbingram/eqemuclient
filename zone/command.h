@@ -1,11 +1,11 @@
-#pragma once
-
-#include "common/types.h"
-
-#include <string>
+#ifndef COMMAND_H
+#define COMMAND_H
 
 class Client;
 class Seperator;
+
+#include "../common/types.h"
+#include <string>
 
 #define    COMMAND_CHAR '#'
 
@@ -200,4 +200,8 @@ void command_zonebootup(Client *c, const Seperator *sep);
 void command_zoneshutdown(Client *c, const Seperator *sep);
 void command_zonevariable(Client *c, const Seperator *sep);
 void command_zsave(Client *c, const Seperator *sep);
+
+#include "bot.h"
 void command_bot(Client*c, const Seperator *sep);
+
+#endif

@@ -9,11 +9,11 @@
  * @docs https://eqemu.gitbook.io/server/in-development/developer-area/repositories
  */
 
-#pragma once
+#ifndef EQEMU_BASE_KEYRING_REPOSITORY_H
+#define EQEMU_BASE_KEYRING_REPOSITORY_H
 
-#include "common/database.h"
-#include "common/strings.h"
-
+#include "../../database.h"
+#include "../../strings.h"
 #include <ctime>
 
 
@@ -340,3 +340,5 @@ public:
 	}
 
 };
+
+#endif //EQEMU_BASE_KEYRING_REPOSITORY_H

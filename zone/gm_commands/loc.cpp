@@ -1,5 +1,5 @@
-#include "zone/client.h"
-#include "zone/water_map.h"
+#include "../client.h"
+#include "../water_map.h"
 
 void command_loc(Client *c, const Seperator *sep)
 {

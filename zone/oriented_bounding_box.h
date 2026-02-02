@@ -1,7 +1,8 @@
-#pragma once
+#ifndef EQEMU_ORIENTED_BOUNDNG_BOX_H
+#define EQEMU_ORIENTED_BOUNDNG_BOX_H
 
-#include "glm/vec3.hpp"
-#include "glm/mat4x4.hpp"
+#include <glm/vec3.hpp>
+#include <glm/mat4x4.hpp>
 
 class OrientedBoundingBox
 {
@@ -18,3 +19,5 @@ private:
 	glm::mat4 transformation;
 	glm::mat4 inverted_transformation;
 };
+
+#endif

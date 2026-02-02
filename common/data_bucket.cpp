@@ -1,18 +1,25 @@
-#include "data_bucket.h"
-
-#include "common/data_bucket.h"
-#include "common/database.h"
-#include "common/json/json.hpp"
-
-#include <cctype>
+#include "../common/data_bucket.h"
+#include "database.h"
 #include <ctime>
+#include <cctype>
+#include "../common/json/json.hpp"
 
 using json = nlohmann::json;
 
 const std::string                               NESTED_KEY_DELIMITER = ".";
 std::vector<DataBucketsRepository::DataBuckets> g_data_bucket_cache  = {};
 
-void DataBucket::SetData(SharedDatabase* database, const std::string &bucket_key, const std::string &bucket_value, std::string expires_time)
+#if defined(ZONE)
+#include "../zone/zonedb.h"
+extern ZoneDatabase database;
+#elif defined(WORLD)
+#include "../world/worlddb.h"
+extern WorldDatabase database;
+#else
+#error "You must define either ZONE or WORLD"
+#endif
+
+void DataBucket::SetData(const std::string &bucket_key, const std::string &bucket_value, std::string expires_time)
 {
 	auto k = DataBucketKey{
 		.key = bucket_key,
@@ -20,10 +27,10 @@ void DataBucket::SetData(SharedDatabase* database, const std::string &bucket_key
 		.expires = expires_time,
 	};
 
-	DataBucket::SetData(database, k);
+	DataBucket::SetData(k);
 }
 
-void DataBucket::SetData(SharedDatabase *database, const DataBucketKey &k_)
+void DataBucket::SetData(const DataBucketKey &k_)
 {
 	DataBucketKey k = k_; // copy the key so we can modify it
 	bool is_nested = k.key.find(NESTED_KEY_DELIMITER) != std::string::npos;
@@ -32,7 +39,7 @@ void DataBucket::SetData(SharedDatabase *database, const DataBucketKey &k_)
 	}
 
 	auto b = DataBucketsRepository::NewEntity();
-	auto r = GetData(database, k, true);
+	auto r = GetData(k, true);
 	// if we have an entry, use it
 	if (r.id > 0) {
 		b = r;
@@ -142,10 +149,10 @@ void DataBucket::SetData(SharedDatabase *database, const DataBucketKey &k_)
 			}
 		}
 
-		DataBucketsRepository::UpdateOne(*database, b);
+		DataBucketsRepository::UpdateOne(database, b);
 	}
 	else {
-		b = DataBucketsRepository::InsertOne(*database, b);
+		b = DataBucketsRepository::InsertOne(database, b);
 
 		// add to cache if it doesn't exist
 		if (CanCache(k) && !ExistsInCache(b)) {
@@ -155,9 +162,9 @@ void DataBucket::SetData(SharedDatabase *database, const DataBucketKey &k_)
 	}
 }
 
-std::string DataBucket::GetData(SharedDatabase* database, const std::string &bucket_key)
+std::string DataBucket::GetData(const std::string &bucket_key)
 {
-	return GetData(database, DataBucketKey{.key = bucket_key}).value;
+	return GetData(DataBucketKey{.key = bucket_key}).value;
 }
 
 DataBucketsRepository::DataBuckets DataBucket::ExtractNestedValue(
@@ -207,7 +214,7 @@ DataBucketsRepository::DataBuckets DataBucket::ExtractNestedValue(
 // if the bucket doesn't exist, it will be added to the cache as a miss
 // if ignore_misses_cache is true, the bucket will not be added to the cache as a miss
 // the only place we should be ignoring the misses cache is on the initial read during SetData
-DataBucketsRepository::DataBuckets DataBucket::GetData(SharedDatabase* database, const DataBucketKey &k_, bool ignore_misses_cache)
+DataBucketsRepository::DataBuckets DataBucket::GetData(const DataBucketKey &k_, bool ignore_misses_cache)
 {
 	DataBucketKey k = k_; // Copy the key so we can modify it
 
@@ -237,7 +244,7 @@ DataBucketsRepository::DataBuckets DataBucket::GetData(SharedDatabase* database,
 			if (CheckBucketMatch(e, k)) {
 				if (e.expires > 0 && e.expires < std::time(nullptr)) {
 					LogDataBuckets("Attempted to read expired key [{}] removing from cache", e.key_);
-					DeleteData(database, k);
+					DeleteData(k);
 					return DataBucketsRepository::NewEntity();
 				}
 
@@ -254,7 +261,7 @@ DataBucketsRepository::DataBuckets DataBucket::GetData(SharedDatabase* database,
 
 	// Fetch the value from the database
 	auto r = DataBucketsRepository::GetWhere(
-		*database,
+		database,
 		fmt::format(
 			" {} `key` = '{}' LIMIT 1",
 			DataBucket::GetScopedDbFilters(k),
@@ -303,7 +310,7 @@ DataBucketsRepository::DataBuckets DataBucket::GetData(SharedDatabase* database,
 
 	// If the entry has expired, delete it
 	if (bucket.expires > 0 && bucket.expires < static_cast<long long>(std::time(nullptr))) {
-		DeleteData(database, k);
+		DeleteData(k);
 		return DataBucketsRepository::NewEntity();
 	}
 
@@ -330,22 +337,22 @@ DataBucketsRepository::DataBuckets DataBucket::GetData(SharedDatabase* database,
 	return bucket;
 }
 
-std::string DataBucket::GetDataExpires(SharedDatabase* database, const std::string &bucket_key)
+std::string DataBucket::GetDataExpires(const std::string &bucket_key)
 {
-	return GetDataExpires(database, DataBucketKey{.key = bucket_key});
+	return GetDataExpires(DataBucketKey{.key = bucket_key});
 }
 
-std::string DataBucket::GetDataRemaining(SharedDatabase* database, const std::string &bucket_key)
+std::string DataBucket::GetDataRemaining(const std::string &bucket_key)
 {
-	return GetDataRemaining(database, DataBucketKey{.key = bucket_key});
+	return GetDataRemaining(DataBucketKey{.key = bucket_key});
 }
 
-bool DataBucket::DeleteData(SharedDatabase* database, const std::string &bucket_key)
+bool DataBucket::DeleteData(const std::string &bucket_key)
 {
-	return DeleteData(database, DataBucketKey{.key = bucket_key});
+	return DeleteData(DataBucketKey{.key = bucket_key});
 }
 
-bool DataBucket::DeleteData(SharedDatabase* database, const DataBucketKey &k)
+bool DataBucket::DeleteData(const DataBucketKey &k)
 {
 	bool is_nested_key = k.key.find(NESTED_KEY_DELIMITER) != std::string::npos;
 
@@ -367,7 +374,7 @@ bool DataBucket::DeleteData(SharedDatabase* database, const DataBucketKey &k)
 
 		// Regular key deletion, no nesting involved
 		return DataBucketsRepository::DeleteWhere(
-			*database,
+			database,
 			fmt::format("{} `key` = '{}'", DataBucket::GetScopedDbFilters(k), k.key)
 		);
 	}
@@ -377,7 +384,7 @@ bool DataBucket::DeleteData(SharedDatabase* database, const DataBucketKey &k)
 	DataBucketKey top_level_k = k;
 	top_level_k.key = top_level_key;
 
-	auto r = GetData(database, top_level_k);
+	auto r = GetData(top_level_k);
 	if (r.id == 0 || r.value.empty() || !Strings::IsValidJson(r.value)) {
 		LogDataBuckets("Attempted to delete nested key [{}] but parent key [{}] does not exist or is invalid JSON", k.key, top_level_key);
 		return false;
@@ -437,14 +444,14 @@ bool DataBucket::DeleteData(SharedDatabase* database, const DataBucketKey &k)
 		}
 
 		return DataBucketsRepository::DeleteWhere(
-			*database,
+			database,
 			fmt::format("{} `key` = '{}'", DataBucket::GetScopedDbFilters(k), top_level_key)
 		);
 	}
 
 	// Otherwise, update the existing JSON without the deleted key
 	r.value = json_value.dump();
-	DataBucketsRepository::UpdateOne(*database, r);
+	DataBucketsRepository::UpdateOne(database, r);
 
 	// Update cache
 	if (CanCache(k)) {
@@ -459,7 +466,7 @@ bool DataBucket::DeleteData(SharedDatabase* database, const DataBucketKey &k)
 	return true;
 }
 
-std::string DataBucket::GetDataExpires(SharedDatabase* database, const DataBucketKey &k)
+std::string DataBucket::GetDataExpires(const DataBucketKey &k)
 {
 	LogDataBuckets(
 		"Getting bucket expiration key [{}] bot_id [{}] account_id [{}] character_id [{}] npc_id [{}]",
@@ -470,7 +477,7 @@ std::string DataBucket::GetDataExpires(SharedDatabase* database, const DataBucke
 		k.npc_id
 	);
 
-	auto r = GetData(database, k);
+	auto r = GetData(k);
 	if (r.id == 0) {
 		return {};
 	}
@@ -478,7 +485,7 @@ std::string DataBucket::GetDataExpires(SharedDatabase* database, const DataBucke
 	return std::to_string(r.expires);
 }
 
-std::string DataBucket::GetDataRemaining(SharedDatabase* database, const DataBucketKey &k)
+std::string DataBucket::GetDataRemaining(const DataBucketKey &k)
 {
 	LogDataBuckets(
 		"Getting bucket remaining key [{}] bot_id [{}] account_id [{}] character_id [{}] npc_id [{}] bot_id [{}] zone_id [{}] instance_id [{}]",
@@ -492,7 +499,7 @@ std::string DataBucket::GetDataRemaining(SharedDatabase* database, const DataBuc
 		k.instance_id
 	);
 
-	auto r = GetData(database, k);
+	auto r = GetData(k);
 	if (r.id == 0) {
 		return "0";
 	}
@@ -558,10 +565,10 @@ bool DataBucket::CheckBucketMatch(const DataBucketsRepository::DataBuckets &dbe,
 	);
 }
 
-void DataBucket::LoadZoneCache(SharedDatabase* database, uint16 zone_id, uint16 instance_id)
+void DataBucket::LoadZoneCache(uint16 zone_id, uint16 instance_id)
 {
 	const auto &l = DataBucketsRepository::GetWhere(
-		*database,
+		database,
 		fmt::format(
 			"zone_id = {} AND instance_id = {} AND (`expires` > {} OR `expires` = 0)",
 			zone_id,
@@ -601,7 +608,7 @@ void DataBucket::LoadZoneCache(SharedDatabase* database, uint16 zone_id, uint16 
 	);
 }
 
-void DataBucket::BulkLoadEntitiesToCache(SharedDatabase* database, DataBucketLoadType::Type t, std::vector<uint32> ids)
+void DataBucket::BulkLoadEntitiesToCache(DataBucketLoadType::Type t, std::vector<uint32> ids)
 {
 	if (ids.empty()) {
 		return;
@@ -646,7 +653,7 @@ void DataBucket::BulkLoadEntitiesToCache(SharedDatabase* database, DataBucketLoa
 	}
 
 	const auto &l = DataBucketsRepository::GetWhere(
-		*database,
+		database,
 		fmt::format(
 			"{} IN ({}) AND (`expires` > {} OR `expires` = 0)",
 			column,

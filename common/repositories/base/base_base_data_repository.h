@@ -6,14 +6,14 @@
  * Any modifications to base repositories are to be made by the generator only
  *
  * @generator ./utils/scripts/generators/repository-generator.pl
- * @docs https://docs.eqemu.dev/developer/repositories
+ * @docs https://docs.eqemu.io/developer/repositories
  */
 
-#pragma once
+#ifndef EQEMU_BASE_BASE_DATA_REPOSITORY_H
+#define EQEMU_BASE_BASE_DATA_REPOSITORY_H
 
-#include "common/database.h"
-#include "common/strings.h"
-
+#include "../../database.h"
+#include "../../strings.h"
 #include <ctime>
 
 class BaseBaseDataRepository {
@@ -484,3 +484,5 @@ public:
 		return (results.Success() ? results.RowsAffected() : 0);
 	}
 };
+
+#endif //EQEMU_BASE_BASE_DATA_REPOSITORY_H

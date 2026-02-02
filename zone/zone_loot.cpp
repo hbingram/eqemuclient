@@ -1,11 +1,9 @@
-#include "zone.h"
-
-#include "common/repositories/lootdrop_entries_repository.h"
-#include "common/repositories/lootdrop_repository.h"
-#include "common/repositories/loottable_entries_repository.h"
-#include "common/repositories/loottable_repository.h"
-
 #include <vector>
+#include "zone.h"
+#include "../common/repositories/loottable_repository.h"
+#include "../common/repositories/loottable_entries_repository.h"
+#include "../common/repositories/lootdrop_repository.h"
+#include "../common/repositories/lootdrop_entries_repository.h"
 
 void Zone::LoadLootTables(const std::vector<uint32> in_loottable_ids)
 {

@@ -1,11 +1,12 @@
-#include "zone/client.h"
-#include "zone/doors.h"
-#include "zone/guild_mgr.h"
-#include "zone/queryserv.h"
-#include "zone/worldserver.h"
+#include "../client.h"
+#include "../worldserver.h"
+#include "../queryserv.h"
 
 extern WorldServer worldserver;
 extern QueryServ  *QServ;
+
+#include "../guild_mgr.h"
+#include "../doors.h"
 
 void SendGuildSubCommands(Client* c)
 {

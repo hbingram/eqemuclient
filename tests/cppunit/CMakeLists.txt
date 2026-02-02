@@ -1,6 +1,6 @@
-cmake_minimum_required(VERSION 3.20.0)
+CMAKE_MINIMUM_REQUIRED(VERSION 3.2)
 
-set(cppunit_sources
+SET(cppunit_sources
 	collectoroutput.cpp
 	compileroutput.cpp
 	htmloutput.cpp
@@ -12,7 +12,7 @@ set(cppunit_sources
 	utils.cpp
 )
 
-set(cppunit_headers
+SET(cppunit_headers
 	cpptest-assert.h
 	cpptest-collectoroutput.h
 	cpptest-compileroutput.h
@@ -28,12 +28,11 @@ set(cppunit_headers
 	winconfig.h
 )
 
-add_library(cppunit ${cppunit_sources} ${cppunit_headers})
+ADD_LIBRARY(cppunit ${cppunit_sources} ${cppunit_headers})
 
 
-if(UNIX)
-	add_definitions(-fPIC)
-endif()
+IF(UNIX)
+	ADD_DEFINITIONS(-fPIC)
+ENDIF(UNIX)
 
-set(LIBRARY_OUTPUT_PATH ../../bin)
-set_property(TARGET cppunit PROPERTY FOLDER contrib)
+SET(LIBRARY_OUTPUT_PATH ../../bin)

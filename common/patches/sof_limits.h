@@ -17,11 +17,12 @@
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-#pragma once
+#ifndef COMMON_SOF_LIMITS_H
+#define COMMON_SOF_LIMITS_H
 
-#include "common/emu_versions.h"
-#include "common/skills.h"
-#include "common/types.h"
+#include "../types.h"
+#include "../emu_versions.h"
+#include "../skills.h"
 
 
 namespace SoF
@@ -343,4 +344,6 @@ namespace SoF
 
 	} /*spells*/
 
-} /*SoF*/
+}; /*SoF*/
+
+#endif /*COMMON_SOF_LIMITS_H*/

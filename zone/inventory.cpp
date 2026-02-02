@@ -16,18 +16,18 @@
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
 
-#include "client.h"
+#include "../common/global_define.h"
+#include "../common/eqemu_logsys.h"
 
-#include "common/eqemu_logsys.h"
-#include "common/events/player_event_logs.h"
-#include "common/evolving_items.h"
-#include "common/repositories/character_corpse_items_repository.h"
-#include "common/strings.h"
-#include "zone/bot.h"
-#include "zone/queryserv.h"
-#include "zone/quest_parser_collection.h"
-#include "zone/worldserver.h"
-#include "zone/zonedb.h"
+#include "../common/strings.h"
+#include "quest_parser_collection.h"
+#include "worldserver.h"
+#include "zonedb.h"
+#include "../common/events/player_event_logs.h"
+#include "bot.h"
+#include "../common/evolving_items.h"
+#include "../common/repositories/character_corpse_items_repository.h"
+#include "queryserv.h"
 
 extern WorldServer worldserver;
 extern QueryServ  *QServ;
@@ -4698,8 +4698,7 @@ bool Client::PutItemInInventoryWithStacking(EQ::ItemInstance *inst)
 			return true;
 		}
 	}
-	// Protect equipment slots (0-22) from being overwritten
-	if (free_id != INVALID_INDEX && !EQ::ValueWithin(free_id, EQ::invslot::EQUIPMENT_BEGIN, EQ::invslot::EQUIPMENT_END)) {
+	if (free_id != INVALID_INDEX) {
 		if (PutItemInInventory(free_id, *inst, true)) {
 			return true;
 		}

@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_CHARACTER_DATA_REPOSITORY_H
+#define EQEMU_CHARACTER_DATA_REPOSITORY_H
 
-#include "common/repositories/base/base_character_data_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_character_data_repository.h"
 
 
 
@@ -208,3 +208,5 @@ public:
 		return Strings::ToUnsignedInt(row[0]);
 	}
 };
+
+#endif //EQEMU_CHARACTER_DATA_REPOSITORY_H

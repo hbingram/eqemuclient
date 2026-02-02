@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_LOGIN_SERVER_ADMINS_REPOSITORY_H
+#define EQEMU_LOGIN_SERVER_ADMINS_REPOSITORY_H
 
-#include "common/repositories/base/base_login_server_admins_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_login_server_admins_repository.h"
 
 class LoginServerAdminsRepository : public BaseLoginServerAdminsRepository {
 public:
@@ -24,3 +24,5 @@ public:
 		return NewEntity();
 	}
 };
+
+#endif //EQEMU_LOGIN_SERVER_ADMINS_REPOSITORY_H

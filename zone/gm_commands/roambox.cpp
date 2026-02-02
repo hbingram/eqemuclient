@@ -1,5 +1,5 @@
-#include "zone/client.h"
-#include "zone/groups.h"
+#include "../client.h"
+#include "../groups.h"
 
 void command_roambox(Client *c, const Seperator *sep)
 {

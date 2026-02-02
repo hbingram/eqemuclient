@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_GUILD_PERMISSIONS_REPOSITORY_H
+#define EQEMU_GUILD_PERMISSIONS_REPOSITORY_H
 
-#include "common/repositories/base/base_guild_permissions_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_guild_permissions_repository.h"
 
 class GuildPermissionsRepository: public BaseGuildPermissionsRepository {
 public:
@@ -71,3 +71,5 @@ public:
 		return all_entries;
 	}
 };
+
+#endif //EQEMU_GUILD_PERMISSIONS_REPOSITORY_H

@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_CHAR_CREATE_COMBINATIONS_REPOSITORY_H
+#define EQEMU_CHAR_CREATE_COMBINATIONS_REPOSITORY_H
 
-#include "common/repositories/base/base_char_create_combinations_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_char_create_combinations_repository.h"
 
 class CharCreateCombinationsRepository: public BaseCharCreateCombinationsRepository {
 public:
@@ -46,3 +46,5 @@ public:
 	// Custom extended repository methods here
 
 };
+
+#endif //EQEMU_CHAR_CREATE_COMBINATIONS_REPOSITORY_H

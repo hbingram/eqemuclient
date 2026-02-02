@@ -15,10 +15,9 @@
 	along with this program; if not, write to the Free Software
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
-
+#include "../common/global_define.h"
+#include "../common/eqemu_logsys.h"
 #include "world_config.h"
-
-#include "common/eqemu_logsys.h"
 
 WorldConfig *WorldConfig::_world_config = nullptr;
 
@@ -32,3 +31,4 @@ std::string WorldConfig::GetByName(const std::string &var_name) const
 	}
 	return (EQEmuConfig::GetByName(var_name));
 }
+

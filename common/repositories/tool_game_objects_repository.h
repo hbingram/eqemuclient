@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_TOOL_GAME_OBJECTS_REPOSITORY_H
+#define EQEMU_TOOL_GAME_OBJECTS_REPOSITORY_H
 
-#include "common/repositories/base/base_tool_game_objects_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_tool_game_objects_repository.h"
 
 class ToolGameObjectsRepository: public BaseToolGameObjectsRepository {
 public:
@@ -46,3 +46,5 @@ public:
 	// Custom extended repository methods here
 
 };
+
+#endif //EQEMU_TOOL_GAME_OBJECTS_REPOSITORY_H

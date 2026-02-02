@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_GUILD_BANK_REPOSITORY_H
+#define EQEMU_GUILD_BANK_REPOSITORY_H
 
-#include "common/repositories/base/base_guild_bank_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_guild_bank_repository.h"
 
 class GuildBankRepository: public BaseGuildBankRepository {
 public:
@@ -46,3 +46,5 @@ public:
 	// Custom extended repository methods here
 
 };
+
+#endif //EQEMU_GUILD_BANK_REPOSITORY_H

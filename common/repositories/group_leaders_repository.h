@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_GROUP_LEADERS_REPOSITORY_H
+#define EQEMU_GROUP_LEADERS_REPOSITORY_H
 
-#include "common/repositories/base/base_group_leaders_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_group_leaders_repository.h"
 
 class GroupLeadersRepository: public BaseGroupLeadersRepository {
 public:
@@ -67,3 +67,5 @@ public:
 		return UpdateOne(db, m);
 	}
 };
+
+#endif //EQEMU_GROUP_LEADERS_REPOSITORY_H

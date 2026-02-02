@@ -15,17 +15,15 @@
 	along with this program; if not, write to the Free Software
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
-
-#pragma once
-
-#include "common/types.h"
-
-#include <map>
-#include <string>
+#ifndef _EQSTREAM_LOCATOR_H
+#define _EQSTREAM_LOCATOR_H
 
 /*
 This did not turn out nearly as nice as I hoped.
 */
+
+#include <map>
+#include <string>
 
 class EQStreamInfo {
 public:
@@ -170,3 +168,5 @@ public:
 protected:
 	std::map<const EQStreamInfo, T *> streams;
 };
+
+#endif

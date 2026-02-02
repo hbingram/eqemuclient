@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_GUILDS_REPOSITORY_H
+#define EQEMU_GUILDS_REPOSITORY_H
 
-#include "common/repositories/base/base_guilds_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_guilds_repository.h"
 
 class GuildsRepository : public BaseGuildsRepository {
 public:
@@ -58,3 +58,5 @@ public:
 		return UpdateOne(db, g);
 	}
 };
+
+#endif //EQEMU_GUILDS_REPOSITORY_H

@@ -2,8 +2,8 @@
 
 #ifdef LUA_EQEMU
 
-#include "zone/common.h"
-#include "zone/lua_ptr.h"
+#include "lua_ptr.h"
+#include "common.h"
 
 struct StatBonuses;
 
@@ -284,4 +284,4 @@ public:
 	int32 GetReduceTradeskillFail(int idx) const;
 };
 
-#endif // LUA_EQEMU
+#endif

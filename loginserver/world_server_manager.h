@@ -1,10 +1,12 @@
-#pragma once
+#ifndef EQEMU_SERVERMANAGER_H
+#define EQEMU_SERVERMANAGER_H
 
-#include "common/net/servertalk_server.h"
-#include "common/packet_dump.h"
-#include "loginserver/client.h"
-#include "loginserver/world_server.h"
-
+#include "../common/global_define.h"
+#include "../common/servertalk.h"
+#include "../common/packet_dump.h"
+#include "../common/net/servertalk_server.h"
+#include "world_server.h"
+#include "client.h"
 #include <list>
 
 class WorldServerManager {
@@ -24,4 +26,8 @@ public:
 private:
 	std::unique_ptr<EQ::Net::ServertalkServer> m_server_connection;
 	std::list<std::unique_ptr<WorldServer>>    m_world_servers;
+
 };
+
+#endif
+

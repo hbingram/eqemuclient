@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_CONTENT_FLAGS_REPOSITORY_H
+#define EQEMU_CONTENT_FLAGS_REPOSITORY_H
 
-#include "common/repositories/base/base_content_flags_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_content_flags_repository.h"
 
 class ContentFlagsRepository: public BaseContentFlagsRepository {
 public:
@@ -46,3 +46,5 @@ public:
 	// Custom extended repository methods here
 
 };
+
+#endif //EQEMU_CONTENT_FLAGS_REPOSITORY_H

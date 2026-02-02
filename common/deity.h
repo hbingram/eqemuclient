@@ -17,10 +17,10 @@
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA  02111-1307  USA
 */
 
-#pragma once
+#ifndef COMMON_DEITY_H
+#define COMMON_DEITY_H
 
-#include "common/types.h"
-
+#include "types.h"
 #include <map>
 #include <string>
 #include <limits>
@@ -113,3 +113,5 @@ static std::map<uint32, uint32> deity_bitmasks = {
 	{ Deity::Tunare,        Deity::Bitmask::Tunare },
 	{ Deity::Veeshan,       Deity::Bitmask::Veeshan }
 };
+
+#endif /* COMMON_DEITY_H */

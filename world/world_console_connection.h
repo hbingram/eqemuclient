@@ -15,11 +15,10 @@
 	along with this program; if not, write to the Free Software
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
-
 #pragma once
 
-#include "common/net/console_server_connection.h"
-#include "world/world_tcp_connection.h"
+#include "world_tcp_connection.h"
+#include "../common/net/console_server_connection.h"
 
 class WorldConsoleTCPConnection : public WorldTCPConnection
 {
@@ -34,3 +33,4 @@ public:
 private:
 	EQ::Net::ConsoleServerConnection *m_connection;
 };
+

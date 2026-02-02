@@ -1,12 +1,10 @@
 #ifdef LUA_EQEMU
 
+#include <luabind/luabind.hpp>
+#include <luabind/object.hpp>
+
+#include "masterentity.h"
 #include "lua_packet.h"
-
-#include "zone/masterentity.h"
-
-#include "luabind/luabind.hpp"
-#include "luabind/object.hpp"
-
 
 struct Opcodes { };
 

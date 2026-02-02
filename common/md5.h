@@ -1,9 +1,9 @@
-#pragma once
+#ifndef MD5_H
+#define MD5_H
+#include "../common/types.h"
 
-#include "common/types.h"
 
-class MD5
-{
+class MD5 {
 public:
 	struct MD5Context {
 		uint32 hash[4];
@@ -42,3 +42,4 @@ private:
 	static void Transform(uint32 hash[4], const uint32 input[16]);
 	char	pMD5String[33];
 };
+#endif

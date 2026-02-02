@@ -1,17 +1,15 @@
-#include "database_update.h"
-
-#include "common/database.h"
-#include "common/database/database_dump_service.h"
-#include "common/database/database_update_manifest_bots.h"
-#include "common/database/database_update_manifest_custom.h"
-#include "common/database/database_update_manifest.h"
-#include "common/eqemu_logsys.h"
-#include "common/http/httplib.h"
-#include "common/rulesys.h"
-#include "common/strings.h"
-
 #include <filesystem>
+#include "database_update.h"
+#include "../eqemu_logsys.h"
+#include "../database.h"
+#include "../strings.h"
+#include "../rulesys.h"
+#include "../http/httplib.h"
 
+#include "database_update_manifest.cpp"
+#include "database_update_manifest_custom.cpp"
+#include "database_update_manifest_bots.cpp"
+#include "database_dump_service.h"
 
 constexpr int BREAK_LENGTH = 70;
 

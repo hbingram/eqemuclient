@@ -1,5 +1,5 @@
-#include "zone/bot.h"
-#include "zone/client.h"
+#include "../bot.h"
+#include "../client.h"
 
 void command_petitems(Client *c, const Seperator *sep)
 {

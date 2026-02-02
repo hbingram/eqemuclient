@@ -18,17 +18,18 @@
  *
  */
 
-#pragma once
+#ifndef SHAREDDB_H_
+#define SHAREDDB_H_
 
-#include "common/database.h"
-#include "common/fixed_memory_hash_set.h"
-#include "common/fixed_memory_variable_hash_set.h"
-#include "common/repositories/character_evolving_items_repository.h"
-#include "common/repositories/command_subsettings_repository.h"
-#include "common/repositories/items_evolving_details_repository.h"
-#include "common/say_link.h"
-#include "common/skills.h"
-#include "common/spdat.h"
+#include "database.h"
+#include "skills.h"
+#include "spdat.h"
+#include "fixed_memory_hash_set.h"
+#include "fixed_memory_variable_hash_set.h"
+#include "say_link.h"
+#include "repositories/command_subsettings_repository.h"
+#include "repositories/items_evolving_details_repository.h"
+#include "../common/repositories/character_evolving_items_repository.h"
 
 #include <list>
 #include <map>
@@ -202,3 +203,5 @@ protected:
 	uint32 m_shared_items_count = 0;
 	uint32 m_shared_spells_count = 0;
 };
+
+#endif /*SHAREDDB_H_*/

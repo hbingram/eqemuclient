@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_TASKS_REPOSITORY_H
+#define EQEMU_TASKS_REPOSITORY_H
 
-#include "common/repositories/base/base_tasks_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_tasks_repository.h"
 
 class TasksRepository: public BaseTasksRepository {
 public:
@@ -46,3 +46,5 @@ public:
 	// Custom extended repository methods here
 
 };
+
+#endif //EQEMU_TASKS_REPOSITORY_H

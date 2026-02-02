@@ -18,14 +18,13 @@
 */
 
 #include "profanity_manager.h"
+#include "eqemu_logsys.h"
+#include "dbcore.h"
+#include "strings.h"
 
-#include "common/dbcore.h"
-#include "common/eqemu_logsys.h"
-#include "common/strings.h"
-
-#include <algorithm>
-#include <cctype>
+#include <ctype.h>
 #include <cstring>
+#include <algorithm>
 
 
 static std::list<std::string> profanity_list;

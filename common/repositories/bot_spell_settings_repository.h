@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_BOT_SPELL_SETTINGS_REPOSITORY_H
+#define EQEMU_BOT_SPELL_SETTINGS_REPOSITORY_H
 
-#include "common/repositories/base/base_bot_spell_settings_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_bot_spell_settings_repository.h"
 
 class BotSpellSettingsRepository: public BaseBotSpellSettingsRepository {
 public:
@@ -71,3 +71,5 @@ public:
 		return (results.Success() ? true : false);
 	}
 };
+
+#endif //EQEMU_BOT_SPELL_SETTINGS_REPOSITORY_H

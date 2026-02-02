@@ -1,12 +1,10 @@
+#include "../common/database.h"
+#include "../common/strings.h"
 #include "server_event_scheduler.h"
-
-#include "common/cron/croncpp.h"
-#include "common/database.h"
-#include "common/strings.h"
-
+#include "../common/cron/croncpp.h"
 #include <chrono>
-#include <ctime>
 #include <iostream>
+#include <time.h>
 
 ServerEventScheduler::ServerEventScheduler()
 {

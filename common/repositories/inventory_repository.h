@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_INVENTORY_REPOSITORY_H
+#define EQEMU_INVENTORY_REPOSITORY_H
 
-#include "common/repositories/base/base_inventory_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_inventory_repository.h"
 
 class InventoryRepository: public BaseInventoryRepository {
 public:
@@ -46,3 +46,5 @@ public:
 	// Custom extended repository methods here
 
 };
+
+#endif //EQEMU_INVENTORY_REPOSITORY_H

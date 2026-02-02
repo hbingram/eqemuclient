@@ -15,13 +15,13 @@
 	along with this program; if not, write to the Free Software
 	Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 */
+#ifndef WORLDDB_H_
+#define WORLDDB_H_
 
-#pragma once
-
-#include "common/eq_packet.h"
-#include "common/repositories/character_data_repository.h"
-#include "common/repositories/inventory_repository.h"
-#include "common/shareddb.h"
+#include "../common/shareddb.h"
+#include "../common/eq_packet.h"
+#include "../common/repositories/inventory_repository.h"
+#include "../common/repositories/character_data_repository.h"
 
 struct PlayerProfile_Struct;
 struct CharCreate_Struct;
@@ -54,3 +54,5 @@ private:
 
 extern WorldDatabase database;
 extern WorldDatabase content_db;
+
+#endif /*WORLDDB_H_*/

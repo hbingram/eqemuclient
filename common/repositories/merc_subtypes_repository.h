@@ -1,9 +1,9 @@
-#pragma once
+#ifndef EQEMU_MERC_SUBTYPES_REPOSITORY_H
+#define EQEMU_MERC_SUBTYPES_REPOSITORY_H
 
-#include "common/repositories/base/base_merc_subtypes_repository.h"
-
-#include "common/database.h"
-#include "common/strings.h"
+#include "../database.h"
+#include "../strings.h"
+#include "base/base_merc_subtypes_repository.h"
 
 class MercSubtypesRepository: public BaseMercSubtypesRepository {
 public:
@@ -66,3 +66,5 @@ public:
 		return l[0].merc_subtype_id;
 	}
 };
+
+#endif //EQEMU_MERC_SUBTYPES_REPOSITORY_H

@@ -1,13 +1,11 @@
 #ifdef LUA_EQEMU
 
 #include "lua_expedition.h"
-
-#include "common/zone_store.h"
-#include "zone/dynamic_zone.h"
-
+#include "dynamic_zone.h"
+#include "../common/zone_store.h"
 #include "lua.hpp"
-#include "luabind/luabind.hpp"
-#include "luabind/object.hpp"
+#include <luabind/luabind.hpp>
+#include <luabind/object.hpp>
 
 void Lua_Expedition::AddLockout(std::string event_name, uint32_t seconds) {
 	Lua_Safe_Call_Void();
