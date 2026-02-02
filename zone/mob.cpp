@@ -4464,6 +4464,7 @@ void Mob::SetAppearance(EmuAppearance app, bool ignore_self) {
 bool Mob::UpdateActiveLight()
 {
 	uint8 old_light_level = m_Light.Level[EQ::lightsource::LightActive];
+	uint8 old_light_type  = m_Light.Type[EQ::lightsource::LightActive];
 
 	m_Light.Type[EQ::lightsource::LightActive] = 0;
 	m_Light.Level[EQ::lightsource::LightActive] = 0;
@@ -4474,7 +4475,10 @@ bool Mob::UpdateActiveLight()
 
 	m_Light.Level[EQ::lightsource::LightActive] = EQ::lightsource::TypeToLevel(m_Light.Type[EQ::lightsource::LightActive]);
 
-	return (m_Light.Level[EQ::lightsource::LightActive] != old_light_level);
+	return (
+		m_Light.Level[EQ::lightsource::LightActive] != old_light_level ||
+		m_Light.Type[EQ::lightsource::LightActive] != old_light_type
+	);
 }
 
 void Mob::SendWearChangeAndLighting(int8 last_texture) {
