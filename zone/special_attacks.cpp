@@ -601,7 +601,7 @@ void Client::OPCombatAbility(const CombatAbility_Struct *ca_atk)
 	if (
 		ca_atk->m_atk == 100 &&
 		ca_atk->m_skill == EQ::skills::SkillBackstab &&
-		class_id == Class::Rogue
+		(class_id == Class::Rogue || class_id == Class::Beastlord)
 	) {
 		reuse_time = BackstabReuseTime - 1 - skill_reduction;
 		TryBackstab(GetTarget(), reuse_time);
