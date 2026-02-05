@@ -3726,7 +3726,7 @@ namespace UF
 		ChannelMessage_Struct *emu = (ChannelMessage_Struct *)__packet->pBuffer;
 
 		strn0cpy(emu->targetname, Target, sizeof(emu->targetname));
-		strn0cpy(emu->sender, Target, sizeof(emu->sender));
+		strn0cpy(emu->sender, Sender, sizeof(emu->sender));
 		emu->language = Language;
 		emu->chan_num = Channel;
 		emu->skill_in_language = Skill;
