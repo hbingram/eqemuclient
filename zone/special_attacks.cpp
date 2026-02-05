@@ -355,6 +355,7 @@ void Client::OPCombatAbility(const CombatAbility_Struct *ca_atk)
 			case Race::Ogre:
 			case Race::Troll:
 			case Race::Barbarian:
+			case Race::Human:
 				bypass_skill_check = true;
 			default:
 				break;
@@ -462,7 +463,7 @@ void Client::OPCombatAbility(const CombatAbility_Struct *ca_atk)
 		CheckIncreaseSkill(EQ::skills::SkillFrenzy, GetTarget(), 10);
 		DoAnim(anim1HWeapon, 0, false);
 
-		if (GetClass() == Class::Berserker) {
+		if (GetClass() == Class::Berserker || GetClass() == Class::Beastlord) {
 			int chance = GetLevel() * 2 + GetSkill(EQ::skills::SkillFrenzy);
 
 			if (zone->random.Roll0(450) < chance) {
@@ -536,7 +537,7 @@ void Client::OPCombatAbility(const CombatAbility_Struct *ca_atk)
 		}
 	}
 
-	if (class_id == Class::Monk) {
+	if (class_id == Class::Monk || class_id == Class::Beastlord) {
 		reuse_time = MonkSpecialAttack(GetTarget(), ca_atk->m_skill) - 1 - skill_reduction;
 
 		// Live AA - Technique of Master Wu
