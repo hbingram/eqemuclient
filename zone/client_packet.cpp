@@ -3031,7 +3031,7 @@ void Client::Handle_OP_ApplyPoison(const EQApplicationPacket *app)
 
 	bool IsPoison = (poison && poison->ItemType == EQ::item::ItemTypePoison);
 
-	if (IsPoison && GetClass() == Class::Rogue) {
+	if (IsPoison && (GetClass() == Class::Rogue || GetClass() == Class::Beastlord)) {
 
 		// Live always checks for skillup, even when poison is too high
 		CheckIncreaseSkill(EQ::skills::SkillApplyPoison, nullptr, 10);
