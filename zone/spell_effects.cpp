@@ -2428,9 +2428,13 @@ bool Mob::SpellEffect(Mob* caster, uint16 spell_id, float partial, int level_ove
 					break;
 				}
 
-				int16 focus = RuleB(Spells, AllowFocusOnSkillDamageSpells) ? caster->GetMeleeDamageMod_SE(spells[spell_id].skill) : 0;
+					int16 focus = RuleB(Spells, AllowFocusOnSkillDamageSpells) ? caster->GetMeleeDamageMod_SE(spells[spell_id].skill) : 0;
 
-				switch(spells[spell_id].skill) {
+					if (caster->IsClient() && IsDiscipline(spell_id)) {
+						caster->CastToClient()->CheckIncreaseSkill(spells[spell_id].skill, this, 10);
+					}
+
+					switch(spells[spell_id].skill) {
 					case EQ::skills::SkillThrowing:
 						caster->DoThrowingAttackDmg(this, nullptr, nullptr, spells[spell_id].base_value[i],spells[spell_id].limit_value[i], focus, ReuseTime, 0, 0, 4.0f, true);
 						break;

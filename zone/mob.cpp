@@ -4687,7 +4687,8 @@ bool Mob::CanThisClassTripleAttack() const {
 			GetClass() == Class::Warrior ||
 			GetClass() == Class::Ranger ||
 			GetClass() == Class::Monk ||
-			GetClass() == Class::Berserker
+			GetClass() == Class::Berserker ||
+			GetClass() == Class::Beastlord
 		);
 	}
 
