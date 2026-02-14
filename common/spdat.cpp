@@ -1167,7 +1167,7 @@ bool IsDiscipline(uint16 spell_id)
 	const auto& spell = spells[spell_id];
 
 	if (
-		spell.mana == 0 &&
+		//spell.mana == 0 && /*BRYANT-021326: so disciplines don't require 0 mana*/
 		(
 			spell.endurance_cost ||
 			spell.endurance_upkeep
