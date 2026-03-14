@@ -757,16 +757,20 @@ void MobMovementManager::NavigateTo(Mob *who, float x, float y, float z, MobMove
 	auto iter = _impl->Entries.find(who);
 	auto &ent = (*iter);
 	auto &nav = ent.second.NavTo;
+	const bool is_pet_navigation = who->IsPet();
+	const double repath_interval_seconds = is_pet_navigation ? 0.2 : 0.5;
+	const float repath_radius = is_pet_navigation ? 0.75f : 1.5f;
+	const float repath_height = is_pet_navigation ? 4.0f : 6.0f;
 
 	double current_time = static_cast<double>(Timer::GetCurrentTime()) / 1000.0;
-	if ((current_time - nav.last_set_time) > 0.5) {
+	if ((current_time - nav.last_set_time) > repath_interval_seconds) {
 		//Can potentially recalc
 
 		auto within        = IsPositionWithinSimpleCylinder(
 			glm::vec3(x, y, z),
 			glm::vec3(nav.navigate_to_x, nav.navigate_to_y, nav.navigate_to_z),
-			1.5f,
-			6.0f
+			repath_radius,
+			repath_height
 		);
 		auto heading_match = IsHeadingEqual(0.0, nav.navigate_to_heading);
 

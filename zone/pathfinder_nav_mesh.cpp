@@ -13,6 +13,43 @@
 
 extern Zone *zone;
 
+namespace {
+
+const glm::vec3 kNearestPolyExtentsRouteTight(4.0f, 40.0f, 4.0f);
+const glm::vec3 kNearestPolyExtentsRouteFallback(5.0f, 100.0f, 5.0f);
+const glm::vec3 kNearestPolyExtentsPathTight(6.0f, 40.0f, 6.0f);
+const glm::vec3 kNearestPolyExtentsPathFallback(10.0f, 200.0f, 10.0f);
+
+bool FindNearestPolyWithFallback(
+	dtNavMeshQuery *query,
+	const glm::vec3 &location,
+	const dtQueryFilter &filter,
+	const glm::vec3 &tight_extents,
+	const glm::vec3 &fallback_extents,
+	dtPolyRef *out_ref,
+	glm::vec3 *out_point)
+{
+	if (!query || !out_ref || !out_point) {
+		return false;
+	}
+
+	*out_ref = 0;
+	glm::vec3 nearest_point(0.0f);
+
+	query->findNearestPoly(&location[0], &tight_extents[0], &filter, out_ref, &nearest_point[0]);
+	if (!*out_ref) {
+		query->findNearestPoly(&location[0], &fallback_extents[0], &filter, out_ref, &nearest_point[0]);
+		if (!*out_ref) {
+			return false;
+		}
+	}
+
+	*out_point = nearest_point;
+	return true;
+}
+
+} // namespace
+
 struct PathfinderNavmesh::Implementation
 {
 	dtNavMesh *nav_mesh;
@@ -61,28 +98,41 @@ IPathfinder::IPath PathfinderNavmesh::FindRoute(const glm::vec3 &start, const gl
 	filter.setAreaCost(9, 0.1f); //Portal
 	filter.setAreaCost(10, 0.1f); //Prefer
 
-	dtPolyRef start_ref;
-	dtPolyRef end_ref;
-	glm::vec3 ext(5.0f, 100.0f, 5.0f);
+	dtPolyRef start_ref = 0;
+	dtPolyRef end_ref = 0;
+	glm::vec3 start_location(0.0f);
+	glm::vec3 end_location(0.0f);
 
-	m_impl->query->findNearestPoly(&current_location[0], &ext[0], &filter, &start_ref, 0);
-	m_impl->query->findNearestPoly(&dest_location[0], &ext[0], &filter, &end_ref, 0);
-
-	if (!start_ref || !end_ref) {
+	if (!FindNearestPolyWithFallback(
+		m_impl->query,
+		current_location,
+		filter,
+		kNearestPolyExtentsRouteTight,
+		kNearestPolyExtentsRouteFallback,
+		&start_ref,
+		&start_location) ||
+		!FindNearestPolyWithFallback(
+			m_impl->query,
+			dest_location,
+			filter,
+			kNearestPolyExtentsRouteTight,
+			kNearestPolyExtentsRouteFallback,
+			&end_ref,
+			&end_location)) {
 		return IPath();
 	}
 
 	int npoly = 0;
 	dtPolyRef path[1024] = { 0 };
-	auto status = m_impl->query->findPath(start_ref, end_ref, &current_location[0], &dest_location[0], &filter, path, &npoly, 1024);
+	auto status = m_impl->query->findPath(start_ref, end_ref, &start_location[0], &end_location[0], &filter, path, &npoly, 1024);
 
 	if (npoly) {
-		glm::vec3 epos = dest_location;
+		glm::vec3 epos = end_location;
 		if (path[npoly - 1] != end_ref) {
-			m_impl->query->closestPointOnPoly(path[npoly - 1], &dest_location[0], &epos[0], 0);
+			m_impl->query->closestPointOnPoly(path[npoly - 1], &end_location[0], &epos[0], 0);
 			partial = true;
 
-			auto dist = DistanceSquared(epos, current_location);
+			auto dist = DistanceSquared(epos, start_location);
 			if (dist < 10000.0f) {
 				stuck = true;
 			}
@@ -94,7 +144,7 @@ IPathfinder::IPath PathfinderNavmesh::FindRoute(const glm::vec3 &start, const gl
 		int n_straight_polys;
 		dtPolyRef straight_path_polys[2048];
 
-		status = m_impl->query->findStraightPath(&current_location[0], &epos[0], path, npoly,
+		status = m_impl->query->findStraightPath(&start_location[0], &epos[0], path, npoly,
 			straight_path, straight_path_flags,
 			straight_path_polys, &n_straight_polys, 2048, DT_STRAIGHTPATH_AREA_CROSSINGS);
 
@@ -160,43 +210,57 @@ IPathfinder::IPath PathfinderNavmesh::FindPath(const glm::vec3 &start, const glm
 	filter.setAreaCost(10, opts.flag_cost[9]); //Prefer
 
 	static const int max_polys = 256;
-	dtPolyRef start_ref;
-	dtPolyRef end_ref;
-	glm::vec3 ext(10.0f, 200.0f, 10.0f);
+	dtPolyRef start_ref = 0;
+	dtPolyRef end_ref = 0;
+	glm::vec3 start_location(0.0f);
+	glm::vec3 end_location(0.0f);
 
-	m_impl->query->findNearestPoly(&current_location[0], &ext[0], &filter, &start_ref, 0);
-	m_impl->query->findNearestPoly(&dest_location[0], &ext[0], &filter, &end_ref, 0);
-
-	if (!start_ref || !end_ref) {
+	if (!FindNearestPolyWithFallback(
+		m_impl->query,
+		current_location,
+		filter,
+		kNearestPolyExtentsPathTight,
+		kNearestPolyExtentsPathFallback,
+		&start_ref,
+		&start_location) ||
+		!FindNearestPolyWithFallback(
+			m_impl->query,
+			dest_location,
+			filter,
+			kNearestPolyExtentsPathTight,
+			kNearestPolyExtentsPathFallback,
+			&end_ref,
+			&end_location)) {
 		return IPath();
 	}
 
 	int npoly = 0;
 	dtPolyRef path[max_polys] = { 0 };
-	auto status = m_impl->query->findPath(start_ref, end_ref, &current_location[0], &dest_location[0], &filter, path, &npoly, max_polys);
+	auto status = m_impl->query->findPath(start_ref, end_ref, &start_location[0], &end_location[0], &filter, path, &npoly, max_polys);
 
 	if (npoly) {
-		glm::vec3 epos = dest_location;
+		glm::vec3 epos = end_location;
 		if (path[npoly - 1] != end_ref) {
-			m_impl->query->closestPointOnPoly(path[npoly - 1], &dest_location[0], &epos[0], 0);
+			m_impl->query->closestPointOnPoly(path[npoly - 1], &end_location[0], &epos[0], 0);
 			partial = true;
 
-			auto dist = DistanceSquared(epos, current_location);
+			auto dist = DistanceSquared(epos, start_location);
 			if (dist < 10000.0f) {
 				stuck = true;
 			}
 		}
 
-		int n_straight_polys;
-		glm::vec3 straight_path[max_polys];
-		unsigned char straight_path_flags[max_polys];
-		dtPolyRef straight_path_polys[max_polys];
+		static constexpr int max_straight_polys = 2048;
+		int n_straight_polys = 0;
+		glm::vec3 straight_path[max_straight_polys];
+		unsigned char straight_path_flags[max_straight_polys];
+		dtPolyRef straight_path_polys[max_straight_polys];
 
-		auto status = m_impl->query->findStraightPath(&current_location[0], &epos[0], path, npoly,
+		auto straight_path_status = m_impl->query->findStraightPath(&start_location[0], &epos[0], path, npoly,
 			(float*)&straight_path[0], straight_path_flags,
-			straight_path_polys, &n_straight_polys, 2048, DT_STRAIGHTPATH_AREA_CROSSINGS | DT_STRAIGHTPATH_ALL_CROSSINGS);
+			straight_path_polys, &n_straight_polys, max_straight_polys, DT_STRAIGHTPATH_AREA_CROSSINGS | DT_STRAIGHTPATH_ALL_CROSSINGS);
 
-		if (dtStatusFailed(status)) {
+		if (dtStatusFailed(straight_path_status)) {
 			return IPath();
 		}
 
@@ -331,18 +395,23 @@ glm::vec3 PathfinderNavmesh::GetRandomLocation(const glm::vec3 &start, int flags
 	dtPolyRef randomRef;
 	float point[3];
 
-	dtPolyRef start_ref;
+	dtPolyRef start_ref = 0;
 	glm::vec3 current_location(start.x, start.z, start.y);
-	glm::vec3 ext(5.0f, 100.0f, 5.0f);
+	glm::vec3 start_location(0.0f);
 
-	m_impl->query->findNearestPoly(&current_location[0], &ext[0], &filter, &start_ref, 0);
-
-	if (!start_ref)
+	if (!FindNearestPolyWithFallback(
+		m_impl->query,
+		current_location,
+		filter,
+		kNearestPolyExtentsRouteTight,
+		kNearestPolyExtentsRouteFallback,
+		&start_ref,
+		&start_location))
 	{
 		return glm::vec3(0.f);
 	}
 
-	if (dtStatusSucceed(m_impl->query->findRandomPointAroundCircle(start_ref, &current_location[0], 100.f, &filter, []() { return (float)zone->random.Real(0.0, 1.0); }, &randomRef, point)))
+	if (dtStatusSucceed(m_impl->query->findRandomPointAroundCircle(start_ref, &start_location[0], 100.f, &filter, []() { return (float)zone->random.Real(0.0, 1.0); }, &randomRef, point)))
 	{
 		return glm::vec3(point[0], point[2], point[1]);
 	}
