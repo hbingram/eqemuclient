@@ -17,6 +17,20 @@
 extern double frame_time;
 extern Zone   *zone;
 
+namespace {
+
+bool ShouldTracePathSelection(const Mob *who)
+{
+	if (!who) {
+		return false;
+	}
+
+	// Trace only client-owned pets so logs stay focused even if pet names rotate.
+	return who->IsPet() && who->GetOwner() && who->GetOwner()->IsClient();
+}
+
+} // namespace
+
 class IMovementCommand {
 public:
 	IMovementCommand() = default;
@@ -1080,6 +1094,8 @@ void MobMovementManager::UpdatePath(Mob *who, float x, float y, float z, MobMove
 
 void MobMovementManager::UpdatePathGround(Mob *who, float x, float y, float z, MobMovementMode mode)
 {
+	const bool trace_path_selection = ShouldTracePathSelection(who);
+
 	PathfinderOptions opts;
 	opts.smooth_path = true;
 	opts.step_size   = RuleR(Pathing, NavmeshStepSize);
@@ -1089,6 +1105,22 @@ void MobMovementManager::UpdatePathGround(Mob *who, float x, float y, float z, M
 	//This is probably pointless since the nav mesh tool currently sets zonelines to disabled anyway
 	auto partial = false;
 	auto stuck   = false;
+
+	if (trace_path_selection) {
+		LogPathing(
+			"PathTrace [{}:{}] request start=({:.3f},{:.3f},{:.3f}) end=({:.3f},{:.3f},{:.3f}) mode={}",
+			who->GetCleanName(),
+			who->GetID(),
+			who->GetX(),
+			who->GetY(),
+			who->GetZ(),
+			x,
+			y,
+			z,
+			static_cast<int>(mode)
+		);
+	}
+
 	auto route   = zone->pathing->FindPath(
 		glm::vec3(who->GetX(), who->GetY(), who->GetZ()),
 		glm::vec3(x, y, z),
@@ -1100,12 +1132,122 @@ void MobMovementManager::UpdatePathGround(Mob *who, float x, float y, float z, M
 	auto eiter = _impl->Entries.find(who);
 	auto &ent  = (*eiter);
 
+	if (trace_path_selection) {
+		LogPathing(
+			"PathTrace [{}:{}] findpath route_nodes={} partial={} stuck={}",
+			who->GetCleanName(),
+			who->GetID(),
+			route.size(),
+			partial,
+			stuck
+		);
+	}
+
 	if (route.size() == 0) {
+		if (trace_path_selection) {
+			LogPathing(
+				"PathTrace [{}:{}] empty route -> HandleStuckBehavior target=({:.3f},{:.3f},{:.3f})",
+				who->GetCleanName(),
+				who->GetID(),
+				x,
+				y,
+				z
+			);
+		}
 		HandleStuckBehavior(who, x, y, z, mode);
 		return;
 	}
 
 	AdjustRoute(route, who);
+
+	if (trace_path_selection) {
+		glm::vec3 first_non_teleport(0.0f);
+		glm::vec3 last_non_teleport(0.0f);
+		glm::vec3 previous_non_teleport(0.0f);
+		bool has_non_teleport = false;
+		bool has_previous_non_teleport = false;
+		size_t non_teleport_nodes = 0;
+		float route_distance = 0.0f;
+
+		size_t node_index = 0;
+		for (const auto &node : route) {
+			if (node.teleport) {
+				LogPathing(
+					"PathTrace [{}:{}] node[{}]=<teleport_marker>",
+					who->GetCleanName(),
+					who->GetID(),
+					node_index
+				);
+			}
+			else {
+				LogPathing(
+					"PathTrace [{}:{}] node[{}]=({:.3f},{:.3f},{:.3f})",
+					who->GetCleanName(),
+					who->GetID(),
+					node_index,
+					node.pos.x,
+					node.pos.y,
+					node.pos.z
+				);
+				if (!has_non_teleport) {
+					first_non_teleport = node.pos;
+					has_non_teleport = true;
+				}
+
+				last_non_teleport = node.pos;
+				if (has_previous_non_teleport) {
+					route_distance += glm::distance(previous_non_teleport, node.pos);
+				}
+				previous_non_teleport = node.pos;
+				has_previous_non_teleport = true;
+				++non_teleport_nodes;
+			}
+
+			++node_index;
+			if (node_index >= 20 && route.size() > node_index) {
+				LogPathing(
+					"PathTrace [{}:{}] ... truncated {} remaining route node(s)",
+					who->GetCleanName(),
+					who->GetID(),
+					route.size() - node_index
+				);
+				break;
+			}
+		}
+
+		const auto direct_distance = glm::distance(
+			glm::vec3(who->GetX(), who->GetY(), who->GetZ()),
+			glm::vec3(x, y, z)
+		);
+		const auto route_ratio = direct_distance > 0.001f ? (route_distance / direct_distance) : 0.0f;
+
+		if (has_non_teleport) {
+			LogPathing(
+				"PathTrace [{}:{}] summary total_nodes={} non_teleport_nodes={} first=({:.3f},{:.3f},{:.3f}) last=({:.3f},{:.3f},{:.3f}) direct_dist={:.3f} route_dist={:.3f} ratio={:.3f}",
+				who->GetCleanName(),
+				who->GetID(),
+				route.size(),
+				non_teleport_nodes,
+				first_non_teleport.x,
+				first_non_teleport.y,
+				first_non_teleport.z,
+				last_non_teleport.x,
+				last_non_teleport.y,
+				last_non_teleport.z,
+				direct_distance,
+				route_distance,
+				route_ratio
+			);
+		}
+		else {
+			LogPathing(
+				"PathTrace [{}:{}] summary total_nodes={} non_teleport_nodes=0",
+				who->GetCleanName(),
+				who->GetID(),
+				route.size()
+			);
+		}
+	}
 
 	//avoid doing any processing if the mob is stuck to allow normal stuck code to work.
 	if (!stuck) {
@@ -1135,10 +1277,20 @@ void MobMovementManager::UpdatePathGround(Mob *who, float x, float y, float z, M
 
 		}
 
-		if (noValidPath) {
-			//we are 'stuck' in a path, lets just get out of this by 'teleporting' to the next position.
-			PushTeleportTo(
-				ent.second,
+			if (noValidPath) {
+				if (trace_path_selection) {
+					LogPathing(
+						"PathTrace [{}:{}] no-valid-node route -> teleport target=({:.3f},{:.3f},{:.3f})",
+						who->GetCleanName(),
+						who->GetID(),
+						x,
+						y,
+						z
+					);
+				}
+				//we are 'stuck' in a path, lets just get out of this by 'teleporting' to the next position.
+				PushTeleportTo(
+					ent.second,
 				x,
 				y,
 				z,
@@ -1203,6 +1355,16 @@ void MobMovementManager::UpdatePathGround(Mob *who, float x, float y, float z, M
 	}
 
 	if (stuck) {
+		if (trace_path_selection) {
+			LogPathing(
+				"PathTrace [{}:{}] final route flagged stuck -> HandleStuckBehavior target=({:.3f},{:.3f},{:.3f})",
+				who->GetCleanName(),
+				who->GetID(),
+				x,
+				y,
+				z
+			);
+		}
 		HandleStuckBehavior(who, x, y, z, mode);
 	}
 	else {
