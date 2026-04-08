@@ -380,6 +380,24 @@ grant_access_user() {
 	fi
 }
 
+set_content_permissions() {
+	local content_dir
+
+	for content_dir in "${QUESTS_DIR}" "${MAPS_DIR}"; do
+		[[ -d "${content_dir}" ]] || continue
+
+		log "Setting permissive content permissions on ${content_dir}"
+		find "${content_dir}" -type d -exec chmod 777 {} \;
+		find "${content_dir}" -type f -exec chmod 666 {} \;
+	done
+
+	if command_exists setfacl; then
+		log "Setting default ACLs on ${QUESTS_DIR} and ${MAPS_DIR}"
+		setfacl -R -m u::rwx,g::rwx,o::rwx,m::rwx "${QUESTS_DIR}" "${MAPS_DIR}" || true
+		setfacl -R -d -m u::rwx,g::rwx,o::rwx,m::rwx "${QUESTS_DIR}" "${MAPS_DIR}" || true
+	fi
+}
+
 prepare_dirs() {
 	mkdir -p "${INSTALL_ROOT}" "${SERVER_DIR}" "${CACHE_DIR}" "${SPIRE_DIR}"
 	chown -R "${TARGET_USER}:${TARGET_GROUP}" "${INSTALL_ROOT}"
@@ -571,6 +589,7 @@ download_content() {
 	chown -R "${TARGET_USER}:${TARGET_GROUP}" "${CACHE_DIR}/db"
 	run_as_target unzip -o "${db_zip}" -d "${CACHE_DIR}/db"
 	chown -R "${TARGET_USER}:${TARGET_GROUP}" "${QUESTS_DIR}" "${MAPS_DIR}" "${CACHE_DIR}"
+	set_content_permissions
 	grant_access_user
 }
 
