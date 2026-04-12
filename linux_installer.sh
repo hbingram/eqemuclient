@@ -624,7 +624,9 @@ configure_firewall() {
 		ufw allow 7000:7500/udp || true
 		ufw allow 7778/tcp || true
 		ufw allow 5998/tcp || true
+		ufw allow 5998/udp || true
 		ufw allow 5999/tcp || true
+		ufw allow 5999/udp || true
 		if (( INSTALL_SPIRE )); then
 			ufw allow "${SPIRE_PORT}/tcp" || true
 		fi
@@ -635,7 +637,9 @@ configure_firewall() {
 		firewall-cmd --permanent --add-port=7000-7500/udp || true
 		firewall-cmd --permanent --add-port=7778/tcp || true
 		firewall-cmd --permanent --add-port=5998/tcp || true
+		firewall-cmd --permanent --add-port=5998/udp || true
 		firewall-cmd --permanent --add-port=5999/tcp || true
+		firewall-cmd --permanent --add-port=5999/udp || true
 		if (( INSTALL_SPIRE )); then
 			firewall-cmd --permanent --add-port="${SPIRE_PORT}/tcp" || true
 		fi
@@ -1028,7 +1032,9 @@ remove_firewall_rules() {
 		ufw delete allow 7000:7500/udp || true
 		ufw delete allow 7778/tcp || true
 		ufw delete allow 5998/tcp || true
+		ufw delete allow 5998/udp || true
 		ufw delete allow 5999/tcp || true
+		ufw delete allow 5999/udp || true
 		ufw delete allow "${SPIRE_PORT}/tcp" || true
 	elif command_exists firewall-cmd && systemctl is-active --quiet firewalld 2>/dev/null; then
 		firewall-cmd --permanent --remove-port=9000-9001/tcp || true
@@ -1037,7 +1043,9 @@ remove_firewall_rules() {
 		firewall-cmd --permanent --remove-port=7000-7500/udp || true
 		firewall-cmd --permanent --remove-port=7778/tcp || true
 		firewall-cmd --permanent --remove-port=5998/tcp || true
+		firewall-cmd --permanent --remove-port=5998/udp || true
 		firewall-cmd --permanent --remove-port=5999/tcp || true
+		firewall-cmd --permanent --remove-port=5999/udp || true
 		firewall-cmd --permanent --remove-port="${SPIRE_PORT}/tcp" || true
 		firewall-cmd --reload || true
 	fi
