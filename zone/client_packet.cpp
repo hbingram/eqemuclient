@@ -27,6 +27,7 @@ Foundation, Inc., 59 Temple Place, Suite 330, Boston, MA 02111-1307 USA
 #include "common/repositories/account_repository.h"
 #include "common/repositories/adventure_members_repository.h"
 #include "common/repositories/buyer_buy_lines_repository.h"
+#include "common/repositories/char_recipe_list_repository.h" /*BRYANT071326*/
 #include "common/repositories/character_corpses_repository.h"
 #include "common/repositories/character_instance_safereturns_repository.h"
 #include "common/repositories/character_pet_name_repository.h"
@@ -13290,7 +13291,27 @@ void Client::Handle_OP_RecipesSearch(const EQApplicationPacket *app)
 		search_clause = StringFormat("name rlike '%s' AND", buf);
 	}
 
-	//arbitrary limit of 200 recipes, makes sense to me.
+	// BRYANT071326
+	const auto character_learned_recipe_list = CharRecipeListRepository::GetWhere(
+		database,
+		fmt::format("char_id = {}", CharacterID())
+	);
+
+	std::vector<uint32_t> known_recipe_ids;
+	known_recipe_ids.reserve(character_learned_recipe_list.size());
+
+	for (const auto &recipe : character_learned_recipe_list) {
+		if (recipe.recipe_id > 0) {
+			known_recipe_ids.emplace_back(static_cast<uint32_t>(recipe.recipe_id));
+		}
+	}
+
+	if (known_recipe_ids.empty()) {
+		return;
+	}
+
+	const auto known_recipe_id_list = Strings::Join(known_recipe_ids, ",");
+
 	// TODO: Clean this up
 	std::string query = fmt::format(
 		SQL(
@@ -13305,12 +13326,13 @@ void Client::Handle_OP_RecipesSearch(const EQApplicationPacket *app)
 				tradeskill_recipe AS tr
 				LEFT JOIN tradeskill_recipe_entries AS tre ON tr.id = tre.recipe_id
 				WHERE
-				{} tr.trivial >= {}
-				AND tr.trivial <= {}
-				AND tr.enabled <> 0
-				AND tr.must_learn & 0x20 <> 0x20
-				AND (
-					(
+					{} tr.trivial >= {}
+					AND tr.trivial <= {}
+					AND tr.enabled <> 0
+					AND tr.id IN ({})
+					AND tr.must_learn & 0x20 <> 0x20
+					AND (
+						(
 						tr.must_learn & 0x3 <> 0
 					)
 				OR (tr.must_learn & 0x3 = 0)
@@ -13335,10 +13357,12 @@ void Client::Handle_OP_RecipesSearch(const EQApplicationPacket *app)
 		search_clause,
 		p_recipes_search_struct->mintrivial,
 		p_recipes_search_struct->maxtrivial,
+		known_recipe_id_list,
 		ContentFilterCriteria::apply(),
 		containers_where_clause,
 		combine_object_slots
 	);
+	// BRYANT071326
 
 	SendTradeskillSearchResults(query, p_recipes_search_struct->object_type, p_recipes_search_struct->some_id);
 }
