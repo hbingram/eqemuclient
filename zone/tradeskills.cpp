@@ -771,7 +771,7 @@ void Client::SendTradeskillSearchResults(
 		uint32     recipe_id  = (uint32) Strings::ToInt(row[0]);
 		const char *name      = row[1];
 		uint32     trivial    = (uint32) Strings::ToInt(row[2]);
-		// BRYANT071326
+		// BRYANT071326 - RecipeSearch returns only recipes known by the player
 		uint32     comp_count = (uint32) Strings::ToInt(row[3]);
 		uint32     must_learn = (uint16) Strings::ToInt(row[5]);
 
@@ -788,7 +788,7 @@ void Client::SendTradeskillSearchResults(
 		if (must_learn & 0x20) {
 			continue;
 		}
-		// BRYANT071326
+		// BRYANT071326 - RecipeSearch returns only recipes known by the player
 
 
 		auto               outapp = new EQApplicationPacket(OP_RecipeReply, sizeof(RecipeReply_Struct));
@@ -1728,13 +1728,13 @@ int8 ZoneDatabase::GetRecipeComponentCount(RecipeCountType count_type, uint32 re
 }
 
 bool Client::CanIncreaseTradeskill(EQ::skills::SkillType tradeskill) {
-	// BRYANT071326
+	// BRYANT071326 - Tradeskill gates removed
 	uint32 rawskill = GetRawSkill(tradeskill);
 	uint16 maxskill = MaxSkill(tradeskill);
 	bool   can_increase = rawskill < maxskill; //Max skill sanity check
 
 	return can_increase;
-	// BRYANT071326
+	// BRYANT071326 - Tradeskill gates removed
 }
 
 bool ZoneDatabase::EnableRecipe(uint32 recipe_id)
