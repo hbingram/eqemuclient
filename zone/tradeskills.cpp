@@ -443,41 +443,9 @@ void Object::HandleCombine(Client* user, const NewCombine_Struct* in_combine, Ob
 		return;
 	}
 
-	//changing from a switch to string of if's since we don't need to iterate through all of the skills in the SkillType enum
-	if (spec.tradeskill == EQ::skills::SkillAlchemy) {
-		if (user_pp.class_ != Class::Shaman) {
-			user->Message(Chat::Red, "This tradeskill can only be performed by a shaman.");
-			auto outapp = new EQApplicationPacket(OP_TradeSkillCombine, 0);
-			user->QueuePacket(outapp);
-			safe_delete(outapp);
-			return;
-		}
-		else if (user_pp.level < MIN_LEVEL_ALCHEMY) {
-			user->Message(Chat::Red, "You cannot perform alchemy until you reach level %i.", MIN_LEVEL_ALCHEMY);
-			auto outapp = new EQApplicationPacket(OP_TradeSkillCombine, 0);
-			user->QueuePacket(outapp);
-			safe_delete(outapp);
-			return;
-		}
-	}
-	else if (spec.tradeskill == EQ::skills::SkillTinkering) {
-		if (user_pp.race != Race::Gnome) {
-			user->Message(Chat::Red, "Only gnomes can tinker.");
-			auto outapp = new EQApplicationPacket(OP_TradeSkillCombine, 0);
-			user->QueuePacket(outapp);
-			safe_delete(outapp);
-			return;
-		}
-	}
-	else if (spec.tradeskill == EQ::skills::SkillMakePoison) {
-		if (user_pp.class_ != Class::Rogue) {
-			user->Message(Chat::Red, "Only rogues can mix poisons.");
-			auto outapp = new EQApplicationPacket(OP_TradeSkillCombine, 0);
-			user->QueuePacket(outapp);
-			safe_delete(outapp);
-			return;
-		}
-	}
+	// BRYANT071326
+	// Tradeskill level gates removed; skill caps determine availability.
+	// BRYANT071326
 
 	// Check if Combine would result in Lore conflict
 	if (user->CheckTradeskillLoreConflict(spec.recipe_id)) {
@@ -621,40 +589,9 @@ void Object::HandleAutoCombine(Client* user, const RecipeAutoCombine_Struct* rac
 		return;
 	}
 
-	if (spec.tradeskill == EQ::skills::SkillAlchemy) {
-		if (!user->GetClass() == Class::Shaman) {
-			user->Message(Chat::Red, "This tradeskill can only be performed by a shaman.");
-			auto outapp = new EQApplicationPacket(OP_TradeSkillCombine, 0);
-			user->QueuePacket(outapp);
-			safe_delete(outapp);
-			return;
-		}
-		else if (user->GetLevel() < MIN_LEVEL_ALCHEMY) {
-			user->Message(Chat::Red, "You cannot perform alchemy until you reach level %i.", MIN_LEVEL_ALCHEMY);
-			auto outapp = new EQApplicationPacket(OP_TradeSkillCombine, 0);
-			user->QueuePacket(outapp);
-			safe_delete(outapp);
-			return;
-		}
-	}
-	else if (spec.tradeskill == EQ::skills::SkillTinkering) {
-		if (user->GetRace() != Race::Gnome) {
-			user->Message(Chat::Red, "Only gnomes can tinker.");
-			auto outapp = new EQApplicationPacket(OP_TradeSkillCombine, 0);
-			user->QueuePacket(outapp);
-			safe_delete(outapp);
-			return;
-		}
-	}
-	else if (spec.tradeskill == EQ::skills::SkillMakePoison) {
-		if (!user->GetClass() == Class::Rogue) {
-			user->Message(Chat::Red, "Only rogues can mix poisons.");
-			auto outapp = new EQApplicationPacket(OP_TradeSkillCombine, 0);
-			user->QueuePacket(outapp);
-			safe_delete(outapp);
-			return;
-		}
-	}
+	// BRYANT071326
+	// Tradeskill level gates removed; skill caps determine availability.
+	// BRYANT071326
 
     //pull the list of components
 	const auto query = fmt::format("SELECT item_id, componentcount "
@@ -834,34 +771,24 @@ void Client::SendTradeskillSearchResults(
 		uint32     recipe_id  = (uint32) Strings::ToInt(row[0]);
 		const char *name      = row[1];
 		uint32     trivial    = (uint32) Strings::ToInt(row[2]);
+		// BRYANT071326
 		uint32     comp_count = (uint32) Strings::ToInt(row[3]);
-		uint32     tradeskill = (uint16) Strings::ToInt(row[4]);
 		uint32     must_learn = (uint16) Strings::ToInt(row[5]);
 
 
-		// Skip the recipes that exceed the threshold in skill difference
-		// Recipes that have either been made before or were
-		// explicitly learned are excempt from that limit
 		auto character_learned_recipe = CharRecipeListRepository::GetCharRecipeListEntry(
 			character_learned_recipe_list,
 			recipe_id
 		);
 
-		if (RuleB(Skills, UseLimitTradeskillSearchSkillDiff) &&
-			((int32) trivial - (int32) GetSkill((EQ::skills::SkillType) tradeskill)) >
-			RuleI(Skills, MaxTradeskillSearchSkillDiff)) {
-
-			LogTradeskills("Checking limit recipe_id [{}] name [{}]", recipe_id, name);
-
-			if (character_learned_recipe.madecount == 0) {
-				continue;
-			}
-		}
-
-		//Skip recipes that must be learned
-		if ((must_learn & 0xf) && !character_learned_recipe.recipe_id) {
+		if (!character_learned_recipe.recipe_id) {
 			continue;
 		}
+
+		if (must_learn & 0x20) {
+			continue;
+		}
+		// BRYANT071326
 
 
 		auto               outapp = new EQApplicationPacket(OP_RecipeReply, sizeof(RecipeReply_Struct));
@@ -1801,44 +1728,13 @@ int8 ZoneDatabase::GetRecipeComponentCount(RecipeCountType count_type, uint32 re
 }
 
 bool Client::CanIncreaseTradeskill(EQ::skills::SkillType tradeskill) {
+	// BRYANT071326
 	uint32 rawskill = GetRawSkill(tradeskill);
 	uint16 maxskill = MaxSkill(tradeskill);
+	bool   can_increase = rawskill < maxskill; //Max skill sanity check
 
-	if (rawskill >= maxskill) //Max skill sanity check
-		return false;
-
-	uint8 Baking = (GetRawSkill(EQ::skills::SkillBaking) > 200) ? 1 : 0;
-	uint8 Smithing = (GetRawSkill(EQ::skills::SkillBlacksmithing) > 200) ? 1 : 0;
-	uint8 Brewing = (GetRawSkill(EQ::skills::SkillBrewing) > 200) ? 1 : 0;
-	uint8 Fletching = (GetRawSkill(EQ::skills::SkillFletching) > 200) ? 1 : 0;
-	uint8 Jewelry = (GetRawSkill(EQ::skills::SkillJewelryMaking) > 200) ? 1 : 0;
-	uint8 Pottery = (GetRawSkill(EQ::skills::SkillPottery) > 200) ? 1 : 0;
-	uint8 Tailoring = (GetRawSkill(EQ::skills::SkillTailoring) > 200) ? 1 : 0;
-	uint8 SkillTotal = Baking + Smithing + Brewing + Fletching + Jewelry + Pottery + Tailoring; //Tradeskills above 200
-	//New Tanaan AA: Each level allows an additional tradeskill above 200 (first one is free)
-	uint8 aaLevel = spellbonuses.TradeSkillMastery + itembonuses.TradeSkillMastery + aabonuses.TradeSkillMastery;
-
-	switch (tradeskill) {
-	case EQ::skills::SkillBaking:
-	case EQ::skills::SkillBlacksmithing:
-	case EQ::skills::SkillBrewing:
-	case EQ::skills::SkillFletching:
-	case EQ::skills::SkillJewelryMaking:
-	case EQ::skills::SkillPottery:
-	case EQ::skills::SkillTailoring:
-		if (aaLevel == 6)
-			break; //Maxed AA
-		if (SkillTotal == 0)
-			break; //First tradeskill freebie
-		if ((SkillTotal == (aaLevel + 1)) && (rawskill > 200))
-			break; //One of the tradeskills already allowed to go over 200
-		if ((SkillTotal >= (aaLevel + 1)) && (rawskill >= 200))
-			return false; //One or more tradeskills already at or beyond limit
-			break;
-	default:
-		break; //Other skills unchecked and ability to increase assumed true
-	}
-	return true;
+	return can_increase;
+	// BRYANT071326
 }
 
 bool ZoneDatabase::EnableRecipe(uint32 recipe_id)

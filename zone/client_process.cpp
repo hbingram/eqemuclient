@@ -1637,15 +1637,13 @@ void Client::OPGMTraining(const EQApplicationPacket *app)
 	// if this for-loop acts up again (crashes linux), try enabling the before and after #pragmas
 //#pragma GCC push_options
 //#pragma GCC optimize ("O0")
+	// BRYANT071326
 	for (int sk = EQ::skills::Skill1HBlunt; sk <= EQ::skills::HIGHEST_SKILL; ++sk) {
-		if (sk == EQ::skills::SkillTinkering && GetRace() != Race::Gnome) {
-			gmtrain->skills[sk] = 0; //Non gnomes can't tinker!
-		} else {
-			gmtrain->skills[sk] = GetMaxSkillAfterSpecializationRules((EQ::skills::SkillType)sk, MaxSkill((EQ::skills::SkillType)sk, GetClass(), RuleI(Character, MaxLevel)));
-			//this is the highest level that the trainer can train you to, this is enforced clientside so we can't just
-			//Set it to 1 with CanHaveSkill or you wont be able to train past 1.
-		}
+		gmtrain->skills[sk] = GetMaxSkillAfterSpecializationRules((EQ::skills::SkillType)sk, MaxSkill((EQ::skills::SkillType)sk, GetClass(), RuleI(Character, MaxLevel)));
+		//this is the highest level that the trainer can train you to, this is enforced clientside so we can't just
+		//Set it to 1 with CanHaveSkill or you wont be able to train past 1.
 	}
+	// BRYANT071326
 
 	if (ClientVersion() < EQ::versions::ClientVersion::RoF2 && GetClass() == Class::Berserker) {
 		gmtrain->skills[EQ::skills::Skill1HPiercing] = gmtrain->skills[EQ::skills::Skill2HPiercing];
