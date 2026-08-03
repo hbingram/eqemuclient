@@ -1178,6 +1178,7 @@ void Group::SplitExp(ExpSource exp_source, const uint64 exp, Mob* other) {
 				const uint64 tmp  = (m->GetLevel() + 3) * (m->GetLevel() + 3) * 75 * 35 / 10;
 				const uint64 tmp2 = group_experience / member_count;
 				auto* client = m->CastToClient();
+				// BRYANT080326 - Anti-idle XP gate
 				if (!client->IsIdle() || other->GetHateAmount(client) > 0) {
 					client->AddEXP(exp_source, tmp < tmp2 ? tmp : tmp2, consider_level, false, other->CastToNPC());
 				}
@@ -1231,6 +1232,7 @@ void Raid::SplitExp(ExpSource exp_source, const uint64 exp, Mob* other) {
 			if (diff >= max_diff) {
 				const uint64 tmp  = (m.member->GetLevel() + 3) * (m.member->GetLevel() + 3) * 75 * 35 / 10;
 				const uint64 tmp2 = (raid_experience / member_modifier) + 1;
+				// BRYANT080326 - Anti-idle XP gate
 				if (!m.member->IsIdle() || other->GetHateAmount(m.member) > 0) {
 					m.member->AddEXP(exp_source, tmp < tmp2 ? tmp : tmp2, consider_level, false, other->CastToNPC());
 				}

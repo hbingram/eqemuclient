@@ -2750,6 +2750,7 @@ bool NPC::Death(Mob* killer_mob, int64 damage, uint16 spell, EQ::skills::SkillTy
 				const uint32 con_level = give_exp->GetLevelCon(GetLevel());
 
 				if (con_level != ConsiderColor::Gray) {
+					// BRYANT080326 - Anti-idle XP gate
 					if (
 						(!GetOwner() || (GetOwner() && !GetOwner()->IsOfClientBot())) &&
 						(!give_exp_client->IsIdle() || GetHateAmount(give_exp_client) > 0)
