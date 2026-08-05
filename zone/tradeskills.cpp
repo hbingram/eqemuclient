@@ -1730,9 +1730,8 @@ int8 ZoneDatabase::GetRecipeComponentCount(RecipeCountType count_type, uint32 re
 bool Client::CanIncreaseTradeskill(EQ::skills::SkillType tradeskill) {
 	// BRYANT071326 - Tradeskill gates removed
 	uint32 rawskill = GetRawSkill(tradeskill);
-	uint16 maxskill = MaxSkill(tradeskill);
+	uint16 maxskill = GetMaxSkillAfterSpecializationRules(tradeskill, MaxSkill(tradeskill)); // BRYANT080526 - Apply specialization rules to max skill
 	bool   can_increase = rawskill < maxskill; //Max skill sanity check
-
 	return can_increase;
 	// BRYANT071326 - Tradeskill gates removed
 }
